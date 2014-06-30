@@ -1,0 +1,45 @@
+<section id="content" class="container_12 clearfix " data-sort="true">
+    <h1 class="grid_12">Backup do Banco de Dados</h1>
+    <form name="fm_ajax" id="fm_ajax" action="/configuracoes/backup" class="grid_12 validate" method="post">
+        <fieldset>
+            <legend>Configurações do Backup</legend>
+            <div class="row">
+                <label for="backup_automatico">
+                    <strong>Backup Automático</strong>
+                </label>
+                <div>
+                    <p >
+                        <label for="backup_automatico_0"><input type="radio" name="backup_automatico" id="backup_automatico_0" value="S" checked="checked"/>Sim</label>
+                        <label for="backup_automatico_1"><input type="radio" name="backup_automatico" id="backup_automatico_1" value="N" />Não</label>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <label for="backup_dias">
+                    <strong>Intervalo de Dias</strong>
+                    <small>Para geração do <br/>Backup Automático</small>
+                </label>
+                <div>
+                    <input type="number" class="numeric" name='backup_dias' id='backup_dias' required value="<?php echo $this->data['backup_dias']; ?>"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <label >
+                    <strong>Último Backup</strong>
+
+                </label>
+                <div>
+                    <p><strong><?php echo $this->formatData($this->data['backup_last']); ?></strong></p>
+                </div>
+            </div>
+
+
+        </fieldset>
+        <div class="buttons-box">
+            <button class="button green" type="submit"><span class="icon icon-ok"></span>Salvar Registro</button>
+            <button class="button yellow" type="button" id="backup_button"><span class="icon icon-save"></span>Gerar Backup Agora</button>
+            <button class="button red" type="button" onclick="location.hash = 'configuracoes/unidades'"><span class="icon icon-remove"></span>Cancelar</button>
+        </div>
+    </form>
+</section>

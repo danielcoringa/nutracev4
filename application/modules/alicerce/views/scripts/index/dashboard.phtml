@@ -1,0 +1,80 @@
+<section id="content" class="container_12 clearfix" data-sort="true">
+    <?php
+    // Status dos Cadastros visível apenas no modo completo
+    echo $this->render("widgets/status.phtml");
+    ?>
+    <h1 class="grid_12 margin-top no-margin-top-phone" >Dashboard</h1>
+    <?php
+    // Monta o layout do cliente
+    foreach ($this->widgets as $widget) {
+
+        echo $this->render("widgets/" . $widget['nom_widget']);
+    }
+    ?>
+
+
+
+
+
+
+
+    <div style="display:none">
+        <br class="breadcrumb-list" data-link="Teste" />
+        <div id="alert-model-warning">
+            <div  class="alert warning top">
+                <span class="icon"></span>
+                <span class="msg"></span>
+            </div>
+            <div class="content">
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>$('.chart').chart();
+<?php if ($this->agenda) { ?>
+        $(".calendar.demo").fullCalendar(
+                {
+                    minTime: '<?php echo $this->agenda['minTime']; ?>',
+                    maxTime: '<?php echo $this->agenda['maxTime']; ?>',
+                    allDayText: 'Dia Inteiro',
+                    axisFormat: 'H:mm',
+                    defaultEventMinutes: 60,
+                    editable: true,
+                    eventStartEditable: true,
+                    eventEndEditable: true,
+                    eventDrop: function(a, b, c, d) {
+                        coringa_agenda.eventDrop(a);
+                    },
+                    eventResize: function(a, b, c, d) {
+                        coringa_agenda.eventDrop(a, b, c, d);
+                    },
+                    eventClick: function(e, dd, md, ad, rf, jse, ui, v) {
+                        if (e.id !== 'nochange')
+                            coringa_agenda.eventClick(e);
+                    },
+                    dayClick: function(e, d, c, b) {
+                        coringa_agenda.dayClick(e);
+                    },
+                    timeFormat: 'H:mm',
+                    agenda: 'H:mm{ -H:mm}',
+                    events: '<?php echo $this->agenda['notification']; ?>'
+                }
+
+        );
+<?php } ?>
+    coringa_notification.init();
+    var g = $("#content");
+    if (g.data("sort")) {
+        g.sortable({
+            handle: ".header",
+            items: g.find(".box").parent(),
+            distance: 5,
+            tolerance: "pointer",
+            placeholder: "placeholder",
+            forcePlaceholderSize: true,
+            forceHelperSize: true
+        })
+    }
+</script>

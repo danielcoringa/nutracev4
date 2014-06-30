@@ -1,0 +1,185 @@
+<div class="right-sidebar">
+    <ul class="nav">
+
+        <li class="grey addequip"><a href="javascript:void(0)"><span class='icon icon-plus'></span>| Adicionar Equipamento</a></li>
+        <li class="grey removeequip"><a href="javascript:void(0)"><span class='icon icon-minus'></span>| Remover Equipamento</a></li>
+
+    </ul>
+</div>
+<section id="content" class="container_12 clearfix with-right-sidebar" data-sort="true">
+    <h1 class="grid_12">Cadastro de Locações - <?php echo $this->mode ?> Registro</h1>
+    <form name="fm_locacao" id="fm_locacao" action="/locacoes/cadastro" class="grid_12 validate" method="post">
+        <fieldset>
+            <legend>Formulário de Locação</legend>
+            <div class="row">
+                <label for="cod_locacao">
+                    <strong>Cód. Locação</strong>
+                </label>
+                <div>
+                    <input type="text" name='cod_locacao' id='cod_locacao' readonly placeholder='Automático' value="<?php echo $this->data['cod_locacao']; ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <label for="cod_cliente">
+                    <strong>Cliente</strong>
+
+                </label>
+
+                <div>
+
+                    <select class='search clienteobra clienteresponsavel' id='cod_cliente' name='cod_cliente' data-placeholder='Selecione um Cliente' >
+                        <option value=""></option>
+                        <?php
+                        foreach ($this->cliente as $row) {
+                            if ($row['cod_cliente'] == $this->data['cod_cliente']) {
+                                $selected = 'selected="selected"';
+                            }
+                            else {
+                                $selected = '';
+                            }
+                            ?>
+                            <option value="<?php echo $row['cod_cliente']; ?>" <?php echo $selected; ?>><?php echo $row['nom_cliente']; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <label for="cod_obra">
+                    <strong>Obra</strong>
+
+
+                </label>
+
+                <div>
+                    <select class='search' id='cod_obra' name='cod_obra' data-placeholder='Selecione uma Obra' data-func="obra" data-campo="des_obra" data-herdado="cod_cliente:cod_cliente" >
+                        <option value="0"></option>
+
+                    </select>
+                </div>
+            </div>
+            <div class='row inphone'>
+                <label for='list_equipamentos'>
+                    <strong>Equipamentos</strong>
+
+                </label>
+                <div>
+                    <div class='listequip grid_12'>
+                        <div class='box'>
+                            <div class="header">
+                                <span class="icon icon_header icon_16 drill--plus"></span><h2>Equipamentos do Pedido</h2>
+                                <ul class="nav tabletools">
+                                    <li class="button addequip"><a href="javascript:void(0)"><span class='icon icon-plus'></span>Adicionar Equipamento</a></li>
+                                    <li class="button removeequip"><a href="javascript:void(0)"><span class='icon icon-minus'></span>Remover Equipamento</a></li>
+
+                                </ul>
+                            </div>
+
+                            <table class='styled dynamic' id='tbgrid' data-table-simple='true'>
+                                <thead class='equiplist'>
+                                <th style="max-width:10px!important">#</th>
+                                <th style="width:10px!important">Qtd</th>
+                                <th>Equipamento</th>
+                                <th>Vlr. Locação</th>
+                                <th>Vlr. Total</th>
+                                </thead>
+                                <?php
+                                if (count($this->dataEquip) > 0) {
+                                    foreach ($this->dataEquip as $row) {
+                                        ?>
+                                        <tr>
+                                            <td ><input type="checkbox" name="codequip[]" id="cod_equipamento_1" value="<?php echo $row['cod_equipamento_locacao'] ?>" /></td>
+                                            <td ><?php echo $row['qtd_equipamento'] ?></td>
+                                            <td><?php echo $row['nom_equipamento'] ?></td>
+                                            <td><?php echo $row['vlr_locacao'] ?></td>
+                                            <td><?php echo number_format($row['vlr_locacao'] * $row['qtd_equipamento'], 2, '.', '') ?>
+                                                <input type="hidden" name="cequip[]" id="cequip" value="<?php echo $row['cod_equipamento'] ?>">
+                                                <input type="hidden" name="qequip[]" id="qequip" value="<?php echo $row['qtd_equipamento'] ?>">
+                                                <input type="hidden" name="vequip[]" id="vequip" value="<?php echo $row['vlr_locacao'] ?>">
+                                                <input type="hidden" name="indacessorio[]" id="indacessorio" value="<?php echo $row['vlr_locacao'] ?>">
+                                                <input type="hidden" name="vequipt[]" id="vequip" value="<?php echo ($row['vlr_locacao'] * $row['qtd_equipamento']) ?>">
+                                            </td>
+
+
+                                        </tr>
+                                        <?php
+                                    }
+                                }
+                                ?>
+<!--                                <tfoot class="inphone"> -->
+
+
+                            </table>
+                            <input type="text" style="visibility: hidden;width:0px;height:0px;overflow:hidden;position: absolute;" class="equiplist"  name="equiplist" id="equiplist" <?php
+                            if (count($this->dataEquip) > 0) {
+                                echo "value='true'";
+                            }
+                            ?> />
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class='row'>
+                <label for='dta_locacao'>
+                    <strong>Data Locação</strong>
+                </label>
+                <div>
+                    <input type='date' name='dta_locacao' id='dta_locacao' class='mask date' data-mask='99/99/9999'  value="<?php echo $this->formataData($this->data['dta_locacao']) ? $this->formataData($this->data['dta_locacao']) : Date("d/m/Y") ?>" data-valor='<?php echo $this->formataData($this->data['dta_locacao']) ? $this->formataData($this->data['dta_locacao']) : date("d/m/Y") ?>'/>
+                </div>
+            </div>
+            <div class='row'>
+                <label for='dta_devolucao'>
+                    <strong>Data Devolução</strong>
+                </label>
+                <div>
+                    <input type='date' name='dta_devolucao' id='dta_devolucao' class='mask date' data-mask='99/99/9999'  value="<?php echo $this->formataData($this->data['dta_devolucao']) ? $this->formataData($this->data['dta_devolucao']) : Date("d/m/Y") ?>" data-valor='<?php echo $this->formataData($this->data['dta_devolucao']) ? $this->formataData($this->data['dta_devolucao']) : $this->datas(date("d/m/Y"), 30) ?>'/>
+                </div>
+            </div>
+            <div class='row'>
+                <label for='vlr_total'>
+                    <strong>Valor Total</strong>
+                </label>
+                <div>
+                    <p class="_25">
+                        <label class='inline' style="padding-top:6px;"><strong>R$</strong></label>
+                        <input style='padding-left: 24px' type="number" class="money numeric" name="vlr_total" id="vlr_total" value="<?php echo $this->data['vlr_total']; ?>"/>
+                    </p>
+
+                </div>
+            </div>
+            <div class='row'>
+                <label for='cod_responsabilidade'>
+                    <strong>Responsável</strong>
+                </label>
+                <div>
+                    <select class='search' id='cod_responsabilidade' name='cod_responsabilidade' data-placeholder='Responsável Obra' data-func='cliente' data-campo='nom_cliente' data-herdado="cod_cliente:cod_co_responsabilidade" data-campo-fixo="ind_co_responsabilidade=S"  >
+                        <option value=""></option>
+                        <?php
+                        if (count($this->clienter) > 0) {
+                            foreach ($this->clienter as $row) {
+                                if ($row['cod_responsavel'] == $this->data['cod_cliente']) {
+                                    $selected = 'selected="selected"';
+                                }
+                                else {
+                                    $selected = '';
+                                }
+                            }
+                            ?>
+                            <option value="<?php echo $row['cod_cliente']; ?>" <?php echo $selected; ?>><?php echo $row['nom_cliente']; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+
+
+        </fieldset>
+        <div class="buttons-box">
+            <button class="button green" type="submit"><span class="icon icon-save"></span>Salvar Registro</button>
+            <button class="button red" type="button" onclick="location.hash = 'locacoes/ativas'"><span class="icon icon-remove"></span>Cancelar</button>
+        </div>
+    </form>
+</section>
+<script>
+    coringa_registro.locacao_form();
+</script>

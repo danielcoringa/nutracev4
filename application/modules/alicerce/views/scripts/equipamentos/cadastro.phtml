@@ -1,0 +1,210 @@
+<section id="content" class="container_12 clearfix" data-sort="true">
+    <h1 class="grid_12">Cadastrar Equipamento</h1>
+    <form name="fm_equipamento" id="fm_equipamento" action="/equipamentos/cadastro" class="grid_12 validate" method="post">
+        <fieldset>
+            <legend>Formulário de Equipamento</legend>
+            <div class="row">
+                <label for="cod_equipamento">
+                    <strong>Cód. Equipamento</strong>
+                </label>
+                <div>
+                    <input type="text" name='cod_equipamento' id='cod_equipamento' readonly placeholder='Automático' value="<?php echo $this->data['cod_equipamento']; ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <label for="nom_equipamento">
+                    <strong>Nome</strong>
+                </label>
+                <div>
+                    <input type="text" class="tooltip" data-gravity=n title="É obrigatório informar o nome do equipamento." name='nom_equipamento' id='nom_equipamento'  value="<?php echo $this->data['nom_equipamento']; ?>"/>
+                </div>
+            </div>
+            <div class="row">
+                <label for="cod_categoria">
+                    <strong>Categoria</strong>
+                </label>
+                <div>
+                    <select class='search codcategoriafornecedor' id='cod_categoria' name='cod_categoria' data-func='categoria' data-campo="nom_categoria" data-placeholder_old='Selecione uma Categoria' >
+                        <option></option>
+                        <?php
+                        foreach ($this->categorias as $row) {
+                            if ($row['cod_categoria'] == $this->data['cod_categoria']) {
+                                $selected = 'selected="selected" ';
+                            }
+                            else {
+                                $selected = '';
+                            }
+                            ?>
+                            <option value="<?php echo $row['cod_categoria']; ?>" <?php echo $selected; ?>><?php echo $row['nom_categoria'] ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <label for="cod_modelo">
+                    <strong>Modelo/Marca</strong>
+                </label>
+                <div>
+                    <select class='search' id='cod_modelo' name='cod_modelo' data-placeholder_old='Selecione um Modelo' data-func='modelo' data-campo="nom_modelo">
+                        <option></option>
+                        <?php
+                        foreach ($this->modelos as $row) {
+                            if ($row['cod_modelo'] == $this->data['cod_modelo']) {
+                                $selected = 'selected="selected" ';
+                            }
+                            else {
+                                $selected = '';
+                            }
+                            ?>
+                            <option value="<?php echo $row['cod_modelo']; ?>" <?php echo $selected; ?>><?php echo $row['nom_modelo'] ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <label for="cod_fornecedor">
+                    <strong>Fornecedor</strong>
+                </label>
+                <div>
+                    <select class='search' id='cod_fornecedor' name='cod_fornecedor' data-placeholder_old='Selecione um Fornecedor' data-func='fornecedor' data-campo="nom_fornecedor" data-herdado="cod_categoria:cod_categoria">
+                        <option value="0"></option>
+
+                        <?php
+                        if (count($this->fornecedores) > 0) {
+                            foreach ($this->fornecedores as $row) {
+                                if ($row['cod_fornecedor'] == $this->data['cod_fornecedor']) {
+                                    $selected = 'selected="selected" ';
+                                }
+                                else {
+                                    $selected = '';
+                                }
+                                ?>
+                                <option value="<?php echo $row['cod_fornecedor']; ?>" <?php echo $selected; ?>><?php echo $row['nom_fornecedor'] ?></option>
+                                <?php
+                            }
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <div class="row" >
+                <label for="des_equipamento">
+                    <strong>Descrição</strong>
+                </label>
+                <div >
+                    <textarea name="des_equipamento" id="des_equipamento" class="editor" style="max-width:98%!important;"><?php echo $this->data['des_equipamento']; ?></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <label for="img_equipamento">
+                    <strong>Imagem</strong>
+                </label>
+                <div>
+                    <div id="upcontainer">
+                        <div id="filelist">
+                            <div class="clear"></div>
+
+                            <?php
+                            if (count($this->img_equipamento) > 0) {
+                                foreach ($this->img_equipamento as $thumb) {
+                                    ?>
+                                    <div class="obj retorno" id='o_<?php echo md5($thumb['real']) ?>'>
+                                        <div class='delete-file icon-remove d_o_<?php echo md5($thumb['real']) ?>' data-removeinput='<?php echo md5($thumb['real']); ?>' data-file='<?php echo $thumb['real']; ?>' data-id='o_<?php echo md5($thumb['real']) ?>'></div>
+                                        <img src='/media/<?php echo $thumb['real']; ?>' />
+                                        <small><?php echo $thumb['real']; ?></small>
+                                    </div>
+                                    <input type="hidden" id="<?php echo md5($thumb['real']); ?>" value="<?php echo $thumb['real']; ?>" name="imglist[]" >
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </div>
+                    </div>
+                    <div>
+                        <button id="uploadfiles" class="button green" style="display:none"><span class="icon icon-ok"></span>Enviar imagens</button>
+                        <div class="clear"></div>
+                        <br class="imagelist" />
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <label for="vlr_equipamento">
+                    <strong>Valor</strong>
+                    <small>Reposição</small>
+                </label>
+                <div>
+                    <p class="_25">
+                        <label class='inline' style="padding-top:6px;"><strong>R$</strong></label>
+                        <input style='padding-left: 24px' type="number" class="money numeric" name="vlr_equipamento" id="vlr_equipamento" value="<?php echo $this->data['vlr_equipamento']; ?>"/>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <label for="vlr_locacao">
+                    <strong>Valor Locação</strong>
+                    <small>Valor Mensal</small>
+                </label>
+                <div>
+                    <p class="_25">
+                        <label class='inline' style="padding-top:6px;"><strong>R$</strong></label>
+                        <input style='padding-left: 24px' type="number" class="money numeric" name="vlr_locacao" id="vlr_locacao" value="<?php echo $this->data['vlr_locacao']; ?>"/>
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="qtd_estoque_efetivo">
+                    <strong>Qtd. Estoque</strong>
+
+                </label>
+                <div class="inline"><div style="width:160px; float:left;">
+                        <input type="number" class="numeric" name="qtd_estoque_efetivo" id="qtd_estoque_efetivo" value="<?php echo $this->data['qtd_estoque_efetivo'] ? $this->data['qtd_estoque_efetivo'] : 1; ?>"/>
+
+                    </div>
+                    <div style="width:140px;float:left">
+                        <select class='search' id='ind_unidade' name='ind_unidade' data-func='Unidades' data-placeholder_old='Unidade' >
+                            <option></option>
+                            <?php
+                            foreach ($this->unidades as $row) {
+                                if ($row['nom_unidade'] == $this->data['ind_unidade']) {
+                                    $selected = 'selected="selected" ';
+                                }
+                                else {
+                                    if ($row['cod_unidade'] == 1) {
+                                        $selected = 'selected="selected" ';
+                                    }
+                                    else {
+                                        $selected = '';
+                                    }
+                                }
+                                ?>
+                                <option value="<?php echo $row['nom_unidade']; ?>" <?php echo $selected; ?>><?php echo $row['nom_unidade'] ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <label for="ind_localizacao">
+                    <strong>Localização</strong>
+                </label>
+                <div>
+                    <p class="_25">
+                        <input type="text" name='ind_localizacao' id='ind_localizacao' value="<?php echo $this->data['ind_localizacao']; ?>"/>
+                    </p>
+                </div>
+            </div>
+
+
+
+
+
+        </fieldset>
+        <div class="buttons-box">
+            <input type="hidden" name="cod_empresa" id="cod_empresa" value="<?php echo $this->empresa['cod_empresa']; ?>" />
+            <button class="button green" type="submit"><span class="icon icon-save"></span>Salvar Registro</button>
+            <button class="button red" type="button" onclick="location.hash = 'equipamentos/listagem'"><span class="icon icon-remove"></span>Cancelar</button>
+        </div>
+    </form>
+</section>

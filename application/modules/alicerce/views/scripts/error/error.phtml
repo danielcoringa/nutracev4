@@ -1,0 +1,40 @@
+<section id="content" class="container_12 clearfix " data-sort="true">
+    <div class='grid_12' >
+        <div class='box' style='padding:10px'>
+            <div class='header'>
+                <h1><?php echo $this->message ?></h1>
+
+            </div><!-- End div content -->
+            <div class="alert alert-error "
+                 <span class="icon alert-error"></span>
+                <p>Desculpe mas o sistema encontrou um erro e não é possível prosseguir.</p>
+                <p>Tente retornar para o <a href="/">painel principal</a> e utilizar os menus do próprio sistema.</p>
+                <span class='close-alert'></span>
+            </div>
+            <div class='prettyprint'>
+                <!-- END CONTENT -->
+                <?php if (isset($this->exception)): ?>
+                    <h3>Informações do erro:</h3>
+                    <p>
+                        <b>Mensagem do Servidor:</b> <?php echo $this->exception->getMessage(); ?>
+                    </p>
+
+                    <h3>Onde ocorreu o erro:</h3>
+                    <pre class='brush: js' ><?php echo $this->exception->getTraceAsString() ?>
+                    </pre>
+
+                    <h3>Parametros requisitado:</h3>
+                    <pre class='brush: js'><?php
+                        $params = $this->request->getParams();
+                        foreach ($params as $val => $key) {
+                            echo str_pad($val, 10, '.', STR_PAD_RIGHT) . ': ' . $key . PHP_EOL;
+                        }
+                        ?>
+                    </pre>
+
+                <?php endif ?>
+
+            </div>
+        </div>
+    </div>
+</section>

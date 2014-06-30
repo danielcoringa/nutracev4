@@ -1,0 +1,30 @@
+<form name='fm_devolve' id='fm_devolve' action='equipamentos/devolver-equipamento' method='post'>
+    <table class="styled" id="tbgrid" name="tbgrid">
+        <tr>
+            <td>
+                <strong>Qtde. Devolvido</strong>
+            </td>
+            <td>
+                <input type='hidden' name='cod_equipamento_locacao' id='cod_equipamento_locacao' value='<?php echo $this->data['cod_equipamento_locacao']; ?>' />
+                <input type="number" class="numeric" max="<?php echo $this->data['qtd_equipamento']; ?>" min='1' id='qtd_equip_dev' name='qtd_equip_dev' value='<?php echo $this->data['qtd_equipamento']; ?>'/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Situação do Equipamento</strong>
+            </td>
+            <td>
+                <label><input type='radio' name='ind_situacao' id='ind_situacao_0' value='N' checked='checked'/>Normal</label>
+                <label><input type='radio' name='ind_situacao' id='ind_situacao_1' value='D' />Defeito</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Observação</strong>
+            </td>
+            <td>
+                <textarea name='des_observacao' id='des_observacao'></textarea>
+            </td>
+        </tr>
+    </table>
+</form>

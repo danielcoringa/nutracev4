@@ -1,0 +1,131 @@
+<section id="content" class="container_12 clearfix" data-sort="true">
+    <h1 class="grid_12">Cadastrar Equipamentos em Manutenção</h1>
+    <form name="fm_ajax" id="fm_ajax" action="/equipamentos/manutencao-cadastro" class="grid_12 validate" method="post">
+        <fieldset>
+            <legend>Formulário de Acessórios</legend>
+            <div class="row">
+                <label for="cod_equipamento_manutencao">
+                    <strong>Cód. Manutenção</strong>
+                </label>
+                <div>
+                    <input type="text" name='cod_equipamento_manutencao' id='cod_equipamento_manutencao' readonly placeholder='Automático' value="<?php echo $this->data['cod_equipamento_manutencao']; ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <label for="cod_categoria">
+                    <strong>Categoria</strong>
+                </label>
+                <div>
+                    <select class='search codcategoriasearch' id='cod_categoria' name='cod_categoria' data-func='Categorias' data-placeholder_old='Selecione uma Categoria' >
+                        <option></option>
+                        <?php
+                        foreach ($this->categorias as $row) {
+                            if ($row['cod_categoria'] == $this->data['cod_categoria']) {
+                                $selected = 'selected="selected" ';
+                            } else {
+                                $selected = '';
+                            }
+                            ?>
+                            <option value="<?php echo $row['cod_categoria']; ?>" <?php echo $selected; ?>><?php echo $row['nom_categoria'] ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <label for="cod_equipamento">
+                    <strong>Equipamento</strong>
+                </label>
+                <div>
+                    <select class='search codequipamentosearch' id='cod_equipamento' name='cod_equipamento' data-func='Equipamentos' data-placeholder='Selecione um Equipamento' >
+                        <option></option>
+                        <?php
+                        if (count($this->equipamentos) > 0) {
+                            foreach ($this->equipamentos as $row) {
+                                if ($row['cod_equipamento'] == $this->data['cod_equipamento']) {
+                                    $selected = 'selected="selected" ';
+                                } else {
+                                    $selected = '';
+                                }
+                                ?>
+                                <option value="<?php echo $row['cod_equipamento']; ?>" <?php echo $selected; ?>><?php echo $row['nom_equipamento'] ?></option>
+                                <?php
+                            }
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <div class='row'>
+                <label for='dta_manutencao'>
+                    <strong>Data Manutenção</strong>
+                </label>
+                <div>
+                    <input type='date' name='dta_manutencao' id='dta_manutencao' class='mask date' data-mask='99/99/9999'  value="<?php echo $this->formataData($this->data['dta_manutencao']) ? $this->formataData($this->data['dta_manutencao']) : Date("d/m/Y") ?>" data-valor='<?php echo $this->formataData($this->data['dta_manutencao']) ? $this->formataData($this->data['dta_manutencao']) : date("d/m/Y") ?>'/>
+                </div>
+            </div>
+            <div class='row'>
+                <label for='dta_retorno'>
+                    <strong>Data Retorno</strong>
+                </label>
+                <div>
+                    <input type='date' name='dta_retorno' id='dta_retorno' class='mask date' data-mask='99/99/9999'  value="<?php echo $this->formataData($this->data['dta_retorno']) ? $this->formataData($this->data['dta_retorno']) : $this->Datas(Date("d/m/Y"), 30) ?>" data-valor='<?php echo $this->formataData($this->data['dta_retorno']) ? $this->formataData($this->data['dta_retorno']) : $this->Datas(Date("d/m/Y"), '30') ?>'/>
+                </div>
+            </div>
+            <div class="row">
+                <label for="des_manutencao">
+                    <strong>Descrição do Problema</strong>
+
+                </label>
+                <div>
+                    <textarea name="des_manutencao" id="des_manutencao" class="editor" ><?php echo $this->data['des_manutencao'] ?></textarea>
+                </div>
+            </div>
+            <div class='row'>
+                <label for='vlr_manutencao'>
+                    <strong>Valor Manutenção</strong>
+                </label>
+                <div>
+                    <p>
+                        <label class='inline' style="padding-top:6px;"><strong>R$</strong></label>
+                        <input style='padding-left: 24px' type="text" class="money numeric" name="vlr_manutencao" id="vlr_manutencao" value="<?php echo $this->data['vlr_manutencao'] + 0; ?>" />
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <label for="qtd_equipamento">
+                    <strong>Qtd. Equipamentos</strong>
+
+                </label>
+                <div class="inline">
+                    <div style="width:160px; float:left;">
+                        <input type="number" class="numeric" name="qtd_equipamento" id="qtd_equipamento" value="<?php echo $this->data['qtd_equipamento'] ? $this->data['qtd_equipamento'] : 1; ?>"/>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <label for="ind_automatico"><strong>Retorno Automático</strong></label>
+                <div >
+                    <br style="margin-top:20px"/>
+                    <label><input type="radio" name="ind_automatico" id="ind_automatico_0" value="N" <?php
+                        if ($this->data['ind_automatico'] == '' || $this->data['ind_automatico'] == 'N') {
+                            echo "checked='checked'";
+                        }
+                        ?> />Não</label>
+                    <label><input type="radio" name="ind_automatico" id="ind_automatico_1" value="S" <?php
+                        if ($this->data['ind_automatico'] == 'S') {
+                            echo "checked='checked'";
+                        }
+                        ?>/>Sim</label>
+                </div>
+            </div>
+
+
+        </fieldset>
+        <div class="buttons-box">
+            <button class="button green" type="submit"><span class="icon icon-save"></span>Salvar Registro</button>
+            <button class="button red" type="button" onclick="location.hash = 'equipamentos/manutencao'"><span class="icon icon-remove"></span>Cancelar</button>
+        </div>
+    </form>
+</section>

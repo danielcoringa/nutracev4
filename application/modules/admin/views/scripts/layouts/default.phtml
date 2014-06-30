@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <title>Nutrace >> <?php echo $this->title; ?></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!-- STYLESHEETS -->
+<!--[if lt IE 9]><script src="js/flot/excanvas.min.js"></script><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
+        <link rel="stylesheet" type="text/css" href="/css/admin/cloud-admin.css" >
+        <link rel="stylesheet" type="text/css"  href="/css/admin/themes/default.css" id="skin-switcher" >
+        <link rel="stylesheet" type="text/css"  href="/css/admin/responsive.css" >
+        <link href="/css/fonts/font-awesome.min.css" rel="stylesheet">
+        <!-- DATE RANGE PICKER -->
+
+        <!-- FONTS -->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+        <!-- JQUERY -->
+        <script src="/js/admin/jquery-2.0.3.min.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/jquery.blockUI.min.js"></script>
+
+        <!-- JQUERY UI-->
+        <script src="/js/admin/jquery-ui-1.10.3.custom.min.js"></script>
+        <!-- BOOTSTRAP -->
+        <script src="/js/admin/bootstrap.min.js"></script>
+        <!-- COOKIE -->
+        <script type="text/javascript" src="/js/admin/jquery.cookie.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/css/admin/bootstrap-datetimepicker.min.css" />
+
+        <link rel="stylesheet" type="text/css" href="/css/admin/plugins/daterangepicker-bs3.css" />
+
+        <link rel="stylesheet" type="text/css" href="/css/admin/plugins/bootstrap-switch.min.css" />
+        <link rel="stylesheet" type="text/css" href="/css/admin/jquery-ui-1.10.3.custom.min.css" />
+        <link rel="stylesheet" type="text/css" href="/css/admin/hubspot-messenger/messenger.css" />
+        <link rel="stylesheet" type="text/css" href="/css/admin/hubspot-messenger/messenger-spinner.css" />
+        <link rel="stylesheet" type="text/css" href="/css/admin/hubspot-messenger/messenger-theme-air.css" />
+        <link rel="stylesheet" type="text/css" href="/css/admin/hubspot-messenger/messenger-theme-block.css" />
+        <link rel="stylesheet" type="text/css" href="/css/admin/hubspot-messenger/messenger-theme-flat.css" />
+        <link rel="stylesheet" type="text/css" href="/css/admin/hubspot-messenger/messenger-theme-future.css" />
+        <link rel="stylesheet" type="text/css" href="/css/admin/hubspot-messenger/messenger-theme-ice.css" />
+
+        <link rel="stylesheet" type="text/css" href="/css/admin/magic-suggest/magicsuggest-1.3.1-min.css" />
+        <link rel="stylesheet" type="text/css" href="/css/admin/datepicker/themes/default.date.min.css" />
+        <link rel="stylesheet" type="text/css" href="/css/admin/datepicker/themes/default.min.css" />
+        <link rel="stylesheet" type="text/css" href="/css/admin/datepicker/themes/default.time.min.css" />
+        <link rel="stylesheet" type="text/css" href="/css/admin/plugins/colorpicker.min.css" />
+        <link rel="stylesheet" type="text/css" href="/css/admin/plugins/fullcalendar.min.css" />
+        <link rel="stylesheet" type="text/css" href="/css/admin/plugins/jquery.gritter.css" />
+        <link rel="stylesheet" type="text/css" href="/css/admin/plugins/editor.css" />
+        <link rel="stylesheet" type="text/css" href="/css/admin/plugins/animate.min.css" />
+        <link rel="stylesheet" type="text/css" href="/css/admin/plugins/TableTools.min.css" />
+        <link rel="stylesheet" type="text/css" href="/css/admin/plugins/jquery.dataTables.min.css" />
+        <link rel="stylesheet" type="text/css" href="/css/admin/plugins/typeahead.css" />
+        <link rel="stylesheet" type="text/css" href="/css/admin/plugins/uniform.default.min.css" />
+        <link rel="stylesheet" type="text/css" href="/css/admin/plugins/colorbox.min.css" />
+        <link rel="stylesheet" type="text/css" href="/css/admin/plugins/jquery.fileupload.css" />
+        <link rel="stylesheet" type="text/css" href="/css/admin/plugins/jquery.fileupload-ui.css" />
+        <link rel="stylesheet" type="text/css" href="/css/admin/plugins/select2.min.css" />
+        <link rel="stylesheet" type="text/css" href="/css/admin/plugins/bootstrap-fileupload.min.css" />
+        <link rel="stylesheet" type="text/css" href="/css/admin/plugins/bootstrap.min.css" />
+
+    </head>
+
+    <body>
+
+        <?php echo $this->render("layouts/header.phtml"); ?>
+        <section id="page">
+            <?php echo $this->render("layouts/sidebar.phtml"); ?>
+            <div id="main-content">
+
+                <!-- SAMPLE BOX CONFIGURATION MODAL FORM-->
+                <div class="modal fade" id="box-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title">Box Settings</h4>
+                            </div>
+                            <div class="modal-body">
+                                Here goes box setting content.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /SAMPLE BOX CONFIGURATION MODAL FORM-->
+                <div class="container">
+                    <div class="row">
+
+                        <div id="content" class="col-lg-12">
+                            <input type="hidden" name="nom_modulo" id="nom_modulo" value="<?php echo $this->modulo ?>" />
+                            <?php echo $this->render('layouts/page-header.phtml'); ?>
+                            <?php echo $this->layout()->content; ?>
+                        </div>
+                        <!-- /CONTENT-->
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <script type="text/javascript" src="/js/admin/plugins/jquery.simplyCountable.min.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/jquery.gritter.min.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/bootstrap-wysiwyg.min.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/jasny-bootstrap/bootstrap.min.js"></script>
+
+        <script type="text/javascript" src="/js/admin/bootstrap-datetimepicker.min.js"></script>
+        <script type="text/javascript" src="/js/admin/bootstrap-datetimepicker.pt-BR.js"></script>
+        <!-- COLOR PICKER -->
+        <script type="text/javascript" src="/js/admin/plugins/bootstrap-colorpicker.min.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/tmpl.min.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/load-image.min.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/canvas-to-blob.min.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/jquery.fileupload.min.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/jquery.fileupload-process.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/jquery.fileupload-image.min.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/jquery.fileupload-audio.min.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/jquery.fileupload-video.min.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/jquery.fileupload-validate.min.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/jquery.fileupload-ui.min.js"></script>
+        <!-- DATE RANGE PICKER -->
+        <script src="/js/admin/plugins/moment.min.js"></script>
+
+        <!-- DATE RANGE PICKER -->
+        <script type="text/javascript" src="/js/admin/datepicker/picker.js"></script>
+        <script type="text/javascript" src="/js/admin/datepicker/picker.date.js"></script>
+        <script type="text/javascript" src="/js/admin/datepicker/picker.time.js"></script>
+        <script src="/js/admin/plugins/daterangepicker.min.js"></script>
+        <script src="/js/admin/plugins/fullcalendar.min.js"></script>
+        <!-- BOOTSTRAP SWITCH -->
+        <!-- SPARKLINES -->
+        <script type="text/javascript" src="/js/admin/plugins/jquery.sparkline.min.js"></script>
+        <!-- EASY PIE CHART -->
+        <script src="/js/admin/plugins/jquery.easing.min.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/jquery.easypiechart.min.js"></script>
+        <!-- FLOT CHARTS -->
+        <script src="/js/admin/plugins/jquery.flot.min.js"></script>
+        <script src="/js/admin/plugins/jquery.flot.time.min.js"></script>
+        <script src="/js/admin/plugins/jquery.flot.selection.min.js"></script>
+        <script src="/js/admin/plugins/jquery.flot.resize.min.js"></script>
+        <script src="/js/admin/plugins/jquery.flot.pie.min.js"></script>
+        <script src="/js/admin/plugins/jquery.flot.stack.min.js"></script>
+        <script src="/js/admin/plugins/jquery.flot.crosshair.min.js"></script>
+        <!-- TODO -->
+        <script type="text/javascript" src="/js/admin/plugins/paddystodolist.js"></script>
+        <!-- FULL CALENDAR
+        <script type="text/javascript" src="/js/admin/plugins/fullcalendar.min.js"></script>
+        <script src="/js/admin/plugins/daterangepicker.min.js"></script>
+        -->
+        <!-- SLIMSCROLL -->
+        <script type="text/javascript" src="/js/admin/plugins/jquery.slimscroll.min.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/slimScrollHorizontal.min.js"></script>
+        <!-- BLOCK UI -->
+
+        <!-- BOOTSTRAP SWITCH -->
+        <script type="text/javascript" src="/js/admin/plugins/bootstrap-switch.min.js"></script>
+        <!-- BOOTBOX -->
+        <script type="text/javascript" src="/js/admin/bootbox/bootbox.min.js"></script>
+        <!-- HUBSPOT MESSENGER -->
+        <script type="text/javascript" src="/js/admin/hubspot-messenger/messenger.min.js"></script>
+        <script type="text/javascript" src="/js/admin/hubspot-messenger/messenger-theme-flat.js"></script>
+        <script type="text/javascript" src="/js/admin/hubspot-messenger/messenger-theme-future.js"></script>
+        <!-- MAGIC SUGGEST -->
+        <script type="text/javascript" src="/js/admin/magic-suggest/magicsuggest-1.3.1-min.js"></script>
+        <!-- TIMEAGO -->
+        <script type="text/javascript" src="/js/admin/timeago/jquery.timeago.min.js"></script>
+        <!-- DATE PICKER
+        <script type="text/javascript" src="/js/admin/datepicker/picker.js"></script>
+        <script type="text/javascript" src="/js/admin/datepicker/picker.date.js"></script>
+        <script type="text/javascript" src="/js/admin/datepicker/picker.time.js"></script>
+        -->
+        <!-- DateTimePicker BootStrap -->
+
+
+        <!-- RATY -->
+
+        <script type="text/javascript" src="/js/admin/plugins/jquery.raty.min.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/ckeditor.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/styles.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/jquery_form.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/typeahead.min.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/jquery.autosize.min.js"></script>
+
+        <script type="text/javascript" src="/js/admin/plugins/select2.min.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/jquery.highlight.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/jquery.uniform.min.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/jquery.colorbox.min.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/jquery.isotope.min.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/imagesloaded.pkgd.min.js"></script>
+        <!-- DATA TABLES -->
+        <script type="text/javascript" src="/js/admin/plugins/data-tables/jquery.dataTables.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/data-tables/DT_bootstrap.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/data-tables/jquery.dataTables.tableTools.js"></script>
+        <script type="text/javascript" src="/js/admin/plugins/data-tables/jquery.dataTables.tableTools.zeroClipboard.js"></script>
+
+
+        <script type="text/javascript" src="/js/admin/plugins.js"></script>
+        <!-- CUSTOM SCRIPT
+        <script type="text/javascript" src="/js/admin/coringa.js"></script>-->
+        <script src="/js/admin/script.js"></script>
+        <script src="/js/admin/custom.js"></script>
+        <!-- /JAVASCRIPTS -->
+    </body>
+</html>

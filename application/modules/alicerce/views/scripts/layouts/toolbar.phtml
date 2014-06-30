@@ -1,0 +1,24 @@
+<section id="toolbar" >
+    <div class="container_12">
+        <div class="phone">
+            <div class="col-1">
+                <a class="phone-title" href="<?php echo $this->baseUrl() ?>">
+                    <img src="<?php echo $this->baseUrl('/img/admin/logo-mobile.png') ?>" alt="RoDa Sistemas" />
+                </a>
+            </div>
+        </div>
+        <div class="left">
+            <?php echo $this->render('layouts/breadcrumb.phtml'); ?>
+        </div>
+        <div class="right">
+            <ul>
+                <li class="space"></li>
+                <li class="red"><a href="/login/index/logout">Sair</a></li>
+            </ul>
+        </div>
+        <div class="phone">
+
+            <li><a class="navigation" href="javascript:void(0);"><span class="icon icon-list"></span></a></li>
+        </div>
+    </div>
+</section>

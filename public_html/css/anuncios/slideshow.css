@@ -1,0 +1,778 @@
+.slideshow  {
+	margin-bottom: 20px;
+}
+
+/**************************
+
+*	CAMERA SLIDER
+
+**************************/
+.camera_wrap a, .camera_wrap img, 
+.camera_wrap ol, .camera_wrap ul, .camera_wrap li,
+.camera_wrap table, .camera_wrap tbody, .camera_wrap tfoot, .camera_wrap thead, .camera_wrap tr, .camera_wrap th, .camera_wrap td
+.camera_thumbs_wrap a, .camera_thumbs_wrap img, 
+.camera_thumbs_wrap ol, .camera_thumbs_wrap ul, .camera_thumbs_wrap li,
+.camera_thumbs_wrap table, .camera_thumbs_wrap tbody, .camera_thumbs_wrap tfoot, .camera_thumbs_wrap thead, .camera_thumbs_wrap tr, .camera_thumbs_wrap th, .camera_thumbs_wrap td {
+	background: none;
+	border: 0;
+	font: inherit;
+	font-size: 100%;
+	margin: 0;
+	padding: 0;
+	vertical-align: baseline;
+	list-style: none
+}
+.camera_wrap {
+	display: none;
+	position: relative;
+	z-index: 0;
+}
+.camera_wrap img {
+	max-width: none!important;
+}
+.camera_fakehover {
+    height: 100%;
+    min-height: 30px;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+.camera_wrap {
+	width: 100%;
+	margin:0 0 20px 0!important;	
+}
+.camera_src {
+	display: none;
+}
+.cameraCont, .cameraContents {
+	height: 100%;
+	position: relative;
+	width: 100%;
+	z-index: 1;
+}
+.cameraSlide {
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 100%;
+}
+.cameraContent {
+	bottom: 0;
+	display: none;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 100%;
+}
+.camera_target {
+	bottom: 0;
+	height: 100%;
+	left: 0;
+	overflow: hidden;
+	position: absolute;
+	right: 0;
+	text-align: left;
+	top: 0;
+	width: 100%;
+	z-index: 0;
+}
+.camera_thumb {
+	width: 300px;	
+	height: 112px;
+}
+.camera_overlayer {
+	bottom: 0;
+	height: 100%;
+	left: 0;
+	overflow: hidden;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 100%;
+	z-index: 0;
+}
+.camera_target_content {
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 2;
+}
+.camera_target_content .camera_link {
+	display: block;
+	height: 100%;
+	text-decoration: none;
+	background: url(../image/blank.gif) !important; 
+}
+.camera_loader {
+    background: nonone;
+	border: none;
+	-webkit-border-radius: 18px;
+	-moz-border-radius: 18px;
+	border-radius: 18px;
+	height: 36px;
+	left: 50%;
+	overflow: hidden;
+	position: absolute;
+	margin: -18px 0 0 -18px;
+	top: 50%;
+	width: 36px;
+	z-index: 3;
+}
+.camera_bar {
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 3;
+}
+.camera_thumbs_wrap.camera_left .camera_bar, .camera_thumbs_wrap.camera_right .camera_bar {
+	height: 100%;
+	position: absolute;
+	width: auto;
+}
+.camera_thumbs_wrap.camera_bottom .camera_bar, .camera_thumbs_wrap.camera_top .camera_bar {
+	height: auto;
+	position: absolute;
+	width: 100%;
+}
+.camera_nav_cont {
+	height: 65px;
+	overflow: hidden;
+	position: absolute;
+	right: 9px;
+	top: 15px;
+	width: 120px;
+	z-index: 4;
+}
+.camera_caption {
+	bottom: 0;
+	display: block;
+	position: absolute;
+	width: 100%;
+}
+.camera_caption > div {
+	padding: 10px 20px;
+}
+.camerarelative {
+	overflow: hidden;
+	position: relative;
+}
+.imgFake {
+	cursor: pointer;
+}
+.camera_prevThumbs {
+	bottom: 4px;
+	cursor: pointer;
+	left: 0;
+	position: absolute;
+	top: 4px;
+	visibility: hidden;
+	width: 30px;
+	z-index: 10;
+}
+.camera_prevThumbs div {
+	background: url(../image/sliders/camera/camera_skins.png) no-repeat -160px 0;
+	display: block;
+	height: 40px;
+	margin-top: -20px;
+	position: absolute;
+	top: 50%;
+	width: 30px;
+}
+.camera_nextThumbs {
+	bottom: 4px;
+	cursor: pointer;
+	position: absolute;
+	right: 0;
+	top: 4px;
+	visibility: hidden;
+	width: 30px;
+	z-index: 10;
+}
+.camera_nextThumbs div {
+	background: url(../image/sliders/camera/camera_skins.png) no-repeat -190px 0;
+	display: block;
+	height: 40px;
+	margin-top: -20px;
+	position: absolute;
+	top: 50%;
+	width: 30px;
+}
+.camera_command_wrap .hideNav {
+	display: none;
+}
+.camera_command_wrap {
+	left: 0;
+	position: relative;
+	right:0;
+	z-index: 4;
+}
+.camera_wrap .camera_pag .camera_pag_ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	margin-top: -50px;
+}
+.camera_wrap .camera_pag .camera_pag_ul li {
+	/*-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;*/
+	cursor: pointer;
+	display: inline-block;
+	height: 16px;
+	margin: 20px 5px;
+	position: relative;
+	text-align: left;
+	text-indent: -9999px;
+	width: 16px;
+}
+.camera_commands_emboss .camera_pag .camera_pag_ul li {
+	-moz-box-shadow:
+		0px 1px 0px rgba(255,255,255,1),
+		inset 0px 1px 1px rgba(0,0,0,0.2);
+	-webkit-box-shadow:
+		0px 1px 0px rgba(255,255,255,1),
+		inset 0px 1px 1px rgba(0,0,0,0.2);
+	box-shadow:
+		0px 1px 0px rgba(255,255,255,1),
+		inset 0px 1px 1px rgba(0,0,0,0.2);
+}
+.camera_wrap .camera_pag .camera_pag_ul li > span {
+	/*-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;*/
+	height: 8px;
+	left: 0px;
+	overflow: hidden;
+	position: absolute;
+	top: 0px;
+	width: 50px;
+}
+.camera_commands_emboss .camera_pag .camera_pag_ul li:hover > span {
+	-moz-box-shadow:
+		0px 1px 0px rgba(255,255,255,1),
+		inset 0px 1px 1px rgba(0,0,0,0.2);
+	-webkit-box-shadow:
+		0px 1px 0px rgba(255,255,255,1),
+		inset 0px 1px 1px rgba(0,0,0,0.2);
+	box-shadow:
+		0px 1px 0px rgba(255,255,255,1),
+		inset 0px 1px 1px rgba(0,0,0,0.2);
+}
+.camera_wrap .camera_pag .camera_pag_ul li.cameracurrent > span {
+	-moz-box-shadow: 0;
+	-webkit-box-shadow: 0;
+	box-shadow: 0;
+}
+.camera_pag_ul li img {
+	display: none;
+	position: absolute;
+}
+.camera_pag_ul .thumb_arrow {
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid;
+	top: -8px;
+	left: 50%;
+	margin-left: -4px;
+	position: absolute;
+}
+.camera_prev, .camera_next, .camera_commands {
+	cursor: pointer;
+	height: 60px;
+	margin-top: -20px;
+	position: absolute;
+	top: 48%;
+	width: 60px;
+	z-index: 2;
+}
+.camera_prev {
+	left: 0;
+}
+.camera_prev > span {
+	background: url(../image/sliders/camera/nav.png) no-repeat 0 0;
+	display: block;
+	height: 60px;
+	width: 60px;
+}
+.camera_next {
+	right: 0;
+}
+.camera_next > span {
+	background: url(../image/sliders/camera/nav.png) no-repeat 0 0;
+	display: block;
+	height: 60px;
+	width: 60px;
+}
+.camera_commands {
+	right: 61px;
+}
+.camera_commands > .camera_play {
+	background: url(../image/sliders/camera/nav.png) no-repeat 0 0;
+	height: 60px;
+	width: 60px;
+}
+.camera_commands > .camera_stop {
+	background: url(../image/sliders/camera/nav.png) no-repeat 0 0;
+	display: block;
+	height: 60px;
+	width: 60px;
+}
+.camera_wrap .camera_pag .camera_pag_ul li {
+	/*-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;*/
+	cursor: pointer;
+	display: inline-block;
+	height: 8px;
+	margin: 20px 1px 20px 0;
+	position: relative;
+	text-indent: -9999px;
+	width: 50px;
+}
+.camera_thumbs_cont {
+	-webkit-border-bottom-right-radius: 4px;
+	-webkit-border-bottom-left-radius: 4px;
+	-moz-border-radius-bottomright: 4px;
+	-moz-border-radius-bottomleft: 4px;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+}
+.camera_commands_emboss .camera_thumbs_cont {
+	-moz-box-shadow:
+		0px 1px 0px rgba(255,255,255,1),
+		inset 0px 1px 1px rgba(0,0,0,0.2);
+	-webkit-box-shadow:
+		0px 1px 0px rgba(255,255,255,1),
+		inset 0px 1px 1px rgba(0,0,0,0.2);
+	box-shadow:
+		0px 1px 0px rgba(255,255,255,1),
+		inset 0px 1px 1px rgba(0,0,0,0.2);
+}
+.camera_thumbs_cont > div {
+	float: left;
+	width: 100%;
+}
+.camera_thumbs_cont ul {
+	overflow: hidden;
+	padding: 3px 4px 8px;
+	position: relative;
+	text-align: center;
+}
+.camera_thumbs_cont ul li {
+	display: inline;
+	padding: 0 4px;
+}
+.camera_thumbs_cont ul li > img {
+	border: 1px solid;
+	cursor: pointer;
+	margin-top: 5px;
+	vertical-align:bottom;
+}
+.camera_clear {
+	display: block;
+	clear: both;
+}
+.showIt {
+	display: none;
+}
+.camera_clear {
+	clear: both;
+	display: block;
+	height: 1px;
+	margin: -1px 0 25px;
+	position: relative;
+}
+/**************************
+*
+*	COLORS & SKINS
+*
+**************************/
+.pattern_1 .camera_overlayer {
+	background: url(../image/sliders/camera/patterns/overlay1.png) repeat;
+}
+.pattern_2 .camera_overlayer {
+	background: url(../image/sliders/camera/patterns/overlay2.png) repeat;
+}
+.pattern_3 .camera_overlayer {
+	background: url(../image/sliders/camera/patterns/overlay3.png) repeat;
+}
+.pattern_4 .camera_overlayer {
+	background: url(../image/sliders/camera/patterns/overlay4.png) repeat;
+}
+.pattern_5 .camera_overlayer {
+	background: url(../image/sliders/camera/patterns/overlay5.png) repeat;
+}
+.pattern_6 .camera_overlayer {
+	background: url(../image/sliders/camera/patterns/overlay6.png) repeat;
+}
+.pattern_7 .camera_overlayer {
+	background: url(../image/sliders/camera/patterns/overlay7.png) repeat;
+}
+.pattern_8 .camera_overlayer {
+	background: url(../image/sliders/camera/patterns/overlay8.png) repeat;
+}
+.pattern_9 .camera_overlayer {
+	background: url(../image/sliders/camera/patterns/overlay9.png) repeat;
+}
+.pattern_10 .camera_overlayer {
+	background: url(../image/sliders/camera/patterns/overlay10.png) repeat;
+}
+.camera_caption {
+	color: #fff;
+}
+.camera_caption > div {
+	background: #000;
+	background: rgba(0, 0, 0, 0.8);
+}
+.camera_wrap .camera_pag .camera_pag_ul li {
+	background: #d4d4d4;
+}
+.camera_pag_ul li img {
+	border: 7px solid #ffffff;
+	-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+	top: -120px !important;
+}
+.camera_pag_ul .thumb_arrow {
+    border-top-color: #e6e6e6;
+}
+.camera_thumbs_cont ul li > img {
+	border-color: 1px solid #000;
+}
+/*AZURE SKIN*/
+.camera_azure_skin .camera_prevThumbs div {
+	background-position: -160px -240px;
+}
+.camera_azure_skin .camera_nextThumbs div {
+	background-position: -190px -240px;
+}
+.camera_azure_skin .camera_prev > span {
+	background-position: 0 -60px;
+	-webkit-transition: all .3s ease; -moz-transition: all .3s ease; transition: all .3s ease;
+}
+.camera_azure_skin .camera_prev > span:hover {
+	background-position: 0 0;
+}
+.camera_azure_skin .camera_next > span {
+	background-position: -60px -60px;
+	-webkit-transition: all .3s ease; -moz-transition: all .3s ease; transition: all .3s ease;
+}
+.camera_azure_skin .camera_next > span:hover {
+	background-position: -60px 0;
+}
+.camera_azure_skin .camera_commands > .camera_play {
+	background-position: -120px -60px;
+	-webkit-transition: all .3s ease; -moz-transition: all .3s ease; transition: all .3s ease;
+}
+.camera_azure_skin .camera_commands > .camera_play:hover {
+	background-position: -120px 0;
+}
+.camera_azure_skin .camera_commands > .camera_stop {
+	background-position: -180px -60px;
+	-webkit-transition: all .3s ease; -moz-transition: all .3s ease; transition: all .3s ease;
+}
+.camera_azure_skin .camera_commands > .camera_stop:hover {
+	background-position: -180px 0;
+}
+
+
+/*
+ * jQuery FlexSlider v2.0
+ * http://www.woothemes.com/flexslider/
+ *
+ * Copyright 2012 WooThemes
+ * Free to use under the GPLv2 license.
+ * http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * Contributing author: Tyler Smith (@mbmufffin)
+ */
+
+ 
+/* Browser Resets */
+.flex-container a:active,
+.flexslider a:active,
+.flex-container a:focus,
+.flexslider a:focus  {outline: none;}
+.slides,
+.flex-control-nav,
+.flex-direction-nav {margin: 0; padding: 0; list-style: none;} 
+
+/* FlexSlider Necessary Styles
+*********************************/ 
+.flexslider {margin: 0; padding: 0;}
+.flexslider .slides > li {display: none; -webkit-backface-visibility: hidden;} /* Hide the slides before the JS is loaded. Avoids image jumping */
+.flexslider .slides img {width: 100%; display: block;}
+.flex-pauseplay span {text-transform: capitalize;}
+
+/* Clearfix for the .slides element */
+.slides:after {content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0;} 
+html[xmlns] .slides {display: block;} 
+* html .slides {height: 1%;}
+
+/* No JavaScript Fallback */
+/* If you are not using another script, such as Modernizr, make sure you
+ * include js that eliminates this class on page load */
+.no-js .slides > li:first-child {display: block;}
+
+
+/* FlexSlider Default Theme
+*********************************/
+.flexslider {margin: 0 0 20px 0; background: #fff; border: 0px solid #fff; position: relative; -webkit-border-radius: 0px; -moz-border-radius: 0px; -o-border-radius: 0px; border-radius: 0px; zoom: 1; }
+.flex-viewport {max-height: 2000px; -webkit-transition: all 1s ease; -moz-transition: all 1s ease; transition: all 1s ease;}
+.loading .flex-viewport {max-height: 300px;}
+.flexslider .slides {zoom: 1;}
+
+.carousel li {margin-right: 5px}
+
+
+/* Direction Nav */
+.flex-direction-nav {*height: 0;}
+.flex-direction-nav a {	background:url(../image/sliders/flex/nav.png) no-repeat scroll 0 0; width:60px; height:60px; position:absolute; top:48%; right:auto; margin-top:-15px; text-indent:-10000px; cursor:pointer; opacity: 0; -webkit-transition: all .3s ease; -moz-transition: all .3s ease; transition: all .3s ease;
+}
+.flex-direction-nav .flex-next {background-position: -60px -60px; right: -36px; }
+.flex-direction-nav .flex-next:hover {background-position: -60px 0; }
+.flex-direction-nav .flex-prev {background-position: 0 -60px; left: -36px;}
+.flex-direction-nav .flex-prev:hover {background-position: 0 0; }
+
+.flexslider:hover .flex-next {opacity: 1; right: 0px;}
+.flexslider:hover .flex-prev {opacity: 1; left: 0px;}
+.flexslider:hover .flex-next:hover, .flexslider:hover .flex-prev:hover {opacity: 1;}
+.flex-direction-nav .flex-disabled {opacity: .3!important; filter:alpha(opacity=30); cursor: default;}
+
+/* Control Nav */
+.flex-control-nav {width: 100%; position: absolute; bottom: 15px; text-align: center;}
+.flex-control-nav li {margin: 0 1px 0 0; display: inline-block; zoom: 1; *display: inline;}
+.flex-control-nav li:before {content: no-close-quote}
+.flex-control-paging li a {width: 50px; height: 8px; display: block; cursor: pointer; text-indent: -9999px; /*-webkit-border-radius: 20px; -moz-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; box-shadow: inset 0 0 3px rgba(0,0,0,0.3);*/}
+/*.flex-control-paging li a.flex-active { background: #000; background: rgba(0,0,0,0.9); cursor: default; }*/
+
+.flex-control-thumbs {margin: 5px 0 0; position: static; overflow: hidden;}
+.flex-control-thumbs li {width: 25%; float: left; margin: 0;}
+.flex-control-thumbs img {width: 100%; display: block; opacity: .7; cursor: pointer;}
+.flex-control-thumbs img:hover {opacity: 1;}
+.flex-control-thumbs .flex-active {opacity: 1; cursor: default;}
+
+@media screen and (max-width: 860px) {
+  .flex-direction-nav .flex-prev {opacity: 1; left: 0;}
+  .flex-direction-nav .flex-next {opacity: 1; right: 0;}
+}
+@media (max-width: 767px) {
+.flex-control-nav {
+    bottom: 0;	
+}
+}
+
+
+/*
+ * jQuery Nivo Slider v3.2
+ * http://nivo.dev7studios.com
+ *
+ * Copyright 2012, Dev7studios
+ * Free to use and abuse under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ */
+ 
+/* The Nivo Slider styles */
+.nivoSliderx {
+	position:relative;
+	width:100%;
+	height:auto;
+	overflow: hidden;
+}
+.nivoSliderx img {
+	position:absolute;
+	top:0px;
+	left:0px;
+	max-width: none;
+}
+.nivo-main-image {
+	display: block !important;
+	position: relative !important; 
+	width: 100% !important;
+}
+
+/* If an image is wrapped in a link */
+.nivoSliderx a.nivo-imageLink {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	border:0;
+	padding:0;
+	margin:0;
+	z-index:6;
+	display:none;
+	background:white; 
+	filter:alpha(opacity=0); 
+	opacity:0;
+}
+/* The slices and boxes in the Slider */
+.nivo-slice {
+	display:block;
+	position:absolute;
+	z-index:5;
+	height:100%;
+	top:0;
+}
+.nivo-box {
+	display:block;
+	position:absolute;
+	z-index:5;
+	overflow:hidden;
+}
+.nivo-box img { display:block; }
+
+/* Caption styles */
+.nivo-caption {
+	position:absolute;
+	left:0px;
+	bottom:0px;
+	background:#000;
+	color:#fff;
+	width:100%;
+	z-index:8;
+	padding: 5px 10px;
+	opacity: 0.8;
+	overflow: hidden;
+	display: none;
+	-moz-opacity: 0.8;
+	filter:alpha(opacity=8);
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
+.nivo-caption p {
+	padding:5px;
+	margin:0;
+}
+.nivo-caption a {
+	display:inline !important;
+}
+.nivo-html-caption {
+    display:none;
+}
+/* Direction nav styles (e.g. Next & Prev) */
+.nivo-directionNav a {
+	position:absolute;
+	top:45%;
+	z-index:9;
+	cursor:pointer;
+}
+.nivo-prevNav {
+	left:0px;
+}
+.nivo-nextNav {
+	right:0px;
+}
+/* Control nav styles (e.g. 1,2,3...) */
+.nivo-controlNav {
+	text-align:center;
+	padding: 15px 0;
+}
+.nivo-controlNav a {
+	cursor:pointer;
+}
+.nivo-controlNav a.active {
+	font-weight:bold;
+}
+.slideshow.slider-wrapper {
+    background: #fff;
+    padding: 10px;
+}
+.slideshow .nivoSliderx {
+	position:relative;
+	background:#fff url(../image/sliders/nivo/loading.gif) no-repeat 50% 50%;
+    margin-bottom:10px;
+    overflow: visible;
+}
+.slideshow .nivoSliderx img {
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:none;
+}
+.slideshow .nivoSliderx a {
+	border:0;
+	display:block;
+}
+.slideshow .nivo-controlNav {
+	text-align: center;
+	padding: 0;
+	position: relative;
+	z-index: 10;
+}
+.slideshow .nivo-controlNav a {
+	display:inline-block;
+	width:10px;
+	height:10px;
+	background:url(../image/sliders/nivo/bullets.png) no-repeat;
+	text-indent:-9999px;
+	border:0;
+	margin: 0 2px;
+}
+.slideshow .nivo-controlNav a.active {
+	background-position:0 100%;
+}
+.slideshow .nivo-directionNav a {
+	display:block;
+	width:60px;
+	height:60px;
+	background: url(../image/sliders/nivo/nav.png) no-repeat 0 0;
+	text-indent:-9999px;
+	border:0;
+	top: 45%;
+	z-index: 11;
+}
+.slideshow a.nivo-nextNav {
+	background-position: -60px -60px;
+	right:0px;
+}
+.slideshow a.nivo-nextNav:hover {
+	background-position: -60px 0;
+}
+.slideshow a.nivo-prevNav {
+	background-position: 0 -60px;
+	left: 0px;
+}
+.slideshow a.nivo-prevNav:hover {
+	background-position: 0 0;
+}
+.slideshow .nivo-caption {
+    font-family: Helvetica, Arial, sans-serif;
+}
+.slideshow .nivo-caption a {
+    color:#fff;
+    border-bottom:1px dotted #fff;
+}
+.slideshow .nivo-caption a:hover {
+    color:#fff;
+}
+.slideshow .nivo-controlNav.nivo-thumbs-enabled {
+	width: 80%;
+}
+.slideshow .nivo-controlNav.nivo-thumbs-enabled a {
+	width: auto;
+	height: auto;
+	background: none;
+	margin-bottom: 5px;
+}
+.slideshow .nivo-controlNav.nivo-thumbs-enabled img {
+	display: block;
+	width: 120px;
+	height: auto;
+}

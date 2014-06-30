@@ -1,0 +1,22 @@
+<form id="fm_adiar" name="fm_adiar" action="/equipamentos/adiar" method="post">
+    <table class="styled">
+        <tr >
+            <td>Equipamento</td>
+            <td><?php echo $this->data['nom_equipamento'] ?><input type="hidden" name="cod_equipamento_manutencao" id="cod_equipamento_manutencao" value="<?php echo $this->data['cod_equipamento_manutencao']; ?>" /></td>
+        </tr>
+        <tr >
+            <td>Data do Retorno</td>
+            <td><input type='date' name='dta_retorno' id='dta_retorno' class='mask date' data-mask='99/99/9999' required data-valor="<?php echo date("d/m/Y"); ?>"/></td>
+        </tr>
+        <tr >
+            <td>Valor da Manutenção</td>
+            <td><p>
+                    <label class='inline' style="padding-top:6px;"><strong>R$</strong></label>
+                    <input style='padding-left: 24px' type="text" class="money numeric" name="vlr_manutencao" id="vlr_manutencao" value="<?php echo $this->data['vlr_manutencao']; ?>" />
+                </p></td>
+        </tr>
+    </table>
+</form>
+<script>
+    coringa_registro.forms_extend();
+</script>

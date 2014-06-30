@@ -1,0 +1,32 @@
+<div class="form-group col-sm-12">
+    <label class="checkbox-inline control-label">
+        <input type="hidden" value="I" name="img_upload" />
+        <input type="checkbox" id="img_upload" name="img_upload" value="A" <?php
+        if ($this->conf['img_upload'] == 'A') {
+            echo "checked='checked'";
+        }
+        ?>> Habilitar Upload de Imagens no Servidor
+    </label>
+</div>
+<div class="clearfix"></div>
+<div class="form-group col-sm-12">
+    <label class="checkbox-inline control-label">
+        <input type="hidden" value="I" name="ind_img_flickr" />
+        <input type="checkbox" id="ind_img_flickr" name="ind_img_flickr" value="A" <?php
+        if ($this->conf['ind_img_flickr'] == 'A') {
+            echo "checked='checked'";
+        }
+        ?>> Habilitar Imagens do Flickr
+    </label>
+</div>
+<div class="form-group col-sm-12">
+    <label class="checkbox-inline control-label">
+        <input type="hidden" value="I" name="ind_img_google" />
+        <input type="checkbox" id="ind_img_google" name="ind_img_google" value="A" <?php
+        if ($this->conf['ind_img_google'] == 'A') {
+            echo "checked='checked'";
+        }
+        ?>> Habilitar Pesquisas
+    </label>
+</div>
+<div class="clearfix"></div>

@@ -1,0 +1,161 @@
+<div class="right-sidebar">
+    <ul class="nav">
+
+        <li class="grey" id='addequip'><a href="javascript:void(0)"><span class='icon icon-plus'></span>| Adicionar Equipamento</a></li>
+        <li class="grey" id='removeequip' ><a href="javascript:void(0)"><span class='icon icon-minus'></span>| Remover Equipamento</a></li>
+
+    </ul>
+</div>
+<section id="content" class="container_12 clearfix with-right-sidebar" data-sort="true">
+    <h1 class="grid_12">Renovar Locação</h1>
+    <form name="fm_ajax" id="fm_ajax" action="/locacoes/renovar-cadastro" class="grid_12 validate" method="post">
+        <fieldset>
+            <legend>Formulário de Locação</legend>
+            <div class="row">
+                <label for="cod_locacao">
+                    <strong>Cód. Locação</strong>
+                </label>
+                <div>
+                    <input type="text" name='cod_locacao' id='cod_locacao' readonly placeholder='Automático' value="<?php echo $this->data['cod_locacao']; ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <label for="cod_cliente">
+                    <strong>Nome do Cliente</strong>
+                    <small>ou Razão Social</small>
+                </label>
+
+                <div>
+                    <select class='search clienteobra' id='cod_cliente' name='cod_cliente' data-placeholder='Selecione um Cliente'  >
+                        <option></option>
+                        <?php
+                        foreach ($this->cliente as $row) {
+                            if ($row['cod_cliente'] == $this->data['cod_cliente']) {
+                                $selected = 'selected="selected"';
+                            } else {
+                                $selected = '';
+                            }
+                            ?>
+                            <option value="<?php echo $row['cod_cliente']; ?>" <?php echo $selected; ?>><?php echo $row['nom_cliente']; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <label for="cod_obra">
+                    <strong>Obra</strong>
+
+
+                </label>
+
+                <div>
+                    <select class='search' id='cod_obra' name='cod_obra' data-placeholder='Selecione uma Obra'>
+                        <option></option>
+                        <?php
+                        foreach ($this->obras as $row) {
+                            if ($row['cod_obra'] == $this->data['cod_obra']) {
+                                $selected = 'selected="selected"';
+                            } else {
+                                $selected = '';
+                            }
+                            ?>
+                            <option value="<?php echo $row['cod_obra']; ?>" <?php echo $selected; ?>><?php echo $row['des_obra']; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+            <div class='row inphone'>
+                <label for='list_equipamentos'>
+                    <strong>Equipamentos</strong>
+                </label>
+                <div>
+                    <div class='listequip grid_12'>
+                        <div class='box'>
+                            <div class="header">
+                                <span class="icon icon_header icon_16 drill--plus"></span><h2>Equipamentos do Pedido</h2>
+                            </div>
+                            <table class='styled dynamic' id='tbgrid' data-table-simple='true'>
+                                <thead class='equiplist'>
+                                <th style="max-width:10px!important">#</th>
+                                <th style="width:10px!important">Qtd</th>
+                                <th>Equipamento</th>
+                                <th>Vlr. Locação</th>
+                                <th>Vlr. Total</th>
+                                </thead>
+                                <?php
+                                if (count($this->dataEquip) > 0) {
+                                    foreach ($this->dataEquip as $row) {
+                                        ?>
+                                        <tr>
+                                            <td ><input type="checkbox" name="codequip[]" id="cod_equipamento_1" value="<?php echo $row['cod_equipamento_locacao'] ?>" /></td>
+                                            <td ><?php echo $row['qtd_equipamento'] ?></td>
+                                            <td><?php echo $row['nom_equipamento'] ?></td>
+                                            <td><?php echo $row['vlr_locacao'] ?></td>
+                                            <td><?php echo $row['vlr_total'] ?>
+                                                <input type="hidden" name="cequip[]" id="cequip" value="<?php echo $row['cod_equipamento'] ?>">
+                                                <input type="hidden" name="qequip[]" id="qequip" value="<?php echo $row['qtd_equipamento'] ?>">
+                                                <input type="hidden" name="vequip[]" id="vequip" value="<?php echo $row['vlr_locacao'] ?>">
+                                                <input type="hidden" name="vequipt[]" id="vequip" value="<?php echo $row['vlr_total'] ?>">
+                                            </td>
+
+
+                                        </tr>
+                                        <?php
+                                    }
+                                }
+                                ?>
+<!--                                <tfoot class="inphone"> -->
+
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class='row'>
+                <label for='dta_locacao'>
+                    <strong>Data Locação</strong>
+                </label>
+                <div>
+                    <input type='date' name='dta_locacao' id='dta_locacao' class='mask date' data-mask='99/99/9999'  value="<?php echo $this->formataData($this->data['dta_locacao']) ?>" data-valor='<?php echo $this->formataData($this->data['dta_locacao']) ?>'/>
+                </div>
+            </div>
+            <div class='row'>
+                <label for='dta_devolucao'>
+                    <strong>Data Devolução</strong>
+                </label>
+                <div>
+                    <input type='date' name='dta_devolucao' id='dta_devolucao' class='mask date' data-mask='99/99/9999'  value="<?php echo $this->formataData($this->data['dta_devolucao']) ?>" data-valor='<?php echo $this->formataData($this->data['dta_devolucao']) ?>'/>
+                </div>
+            </div>
+            <div class='row'>
+                <label for='dta_renovacao'>
+                    <strong>Data Nova Devolução</strong>
+                </label>
+                <div>
+                    <input type='date' name='dta_renovacao' id='dta_renovacao' class='mask date' data-mask='99/99/9999'  value="<?php echo $this->datas($this->formataData($this->data['dta_devolucao']), 30) ?>" data-valor='<?php echo $this->datas($this->formataData($this->data['dta_devolucao']), 30) ?>'/>
+                </div>
+            </div>
+            <div class='row'>
+                <label for='vlr_total'>
+                    <strong>Valor Total</strong>
+                </label>
+                <div>
+                    <p><label class='inline' style="padding-top:6px;"><strong>R$</strong></label><input style='padding-left: 24px' type="text" class="money numeric" name="vlr_total" id="vlr_locacao" value="<?php echo $this->data['vlr_total']; ?>"/></p>
+                </div>
+            </div>
+
+
+        </fieldset>
+        <div class="buttons-box">
+            <button class="button green" type="submit"><span class="icon icon-save"></span>Salvar Registro</button>
+            <button class="button red" type="button" onclick="location.hash = 'locacoes/renovacao'"><span class="icon icon-remove"></span>Cancelar</button>
+        </div>
+    </form>
+</section>
+<script>
+    coringa_registro.locacao_form();
+</script>

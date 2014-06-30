@@ -1,0 +1,35 @@
+<form method="post" action="" id="fm_agenda" name="fm_agenda" class="validate" >
+    <table class="styled" id="tbgrid" name="tbgrid">
+        <tr>
+        <input type="hidden" id="cod_agenda" name="cod_agenda" value="<?php echo $this->data['cod_agenda']; ?>" />
+        <td><strong>Titulo do Evento</strong></td>
+        <td><input type="text" id="des_titulo" name="des_titulo" style="width:95%" required value="<?php echo $this->data['des_titulo']; ?>" /></td>
+        </tr>
+        <tr>
+            <td><strong>Data/Hora de Início</strong></td>
+            <td><input type="datetime" id="dta_inicio" name="dta_inicio" class='mask date' data-mask='99/99/9999' value="<?php echo $this->formatData($this->data['dta_inicio']) ? $this->formatData($this->data['dta_inicio']) : $this->dataIni; ?>" required /></td>
+        </tr>
+        <tr>
+            <td><strong>Evento Dia Inteiro</strong></td>
+            <td>
+                <label>
+                    <input type="radio" name="all_day" id="all_day1" value="0" class="setAllDay" <?php if ($this->data['all_day'] < 1) echo 'checked="checked"'; ?> /> Não</label>
+                <label>
+                    <input type="radio" class="setAllDay" name="all_day" id="all_day1" value="1" <?php if ($this->data['all_day'] == 1) echo 'checked="checked"'; ?>/> Sim</label></td>
+        </tr>
+        <tr class="dtfim" <?php if ($this->data['all_day'] == 1) echo "style='display:none'"; ?>>
+            <td><strong>Data/Hora de Término</strong></td>
+            <td><input type="datetime" class='mask date' data-mask='99/99/9999' id="dta_termino" name="dta_termino"  value="<?php echo $this->formatData($this->data['dta_termino']) ? $this->formatData($this->data['dta_termino']) : $this->dataFim; ?>" /></td>
+        </tr>
+        <tr>
+            <td><strong>Descrição do Evento</strong></td>
+            <td><textarea name="des_evento" id="des_evento" class="" style="width:95%"><?php echo $this->data['des_evento'] ?></textarea></td>
+        </tr>
+    </table>
+</form>
+<script>
+    $(function() {
+        coringa_agenda.init();
+    });
+
+</script>

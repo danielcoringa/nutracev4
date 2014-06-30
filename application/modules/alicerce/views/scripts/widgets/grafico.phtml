@@ -1,0 +1,42 @@
+<div class="grid_6" id="2">
+    <div class="box" >
+        <div class="header">
+            <h2><span class="icon icon_16 chart-up-color"></span> Gráfico</h2>
+        </div>
+        <div class="content" style="height: 250px;padding:10px">
+            <table class=chart data-type=bars data-series=columns data-zoom=false data-pan=true data-width=5 data-min=1 data-max=31>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <?php foreach ($this->categorias as $categoria) { ?>
+                            <th><?php echo $categoria['nom_categoria']; ?></th>
+
+                        <?php } ?>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th>Locados</th>
+                        <?php foreach ($this->categorias as $categoria) { ?>
+                            <td><?php echo ceil(rand(0, 30)); ?></td>
+                        <?php } ?>
+                    </tr>
+                    <tr>
+                        <th>Estoque</th>
+                        <?php foreach ($this->categorias as $categoria) { ?>
+                            <td><?php echo ceil(rand(0, 30)); ?></td>
+                        <?php } ?>
+                    </tr>
+                    <tr>
+                        <th>Pendentes</th>
+                        <?php foreach ($this->categorias as $categoria) { ?>
+                            <td><?php echo ceil(rand(0, 30)); ?></td>
+                        <?php } ?>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

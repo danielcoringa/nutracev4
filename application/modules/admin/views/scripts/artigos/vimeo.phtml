@@ -1,0 +1,318 @@
+<?php if (isset($this->authorize_link)) { ?>
+    <div class='content-vimeo'>
+        <h1>Vimeo Autorização</h1>
+    </div>
+    <p>Clique no botão abaixo para autorizar o acesso à sua conta no Vimeo.</p>
+    <button class="btn btn-default btn-success login-vimeo">Autorizar</button>
+    <script>
+        $('.login-vimeo').bind("click", function() {
+            window.open('<?php echo $this->authorize_link ?>', '', 'width=640,height=480');
+        });
+
+    </script>
+    <?php
+}
+else {
+    ?>
+    <article class="accordion green">
+
+        <section id="avm1" class="active">
+            <h2><a href="#avm1"><i class="fa fa-vimeo"></i> Meus Vídeos</a></h2>
+            <div>
+                <div class="panel-body">
+                    <div class="scroller" data-height="225px" data-always-visible="1">
+
+                        <table class="table table-paper table-striped" id="example-paper">
+                            <tbody>
+                                <?php
+                                if (count($this > videos) > 0) {
+                                    foreach ($this->videos as $video) {
+                                        $video = $video[0];
+                                        ?>
+                                        <tr data-id="<?php
+                                        echo $video->id;
+                                        ?>" data-idfile="<?php echo $video->id; ?>" data-link="<?php echo $video->urls->url->video; ?>">
+                                            <td class='col-min'>
+                                                <img src='<?php echo $video->thumbnails->thumbnail[0]->_content ?>' class='img_player' />
+                                            </td>
+                                            <td>
+                                                <div class='video_title'><?php echo $video->title; ?></div>
+                                                <div class='video_date'>
+                                                    <i class="fa fa-clock-o"></i>
+                                                    <time  class='timeago' datetime="<?php echo $video->modified_date ?>"></time >
+                                                </div>
+                                                <div class='video_views'><i class="fa fa-eye"></i> <?php echo $video->number_of_plays + 0; ?> Visualizações</div>
+                                                <div class='video_duration'><i class="fa fa-clock-o" title='Duração'></i> <?php echo gmdate("i:s", $video->duration) ?></div>
+                                                <div class="clearfix"></div>
+                                                <div class="panel-body">
+                                                    <div class='video_description'><?php echo $this->truncate($video->description, 300) ?></div>
+                                                </div>
+                                            </td>
+                                            <td class='col-min'>
+                                                <button class='btn btn-xs btn-success use-video-vm'> <i class='fa fa-arrow-circle-o-left'></i> Usar</button>
+                                            </td>
+                                            <td class='col-min'>
+                                                <button class='btn btn-xs btn-primary edit-vm'> <i class='fa fa-edit'></i> Editar</button>
+                                            </td>
+                                            <td class='col-min'>
+                                                <button class='btn btn-xs btn-default preview-vm'> <i class='fa fa-eye'></i> Previsualizar</button>
+                                            </td>
+                                            <td class='col-min'>
+                                                <button class='btn btn-xs btn-danger del-video-vm'><i class='fa  fa-trash-o'></i> Excluir</button>
+                                            </td>
+                                        </tr>
+
+
+                                        <?php
+                                    }
+                                }
+                                else {
+                                    echo "<tr><td class='alert info'>Não foi encontrado nenhum video na sua conta.</td></tr>";
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="avm2">
+            <h2><a href="#avm2"><i class="fa fa-search"></i> Pesquisar</a></h2>
+            <div>
+                <div class="panel-body">
+                    <div class='well well-small' style='margin-left:30px;'>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                            <input type="text" class="form-control"  id="vm-search" placeholder="Pesquisar no Vimeo">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default btn-search-vm" type="button">Buscar</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="scroller" data-height="225px" data-always-visible="1">
+                        <div id="vimeo_result" class="box-shadow-2px"></div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+        <section id="avm3">
+            <h2><a href="#avm3"><i class="fa fa-upload"></i> Enviar Vídeo</a></h2>
+            <div>
+                <div class="panel-body" style='margin-left:30px;'>
+                    <div class="box-body">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Atenção!</h3>
+                            </div>
+                            <div class="panel-body">
+                                <p>Vídeos enviados para o Vimeo necessitam de análise e conversão de formatos que são realizados pelo próprio Vimeo.<br/>
+                                    Com isso os vídeos enviados não são disponibilizados automaticamente na finalização do envio.</p>
+                                <p>O Vimeo enviará um email de confirmação quando o vídeo já estiver disponível para visualização.</p>
+                                <form id="fm_vm" name="fm_vm" action="/artigos/upload-vm" method="post" enctype="multipart/form-data">
+                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+
+                                        <div class="input-group">
+                                            <div class="form-control uneditable-input" data-trigger="fileinput">
+
+                                                <span class="fileinput-preview"><i class="glyphicon glyphicon-file fileinput-exists"></i></span>
+                                                <span class="fileinput-filename">
+                                                    Selecione um Vídeo.
+                                                </span>
+
+                                            </div>
+                                            <div class="input-group-btn">
+                                                <span class="btn btn-default btn-file">
+                                                    <span class="fileinput-new">Selecionar Vídeo</span>
+                                                    <span class="fileinput-exists">Mudar</span>
+                                                    <input type="file" class="file-input" name="file_vm" id="file_vm" accept="video/*" />
+                                                    <input name="token" type="hidden" value="<?php echo $this->tokenValue ?>"/>
+
+                                                </span>
+                                                <button href="#" class="btn btn-success fileinput-exists" id="but_vm_enviar">Enviar Vídeo</button>
+                                                <a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">Remover</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="panel-footer">
+                                <div class="form-group" id="prgb-vm" style="display: none">
+                                    <h4 class="percent-status-vm"></h4>
+                                    <div class="progress progress-striped active">
+                                        <span class="sr-only percent-vm"></span>
+                                        <div class="progress-bar bar envio_bar-vm"  role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="status-vm">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </article>
+    <?php /*
+      <div class="panel-group" id="accordionvm">
+      <div class="panel panel-default">
+      <div class="panel-heading">
+      <h3 class="panel-title">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionvm" href="#collapseOnevm"><i class="fa fa-vimeo-square"></i> Meus Vídeos</a>
+      </h3>
+      </div>
+      <div id="collapseOnevm" class="panel-collapse collapse in">
+      <div class="panel-body">
+      <div class="scroller" data-height="225px" data-always-visible="1">
+
+      <table class="table table-paper table-striped" id="example-paper">
+      <tbody>
+      <?php
+      foreach ($this->videos as $video) {
+      $video = $video[0];
+      ?>
+      <tr data-id="<?php
+      echo $video->id;
+      ?>" data-idfile="<?php echo $video->id; ?>" data-link="<?php echo $video->urls->url->video; ?>">
+      <td class='col-min'>
+      <img src='<?php echo $video->thumbnails->thumbnail[0]->_content ?>' class='img_player' />
+      </td>
+      <td>
+      <div class='video_title'><?php echo $video->title; ?></div>
+      <div class='video_date'>
+      <i class="fa fa-clock-o"></i>
+      <time  class='timeago' datetime="<?php echo $video->modified_date ?>"></time >
+      </div>
+      <div class='video_views'><i class="fa fa-eye"></i> <?php echo $video->number_of_plays + 0; ?> Visualizações</div>
+      <div class='video_duration'><i class="fa fa-clock-o" title='Duração'></i> <?php echo gmdate("i:s", $video->duration) ?></div>
+      <div class="clearfix"></div>
+      <div class="panel-body">
+      <div class='video_description'><?php echo $this->truncate($video->description, 300) ?></div>
+      </div>
+      </td>
+      <td class='col-min'>
+      <button class='btn btn-xs btn-success use-video-vm'> <i class='fa fa-arrow-circle-o-left'></i> Usar</button>
+      </td>
+      <td class='col-min'>
+      <button class='btn btn-xs btn-primary edit-vm'> <i class='fa fa-edit'></i> Editar</button>
+      </td>
+      <td class='col-min'>
+      <button class='btn btn-xs btn-default preview-vm'> <i class='fa fa-eye'></i> Previsualizar</button>
+      </td>
+      <td class='col-min'>
+      <button class='btn btn-xs btn-danger del-video-vm'><i class='fa  fa-trash-o'></i> Excluir</button>
+      </td>
+      </tr>
+
+
+      <?php } ?>
+      </tbody>
+      </table>
+      </div>
+      </div>
+      </div>
+      </div>
+      <div class="panel panel-default">
+      <div class="panel-heading">
+      <h3 class="panel-title">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionvm" href="#collapseTwovm">
+      <i class="fa fa-search"></i> Pesquisar</a>
+      </h3>
+      </div>
+      <div id="collapseTwovm" class="panel-collapse collapse">
+      <div class="panel-body">
+
+      <div class="input-group well well-small">
+      <span class="input-group-addon"><i class="fa fa-search"></i></span>
+      <input type="text" class="form-control"  id="vm-search" placeholder="Pesquisar no Vimeo">
+      <span class="input-group-btn">
+      <button class="btn btn-default btn-search-vm" type="button">Buscar</button>
+      </span>
+      </div>
+      <div class="scroller" data-height="225px" data-always-visible="1">
+      <div id="vimeo_result" class="box-shadow-2px"></div>
+      </div>
+      </div>
+      </div>
+      </div>
+      <div class="panel panel-default">
+      <div class="panel-heading">
+      <h3 class="panel-title">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionvm" href="#collapseThreevm">
+      <i class="fa fa-upload"></i> Enviar Vídeo</a>
+      </h3>
+      </div>
+      <div id="collapseThreevm" class="panel-collapse collapse">
+      <div class="box-body">
+      <div class="panel panel-default">
+      <div class="panel-heading">
+      <h3 class="panel-title">Atenção!</h3>
+      </div>
+      <div class="panel-body">
+      <p>Vídeos enviados para o Vimeo necessitam de análise e conversão de formatos que são realizados pelo próprio Vimeo.<br/>
+      Com isso os vídeos enviados podem não ser disponibilizados automaticamente ou na finalização do envio.</p>
+      <form id="fm_vm" name="fm_vm" action="/artigos/upload-vm" method="post" enctype="multipart/form-data">
+      <div class="fileinput fileinput-new" data-provides="fileinput">
+
+      <div class="input-group">
+      <div class="form-control uneditable-input" data-trigger="fileinput">
+
+      <span class="fileinput-preview"><i class="glyphicon glyphicon-file fileinput-exists"></i></span>
+      <span class="fileinput-filename">
+      Selecione um Vídeo.
+      </span>
+
+      </div>
+      <div class="input-group-btn">
+      <span class="btn btn-default btn-file">
+      <span class="fileinput-new">Selecionar Vídeo</span>
+      <span class="fileinput-exists">Mudar</span>
+      <input type="file" class="file-input" name="file_vm" id="file_vm" accept="video/*" />
+      <input name="token" type="hidden" value="<?php echo $this->tokenValue ?>"/>
+
+      </span>
+      <button href="#" class="btn btn-success fileinput-exists" id="but_vm_enviar">Enviar Vídeo</button>
+      <a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">Remover</a>
+
+      </div>
+      </div>
+      </div>
+      </form>
+      </div>
+      <div class="panel-footer">
+      <div class="form-group" id="prgb-vm" style="display: none">
+      <h4 class="percent-status-vm"></h4>
+      <div class="progress progress-striped active">
+      <span class="sr-only percent-vm"></span>
+      <div class="progress-bar bar envio_bar-vm"  role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+
+      </div>
+      </div>
+      </div>
+      <div id="status-vm">
+
+
+      </div>
+      </div>
+      </div>
+
+
+
+      </div>
+
+      </div>
+      </div>
+      </div>
+     *
+     */ ?>
+    <script>
+        $(document).ready(function() {
+            coringa.vimeo();
+        });
+
+    </script>
+
+
+<?php } ?>

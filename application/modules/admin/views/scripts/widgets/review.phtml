@@ -1,0 +1,293 @@
+<?php
+$dbr = new Admin_Model_DbTable_Review();
+if ($this->data['cod_artigo'] > 0) {
+    $dadosc = $dbr->getDados($this->data['cod_artigo']);
+}
+?>
+<div>
+    <!-- BOX WITH TOOLBOX-->
+    <div class="box border blue">
+        <div class="box-title">
+            <h4><i class="fa fa-code"></i>Revisão do Artigo</h4>
+            <div class="tools hidden-xs" id="review-tool">
+                <a href="#box-config" data-toggle="modal" class="config">
+                    <i class="fa fa-cog"></i>
+                </a>
+                <a href="javascript:;" class="reload" data-url='review'>
+                    <i class="fa fa-refresh"></i>
+                </a>
+                <a href="javascript:;" class="<?php
+                if ($this->ajax !== 'true') {
+                    echo 'expand';
+                }
+                else {
+                    echo 'collapse';
+                }
+                ?>">
+                    <i class="fa fa-chevron-<?php
+                    if ($this->ajax !== 'true') {
+                        echo 'down';
+                    }
+                    else {
+                        echo 'up';
+                    }
+                    ?>"></i>
+                </a>
+            </div>
+
+        </div>
+        <div class="box-body review-div" style='display:none'>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Cor das Estrelas</label>
+                <div class="col-sm-4">
+                    <div id="color-pickers" class="colorpikerpv" style="background-color: <?php
+                    if (isset($dadosc['star_color'])) {
+                        echo $dadosc['star_color'];
+                    }
+                    else {
+                        echo 'rgba(55,110,55,1)';
+                    }
+                    ?>"></div>
+                    <input type="text" name="star_color" id="star_color" class="form-control color-picker" value="<?php
+                    if (isset($dadosc['star_color'])) {
+                        echo $dadosc['star_color'];
+                    }
+                    else {
+                        echo 'rgba(55,110,55,1)';
+                    }
+                    ?>" data-color-format="rgba">
+
+                </div>
+
+
+                <label class="col-sm-2 control-label">Cor da Caixa</label>
+                <div class="col-sm-4">
+                    <div id="color-pickers" class="colorpikerpv" style="background-color: <?php
+                    if (isset($dadosc['score_color'])) {
+                        echo $dadosc['score_color'];
+                    }
+                    else {
+                        echo 'rgba(100,100,100,1)';
+                    }
+                    ?>"></div>
+                    <input type="text" name="score_color" id="score_color" class="form-control color-picker" value="<?php
+                    if (isset($dadosc['score_color'])) {
+                        echo $dadosc['score_color'];
+                    }
+                    else {
+                        echo 'rgba(100,100,100,1)';
+                    }
+                    ?>" data-color-format="rgba">
+
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+            <div class="divide-12"></div>
+            <div class="form-group">
+                <label for="nom_review" class="col-sm-2 control-label">Título da Pontuação</label>
+                <div class="col-sm-10">
+                    <input type="text" name="nom_review" id="nom_review" class="form-control" value="<?php echo $dadosc['nom_review'] == '' ? 'Pontuação' : $dadosc['nom_review']; ?>" />
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="divide-12"></div>
+            <div class="form-group">
+                <label for="criterio_one" class="col-sm-2 control-label">Primeiro Critério</label>
+                <div class="col-sm-4">
+                    <input type="text" name="criterio_one" id="criterio_one" class="form-control" value="<?php echo $dadosc['criterio_one']; ?>" />
+                </div>
+                <label for="score_one" class="col-sm-2 control-label">Nota do Primeiro</label>
+                <div class="col-sm-4">
+                    <select name="score_one" id="score_one" class="col-sm-12 select-scores">
+                        <option></option>
+                        <?php
+                        $x = 0.5;
+                        while ($x < 5.5) {
+                            if ($x == $dadosc['score_one']) {
+                                $selected = ' selected="selected" ';
+                            }
+                            else {
+                                $selected = '';
+                            }
+                            ?>
+                            <option value="<?php echo $x; ?>" <?php echo $selected; ?>><?php echo $x; ?></option>
+                            <?php
+                            $x = $x + 0.5;
+                        }
+                        ?>
+                    </select>
+
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="divide-12"></div>
+            <div class="form-group">
+                <label for="criterio_two" class="col-sm-2 control-label">Segundo Critério</label>
+                <div class="col-sm-4">
+                    <input type="text" name="criterio_two" id="criterio_two" class="form-control" value="<?php echo $dadosc['criterio_two']; ?>" />
+                </div>
+                <label for="score_two" class="col-sm-2 control-label">Nota do Segundo</label>
+                <div class="col-sm-4">
+                    <select name="score_two" id="score_two" class="col-sm-12 select-scores">
+                        <option></option>
+                        <?php
+                        $x = 0.5;
+                        while ($x < 5.5) {
+                            if ($x == $dadosc['score_two']) {
+                                $selected = ' selected="selected" ';
+                            }
+                            else {
+                                $selected = '';
+                            }
+                            ?>
+                            <option value="<?php echo $x; ?>" <?php echo $selected; ?>><?php echo $x; ?></option>
+                            <?php
+                            $x = $x + 0.5;
+                        }
+                        ?>
+                    </select>
+
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="divide-12"></div>
+            <div class="form-group">
+                <label for="criterio_three" class="col-sm-2 control-label">Terceiro Critério</label>
+                <div class="col-sm-4">
+                    <input type="text" name="criterio_three" id="criterio_three" class="form-control" value="<?php echo $dadosc['criterio_three']; ?>" />
+                </div>
+                <label for="score_three" class="col-sm-2 control-label">Nota do Terceiro</label>
+                <div class="col-sm-4">
+                    <select name="score_three" id="score_three" class="col-sm-12 select-scores">
+                        <option></option>
+                        <?php
+                        $x = 0.5;
+                        while ($x < 5.5) {
+                            if ($x == $dadosc['score_three']) {
+                                $selected = ' selected="selected" ';
+                            }
+                            else {
+                                $selected = '';
+                            }
+                            ?>
+                            <option value="<?php echo $x; ?>" <?php echo $selected; ?>><?php echo $x; ?></option>
+                            <?php
+                            $x = $x + 0.5;
+                        }
+                        ?>
+                    </select>
+
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="divide-12"></div>
+            <div class="form-group">
+                <label for="criterio_four" class="col-sm-2 control-label">Quarto Critério</label>
+                <div class="col-sm-4">
+                    <input type="text" name="criterio_four" id="criterio_four" class="form-control" value="<?php echo $dadosc['criterio_four']; ?>" />
+                </div>
+                <label for="score_four" class="col-sm-2 control-label">Nota do Quarto</label>
+                <div class="col-sm-4">
+                    <select name="score_four" id="score_four" class="col-sm-12 select-scores">
+                        <option></option>
+                        <?php
+                        $x = 0.5;
+                        while ($x < 5.5) {
+                            if ($x == $dadosc['score_four']) {
+                                $selected = ' selected="selected" ';
+                            }
+                            else {
+                                $selected = '';
+                            }
+                            ?>
+                            <option value="<?php echo $x; ?>" <?php echo $selected; ?>><?php echo $x; ?></option>
+                            <?php
+                            $x = $x + 0.5;
+                        }
+                        ?>
+                    </select>
+
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="divide-12"></div>
+            <div class="form-group">
+                <label for="criterio_five" class="col-sm-2 control-label">Quinto Critério</label>
+                <div class="col-sm-4">
+                    <input type="text" name="criterio_five" id="criterio_five" class="form-control" value="<?php echo $dadosc['criterio_five']; ?>" />
+                </div>
+                <label for="score_five" class="col-sm-2 control-label">Nota do Quinto</label>
+                <div class="col-sm-4">
+                    <select name="score_five" id="score_five" class="col-sm-12 select-scores">
+                        <option></option>
+                        <?php
+                        $x = 0.5;
+                        while ($x < 5.5) {
+                            if ($x == $dadosc['score_five']) {
+                                $selected = ' selected="selected" ';
+                            }
+                            else {
+                                $selected = '';
+                            }
+                            ?>
+                            <option value="<?php echo $x; ?>" <?php echo $selected; ?>><?php echo $x; ?></option>
+                            <?php
+                            $x = $x + 0.5;
+                        }
+                        ?>
+                    </select>
+
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="divide-12"></div>
+            <div class="form-group">
+                <label class="col-sm-2">Conclusão da Revisão</label>
+                <div class="col-sm-10 ">
+                    <textarea rows="3" cols="5" name="des_review" id="des_review" class="countable form-control" data-limit="20"><?php echo $dadosc['des_review']; ?></textarea>
+                    <p class='pull-right'><span id='counter'></span>Caracteres Restantes.</p>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="divide-12"></div>
+        </div>
+        <div class="toolbox bottom">
+            <div class="btn-group">
+
+            </div>
+            <div class="btn-group pull-right hidden-xs">
+                <label>Ativar revisão para esse artigo</label>
+                <div class="make-switch switch-mini" data-on="success" data-off="danger" data-on-label="SIM" data-off-label="NÃO">
+                    <input type="radio" onchange="switchReview(this);" <?php if ($this->data['ind_review'] == 'A') echo 'checked="checked"'; ?> value="A" name="ind_review" id="ind_review">
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .safe , .over {padding:3px; color:white; font-weight:bold;}
+        .safe {background:green;}
+        .over {background:red;}
+    </style>
+</div>
+<!-- /BOX WITH TOOLBOX-->
+<script>
+    $(document).ready(function() {
+        review.init();
+<?php if (isset($this->ajax)) { ?>
+            $(".make-switch").bootstrapSwitch();
+<?php } ?>
+
+    });
+//    switchReview = function(e) {
+//        var cname = $(e).parent().attr('class');
+//        if (cname === 'switch-on switch-animate') {
+//            if ($('.review-div').attr("style") === "display:none") {
+//                $('.review-div').toggle("slow");
+//                $("#review-tool>.expand").removeClass("expand").addClass("collapse");
+//                $("#review-tool i").removeClass("fa-chevron-down").addClass("fa-chevron-up");
+//            }
+//        }
+//
+//    }
+</script>

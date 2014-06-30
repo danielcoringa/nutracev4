@@ -1,0 +1,193 @@
+<section id="content" class="container_12 clearfix" data-sort="true">
+    <h1 class="grid_12">Cadastrar Responsável por Cliente</h1>
+    <form name="fm_cliente" id="fm_cliente" action="/clientes/co-responsabilidade-cadastro" class="grid_12 validate" method="post">
+        <fieldset>
+            <legend>Formulário de Responsabilidade</legend>
+            <div class="row">
+                <label for="cod_cliente">
+                    <strong>Cód. Cliente</strong>
+                </label>
+                <div>
+                    <input type="text" name='cod_cliente' id='cod_cliente'  readonly placeholder='Automático' value="<?php echo $this->data['cod_cliente']; ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <label for="nom_cliente">
+                    <strong>Nome do Cliente</strong>
+                    <small>ou Razão Social</small>
+                </label>
+                <div>
+                    <input type="text" class="tooltip" data-gravity=n title="É obrigatório informar o nome do cliente." name='nom_cliente' id='nom_cliente'  value="<?php echo $this->data['nom_cliente']; ?>"/>
+                </div>
+            </div>
+            <div class="row">
+                <label for="cod_co_responsabilidade">
+                    <strong>Responsável</strong>
+
+                </label>
+                <div>
+                    <select class='search' id='cod_co_responsabilidade' name='cod_co_responsabilidade' data-placeholder='Selecione um Cliente' >
+                        <option></option>
+                        <?php
+                        foreach ($this->cocliente as $row) {
+                            if ($row['cod_cliente'] == $this->data['cod_co_responsabilidade']) {
+                                $selected = 'selected="selected"';
+                            } else {
+                                $selected = '';
+                            }
+                            ?>
+                            <option value="<?php echo $row['cod_cliente']; ?>" <?php echo $selected; ?>><?php echo $row['nom_cliente']; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <label for="num_cnpj_cpf">
+                    <strong>Nº CPF ou CNPJ</strong>
+                    <small>&nbsp;</small>
+                    <small>
+
+                        <input type='radio' name='radio' id='radio_0' value="0" data-value="0" class='cnpjcpf' <?php
+                        if (strlen($this->data['num_cnpj_cpf']) <= 14) {
+                            echo "checked='checked'";
+                        }
+                        ?>/><label for="radio_0">CPF</label>
+                        <input type='radio' name='radio' id='radio_1' value="1" data-value="1" class='cnpjcpf' <?php
+                        if (strlen($this->data['num_cnpj_cpf']) > 14) {
+                            echo "checked='checked'";
+                        }
+                        ?>/><label for="radio_1">CNPJ</label>
+                    </small>
+
+                </label>
+                <div>
+                    <input type="tel" name='num_cnpj_cpf' id='num_cnpj_cpf' data-type='cnpjcpf' class="mask" <?php
+                    if (strlen($this->data['num_cnpj_cpf']) <= 14) {
+                        echo 'data-mask="999.999.999-99"';
+                    } else {
+                        echo 'data-mask="99.999.999/9999-99"';
+                    }
+                    ?> value="<?php echo $this->data['num_cnpj_cpf']; ?>"/>
+                </div>
+            </div>
+            <div class="row">
+                <label for="num_rg_ie">
+                    <strong>Nº RG ou I.E.</strong>
+
+                </label>
+                <div>
+                    <input type="text" id="num_rg_ie" name="num_rg_ie" autocomplete="off" value="<?php echo $this->data['num_rg_ie']; ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <label for="num_cep">
+                    <strong>CEP</strong>
+
+                </label>
+                <div>
+                    <input type="tel" data-type="buscacep" id="num_cep" name="num_cep" autocomplete="off" class="mask" data-mask="99.999-999" value="<?php echo $this->data['num_cep']; ?>"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="des_endereco">
+                    <strong>Endereço</strong>
+
+                </label>
+                <div>
+                    <input type="text" id="des_endereco" name="des_endereco" autocomplete="off" value="<?php echo $this->data['des_endereco']; ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <label for="des_bairro">
+                    <strong>Bairro</strong>
+
+                </label>
+                <div>
+                    <input type="text" id="des_bairro" name="des_bairro" autocomplete="off" value="<?php echo $this->data['des_bairro']; ?>"/>
+                </div>
+            </div>
+            <div class="row">
+                <label for="des_estado">
+                    <strong>Estado</strong>
+
+                </label>
+                <div>
+                    <select class='search' id='des_estado' name='des_estado'data-placeholder='Selecione um Estado' data-type='estadosearch' >
+                        <option></option>
+                        <?php
+                        foreach ($this->estados as $row) {
+                            if ($row['ind_sigla'] == $this->data['des_estado']) {
+                                $selected = 'selected="selected"';
+                            } else {
+                                $selected = '';
+                            }
+                            ?>
+                            <option value='<?php echo $row['ind_sigla'] ?>'  <?php echo $selected; ?>><?php echo $row['nom_estado']; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <label for="des_cidade">
+                    <strong>Cidade</strong>
+
+                </label>
+                <div class='tooltip des_cidade' title='É necessário selecionar um estado para exibir as cidades' data-gravity=n >
+                    <select tabindex="7" class='search' data-placeholder='Selecione uma Cidade' id='des_cidade' name='des_cidade'  data-type='cidadesearch' >
+                        <option></option>
+                        <?php
+                        if (count($this->cidades) > 0) {
+                            foreach ($this->cidades as $row) {
+                                if ($row['nom_cidade'] == $this->data['des_cidade']) {
+                                    $selected = 'selected="selected"';
+                                } else {
+                                    $selected = '';
+                                }
+                                ?>
+                                <option value="<?php echo $row['nom_cidade'] ?>" <?php echo $selected; ?>><?php echo $row['nom_cidade'] ?></option>
+                                <?php
+                            }
+                        }
+                        ?>
+
+
+
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <label for="des_email">
+                    <strong>Email</strong>
+
+                </label>
+                <div>
+                    <input type="text" id="des_email" name="des_email" autocomplete="off" value="<?php echo $this->data['des_email']; ?>"/>
+                </div>
+            </div>
+            <div class="row">
+                <label for="num_fone">
+                    <strong>Telefone</strong>
+
+                </label>
+                <div>
+                    <input type="tel" id="num_fone" name="num_fone" autocomplete="off" class="mask" data-mask="(99)9999-9999" value="<?php echo $this->data['num_fone']; ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <label for="num_fone2">
+                    <strong>Celular</strong>
+
+                </label>
+                <div>
+                    <input type="tel" id="num_fone2" name="num_fone2" autocomplete="off" class="mask" data-mask="(99)9999-9999"  value="<?php echo $this->data['num_fone2']; ?>"/>
+                </div>
+            </div>
+        </fieldset>
+        <div class="buttons-box">
+            <input type="hidden" name="cod_empresa" id="cod_empresa" value="<?php echo $this->empresa['cod_empresa']; ?>" />
+            <button class="button green" type="submit"><span class="icon icon-save"></span>Salvar Registro</button>
+            <button class="button red" type="button" onclick="location.hash = '#clientes/co-responsabilidade'"><span class="icon icon-remove"></span>Cancelar</button>
+        </div>
+    </form>
+</section>

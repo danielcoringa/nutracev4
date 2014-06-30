@@ -1,0 +1,202 @@
+<?php
+if (isset($this->data['cod_artigo'])) {
+    $db = new Admin_Model_DbTable_Galeria();
+    $galeria = $db->getDados($this->data['cod_artigo']);
+}
+?>
+<div class="box border blue widget" id="widget-gallery" <?php
+if ($this->data['tipo_artigo'] !== 'gallery' && $this->ajax !== 'true') {
+    echo 'style="display:none"';
+}
+?>>
+    <div class="box-title">
+        <h4><i class="fa fa-camera"></i>Galeria de Fotos</h4>
+        <div class="tools hidden-xs">
+            <a href="#box-config" data-toggle="modal" class="config">
+                <i class="fa fa-cog"></i>
+            </a>
+            <a href="javascript:;" class="reload" data-url='galeria'>
+                <i class="fa fa-refresh"></i>
+            </a>
+            <a href="javascript:;" class="collapse">
+                <i class="fa fa-chevron-up"></i>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="box-body" id="gallery">
+
+
+        <!-- Redirect browsers with JavaScript disabled to the origin page -->
+        <noscript>
+        <input type="hidden" name="redirect" value="/artigos/galeria">
+        </noscript>
+        <!-- The global progress information -->
+        <h4 id='welcome-alert'><?php
+            if ($this->data['tipo_artigo'] !== 'gallery') {
+                echo 'Selecione as imagens para a sua galeria.';
+            }
+            ?></h4>
+
+        <div class="col-md-12 fileupload-progress fade">
+
+            <!-- The global progress bar -->
+            <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar progress-bar-success" style="width:0%;"></div>
+            </div>
+            <!-- The extended global progress information -->
+            <div class="progress-extended">&nbsp;</div>
+        </div>
+        <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+        <div class="divide-20"></div>
+        <!-- The table listing the files available for upload/download -->
+        <table role="presentation" class="table table-striped">
+            <tbody class="files">
+                <?php foreach ($galeria as $img) { ?>
+                    <tr class="template-upload fade in">
+                        <td>
+                            <span class="preview">
+                                <img src='<?php echo $img['nom_pasta'] . $img['nom_imagem'] . '_thumb.' . $img['ext_imagem']; ?>' />
+                            </span>
+                        </td>
+                        <td>
+                            <p class="name"><?php echo $img['nom_pasta'] . $img['nom_imagem'] . '.' . $img['ext_imagem']; ?></p>
+                        </td>
+                        <td>
+                            <p class="size"></p>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger delete deleteimg" data-cod="<?php echo $img['cod_galeria']; ?>">
+                                <i class="fa fa fa-trash-o"></i>
+                                <span>Deletar</span>
+                            </button>
+
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+        <span class="fileupload-loading"></span>
+
+
+
+    </div>
+    <div class="toolbox bottom">
+        <div class="row fileupload-buttonbar" style="padding-left: 20px">
+            <span class="btn btn-success fileinput-button">
+                <i class="fa fa-plus"></i>
+                <span>Selecionar imagem...</span>
+                <input type="file" name="files" multiple>
+            </span>
+            <button type="submit" class="btn btn-primary start">
+                <i class="fa fa-arrow-circle-o-up"></i>
+                <span>Iniciar Envio</span>
+            </button>
+            <button type="reset" class="btn btn-warning cancel">
+                <i class="fa fa-ban"></i>
+                <span>Cancelar Envio</span>
+            </button>
+            <button type="button" class="btn btn-danger delete">
+                <i class="fa fa-trash-o"></i>
+                <span>Deletar</span>
+            </button>
+        </div>
+    </div>
+
+</div>
+<script id="template-upload" type="text/x-tmpl">
+    {% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-upload fade">
+    <td>
+    <span class="preview"></span>
+    </td>
+    <td>
+                <input type="text" class="hidden-all required" name="v_gallery" />
+    <p class="name">{%=file.name%}</p>
+    {% if (file.error) { %}
+    <div><span class="label label-danger">Erro</span> {%=file.error%}</div>
+    {% } %}
+    </td>
+    <td>
+    <p class="size">{%=o.formatFileSize(file.size)%}</p>
+    {% if (!o.files.error) { %}
+    <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
+    {% } %}
+    </td>
+    <td>
+    {% if (!o.files.error && !i && !o.options.autoUpload) { %}
+    <button class="btn btn-primary start">
+    <i class="fa fa-arrow-circle-o-up"></i>
+    <span>Enviar</span>
+    </button>
+    {% } %}
+    {% if (!i) { %}
+    <button class="btn btn-warning cancel">
+    <i class="fa fa-ban"></i>
+    <span>Cancelar</span>
+    </button>
+    {% } %}
+    </td>
+    </tr>
+    {% } %}
+</script>
+<!-- The template to display files available for download -->
+<script id="template-download" type="text/x-tmpl">
+    {% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-download fade">
+    <td>
+
+    <span class="preview">
+    {% if (file.thumbnailUrl) { %}
+    <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}"></a>
+    {% } %}
+    </span>
+    </td>
+    <td>
+    <p class="name">
+    {% if (file.url) { %}
+    <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a>
+    {% } else { %}
+    <span>{%=file.name%}</span>
+    {% } %}
+    </p>
+    {% if (file.error) { %}
+    <div><span class="label label-danger">Erro</span> {%=file.error%}</div>
+    {% } %}
+    </td>
+    <td>
+    <span class="size">{%=o.formatFileSize(file.size)%}</span>
+    </td>
+    <td>
+    <input type="hidden" class="form-control" name="img_gallery[]" id="img_gallery" value="{%=file.url%}" />
+    <input type="text" class="form-control required img-gallery" name="img_description[]" id="des_gallery" placeholder="Digite uma descrição para a imagem" />
+    </td>
+    <td>
+    {% if (file.deleteUrl) { %}
+    <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+    <i class="fa fa-trash-o"></i>
+    <span>Deletar</span>
+    </button>
+    <input type="checkbox" name="delete" value="1" class="toggle">
+    {% } else { %}
+    <button class="btn btn-warning cancel">
+    <i class="fa fa-ban"></i>
+    <span>Cancelar</span>
+    </button>
+    {% } %}
+    </td>
+    </tr>
+    {% } %}
+
+</script>
+<script>
+    $(document).ready(function() {
+        $('#fmartigo').fileupload({
+            // Uncomment the following to send cross-domain cookies:
+            //xhrFields: {withCredentials: true},
+            url: '/configuracoes/galeria'
+
+        });
+    })
+</script>

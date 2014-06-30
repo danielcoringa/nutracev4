@@ -1,0 +1,11 @@
+<form name='fm_youtube' id='fm_youtube' action='/artigos/edit-yt' class='ajax-form' method='post' enctype="multipart/form-data">
+    <div class='form-group'>
+        <label for='nom_video'>Título do Vídeo</label>
+        <input class='form-control' name='nom_video' id='nom_video' placeholder="Digite o Titulo do Video" value='<?php echo $this->entry->getTitle(); ?>'/>
+        <input class='hidden' name='id_video' id='id_video' value='<?php echo $this->videoID; ?>'/>
+    </div>
+    <div class='form-group'>
+        <label for='des_video'>Descrição</label>
+        <textarea class='form-control' name='des_video' id='des_video'><?php echo $this->entry->getVideoDescription(); ?></textarea>
+    </div>
+</form>

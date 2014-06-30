@@ -1,0 +1,12 @@
+<div class='panel-body'>
+    <h1 class="panel-title">Flickr Autorização</h1>
+    <p>Clique no botão abaixo para autorizar o acesso à sua conta no Flickr.</p>
+    <button class="btn btn-default btn-success login-flickr">Autorizar</button>
+</div>
+
+<script>
+    $('.login-flickr').bind("click", function() {
+        window.open('/artigos/flickr/login/true', '', 'width=640,height=480');
+    });
+
+</script>

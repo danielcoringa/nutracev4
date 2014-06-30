@@ -1,0 +1,176 @@
+<?php if (isset($this->link)) { ?>
+    <div class='content-sound'>
+        <h1>SoundCloud Autorização</h1>
+    </div>
+    <p>Clique no botão abaixo para autorizar o acesso à sua conta no SoundCloud.</p>
+    <button class="btn btn-default btn-success login-sound" id='login-sound' type='button'>Autorizar</button>
+    <script>
+        $('.login-sound').bind("click", function() {
+
+            window.open('<?php echo $this->link ?>', 'soundcloud', 'width=720,height=480');
+        });
+
+    </script>
+    <?php
+}
+else {
+    ?>
+    <article class="accordion green">
+        <section id="asc1">
+            <h2><a href="#asc1"><i class="fa fa-user"></i> Minhas Músicas</a></h2>
+            <div>
+                <div class="panel-body" style="margin-left: 30px">
+                    <div class="scroller" data-height="225px" data-always-visible="1">
+                        <table class="table table-paper table-striped" id="example-paper">
+                            <tbody>
+                                <?php
+                                if (count($this->tracks) > 0) {
+                                    foreach ($this->tracks as $track) {
+                                        ?>
+                                        <tr data-id="<?php
+                                        echo $track->id;
+                                        ?>" data-title="<?php echo $track->title; ?>" data-link="<?php echo $track->url; ?>">
+                                            <td class="col-min"><img src="<?php echo $track->artwork_url; ?>" width="80" onerror="this.src='/img/cloudx200-38b02b00.png'"/></td>
+                                            <td>
+                                                <div class='video_title'><?php echo $track->title; ?></div>
+                                                <div class='video_date'>
+                                                    <i class="fa fa-clock-o"></i>
+                                                    <time  class='timeago' datetime="<?php echo $track->created_at ?>"></time >
+                                                </div>
+                                                <div class='video_views'><i class="fa fa-eye"></i> <?php echo $track->user_playback_count + 0; ?> Visualizações</div>
+                                                <div class='video_duration'><i class="fa fa-clock-o" title='Duração'></i> <?php echo gmdate("i:s", $track->duration) ?></div>
+                                                <div class="clearfix"></div>
+                                                <div class="panel-body">
+                                                    <div class='video_description'><?php echo $this->truncate($track->description, 300) ?></div>
+                                                </div>
+                                            </td>
+                                            <td class='col-min'>
+                                                <button class='btn btn-xs btn-success use-audio' type='button'> <i class='fa fa-arrow-circle-o-left'></i> Usar</button>
+                                            </td>
+                                            <td class='col-min'>
+                                                <button class='btn btn-xs btn-primary edit-sc' type='button'> <i class='fa fa-edit'></i> Editar</button>
+                                            </td>
+                                            <td class='col-min'>
+                                                <button class='btn btn-xs btn-default preview-sc' type='button'> <i class='fa fa-eye'></i> Previsualizar</button>
+                                            </td>
+                                            <td class='col-min'>
+                                                <button class='btn btn-xs btn-danger del-audio' type='button'><i class='fa  fa-trash-o'></i> Excluir</button>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                    }
+                                }
+                                else {
+                                    echo "<tr>"
+                                    . "<td class='alert info'>"
+                                    . "Não foi encontrado nenhuma música na sua conta."
+                                    . "</td>"
+                                    . "</tr>";
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="asc2">
+            <h2><a href="#asc2"><i class="fa fa-search"></i> Pesquisar</a></h2>
+            <div>
+                <div class="panel-body">
+                    <div class='well well-small' style='margin-left:30px;'>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                            <input type="text" class="form-control"  id="sc-search" placeholder="Pesquisar no SoundCloud">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default btn-search-sc" type="button">Buscar</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="scroller" data-height="225px" data-always-visible="1">
+                        <div id="sc_result" class="box-shadow-2px"></div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <section id="asc3">
+            <h2><a href="#asc3"><i class="fa fa-upload"></i> Enviar Audio</a></h2>
+            <div>
+                <div class="panel-body" style='margin-left:30px;'>
+                    <div class="box-body">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Atenção!</h3>
+                            </div>
+                            <div class="panel-body">
+                                <p>Arquivos de audio enviados para o SoundCloud necessitam estar de acordo com os Direitos Autorais do autor da obra.<br/>
+                                    Caso o arquivo não obedeça os critérios do SoundCloud ele será excluído automaticamente.</p>
+
+                                <div class='form-group'>
+                                    <label>Título da Música</label>
+                                    <input type='text' name='nom_musica' id='nom_musica' placeholder="Digite o Título da Música" class="form-control" />
+                                    <input type='hidden' name='id_audio' id='id_audio' />
+                                </div>
+                                <div class="fileinput fileinput-new" data-provides="fileinput">
+
+                                    <div class="input-group">
+                                        <div class="form-control uneditable-input" data-trigger="fileinput">
+
+
+                                            <span class="fileinput-filename">
+                                                Selecione um Audio
+                                            </span>
+
+                                        </div>
+                                        <div class="input-group-btn">
+                                            <span class="btn btn-default btn-file">
+                                                <span class="fileinput-new">Selecionar Audio</span>
+                                                <span class="fileinput-exists">Mudar</span>
+                                                <input type="file" class="file-input" name="file_sc" id="file_sc" accept="audio/*" />
+
+                                            </span>
+                                            <button href="#" class="btn btn-success fileinput-exists" id="but_sc_enviar">Enviar Audio</button>
+                                            <a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">Remover</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="panel-footer">
+                                <div class='sc-info'></div>
+                                <div class='form-group ' id='prgb-sc' style='display:none'>
+                                    <label class='control-label col-sm-3' >Enviando para SoundCloud</label>
+                                    <div class='col-sm-9 alert-block'>
+
+                                        <div class="progress-box" >
+                                            <span class='percent-status'></span>
+                                            <div class='progress progress-striped'>
+                                                <span class='sr-only percent active'></span>
+                                                <div class='progress-bar bar envio_bar'  role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100'></div>
+
+                                            </div>
+                                        </div>
+                                        <div id="status-sc"></div>
+                                    </div>
+
+                                </div>
+                                <div class="divide-12"></div><div class='clearfix'></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </article>
+<?php } ?>
+
+<script>
+    $(document).ready(function() {
+        soundcloud.init();
+    });
+</script>

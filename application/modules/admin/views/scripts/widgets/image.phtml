@@ -1,0 +1,46 @@
+<div>
+    <div class="box border blue widget" id="widget-image" <?php
+    if (!isset($this->ajax)) {
+        echo 'style="display: none"';
+    }
+    ?>>
+        <div class="box-title" id="image">
+            <h4><i class="fa fa-picture-o"></i>Imagem do Artigo</h4>
+            <div class="tools hidden-xs">
+                <a href="#box-config" data-toggle="modal" data-conf="image" class="config" data-body="content-img">
+                    <i class="fa fa-cog"></i>
+                </a>
+                <a href="javascript:;" class="reload" data-url='image'>
+                    <i class="fa fa-refresh"></i>
+                </a>
+                <a href="javascript:;" class="expand">
+                    <i class="fa fa-chevron-down"></i>
+                </a>
+            </div>
+        </div>
+        <div class="toolbox">
+            <?php echo $this->render("/widgets/support/image/toolbox-top.phtml"); ?>
+            <div class="clearfix"></div>
+        </div>
+        <div class="box-body">
+            <div class='alert alert-info fade in alert-block center badge-info'>
+                <span class="badge badge-red"><i class="fa fa-info-circle"></i></span> &nbsp;Ao enviar uma imagem para o servidor ela será encaminhada para a pasta do ano e mês correspondente.
+                <a class="close close-alert" data-dismiss="alert" href="#" aria-hidden="true">×</a>
+            </div>
+            <div class="img-body">
+                <?php echo $this->render("/widgets/support/image/default.phtml"); ?>
+            </div>
+            <?php echo $this->render("/widgets/support/image/toolbox-bottom.phtml"); ?>
+        </div>
+
+    </div>
+
+</div>
+<script>
+    $(document).ready(function() {
+<?php if (isset($this->ajax)) { ?>
+            imagem.init();
+            serverFunc();
+<?php } ?>
+    });
+</script>

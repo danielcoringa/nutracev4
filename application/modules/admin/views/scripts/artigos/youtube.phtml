@@ -1,0 +1,98 @@
+<article class="accordion blue">
+
+    <section id="acc1" class="active">
+        <h2><a href="#acc1"><i class="fa fa-youtube"></i> Meus Vídeos</a></h2>
+        <div>
+            <div class="panel-body" style="margin-left: 30px">
+                <div class="scroller" data-height="320px" data-always-visible="1">
+
+                    <table class="table table-paper table-striped" id="example-paper">
+                        <tbody>
+                            <?php
+                            foreach ($this->feed as $feed) {
+                                $d_h = explode("T", $feed->getUpdated());
+                                $d = explode('-', $d_h[0]);
+                                $data_hora = $d[2] . '/' . $d[1] . '/' . $d[0];
+                                $videoThumbnails = $feed->getVideoThumbnails();
+                                $views = $feed->getVideoViewCount();
+                                ?>
+                                <tr data-id="<?php
+                                $id = explode('/', $feed->getId());
+                                $id = $id[count($id) - 1];
+                                echo $id;
+                                ?>" data-idfile="<?php echo $feed->getId(); ?>" data-link="<?php echo $feed->getVideoWatchPageUrl(); ?>">
+                                    <td class='col-min'>
+                                        <img src='<?php echo $videoThumbnails[0]['url']; ?>' class='img_player' />
+                                    </td>
+                                    <td>
+                                        <div class='video_title'><?php echo $feed->getVideoTitle(); ?></div>
+                                        <div class='video_date'>
+                                            <i class="fa fa-clock-o"></i>
+                                            <time  class='timeago' datetime="<?php echo $d_h[0]; ?>"></time >
+                                        </div>
+                                        <div class='video_views'><i class="fa fa-eye"></i> <?php echo $views + 0; ?> Visualizações</div>
+                                        <div class='video_duration'><i class="fa fa-clock-o" title='Duração'></i> <?php echo gmdate("i:s", $feed->getVideoDuration()) ?></div>
+                                        <div class="clearfix"></div>
+                                        <div class="panel-body">
+                                            <div class='video_description'><?php echo $feed->getVideoDescription(); ?></div>
+                                        </div>
+                                    </td>
+                                    <td class='col-min'>
+                                        <button class='btn btn-xs btn-success use-video'> <i class='fa fa-arrow-circle-o-left'></i> Usar</button>
+                                    </td>
+                                    <td class='col-min'>
+                                        <button class='btn btn-xs btn-primary edit-yt'> <i class='fa fa-edit'></i> Editar</button>
+                                    </td>
+                                    <td class='col-min'>
+                                        <button class='btn btn-xs btn-default preview-yt'> <i class='fa fa-eye'></i> Previsualizar</button>
+                                    </td>
+                                    <td class='col-min'>
+                                        <button class='btn btn-xs btn-danger del-video'><i class='fa  fa-trash-o'></i> Excluir</button>
+                                    </td>
+                                </tr>
+
+
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="acc2">
+        <h2><a href="#acc2"><i class="fa fa-search"></i> Pesquisar</a></h2>
+        <div>
+            <div class="panel-body">
+                <div class='well well-small' style='margin-left:30px;'>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                        <input type="text" class="form-control"  id="yt-search" placeholder="Pesquisar no Youtube">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default btn-search-yt" type="button">Buscar</button>
+                        </span>
+                    </div>
+                </div>
+                <div class="scroller" data-height="290px" data-always-visible="1">
+                    <div id="youtube_result" class="box-shadow-2px"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="acc3">
+        <h2><a href="#acc3"><i class="fa fa-upload"></i> Enviar Vídeo</a></h2>
+        <div>
+            <div class="panel-body" style='margin-left:30px;'>
+                <div id='fm-yt-ajx'></div>
+            </div>
+
+        </div>
+    </section>
+</article>
+<script>
+    $(document).ready(function() {
+        coringa.youtube();
+    });
+
+</script>

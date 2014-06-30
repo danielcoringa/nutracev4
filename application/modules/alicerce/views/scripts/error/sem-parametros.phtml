@@ -1,0 +1,55 @@
+<!-- Showing the image clouds, stars, and moon -->
+    <div id="clouds"></div>
+    <div id="stars"></div>
+    <div id="moon"></div>
+
+    <!-- BEGIN CONTENT -->
+    <div class="wrap_content">
+      <h1>Sem parametros</h1>
+      <h2>Essa não! Está escuro aqui.</h2><br/>
+      <p>Você tentou acessar uma página sem passar os parametros necessários.</p>
+      <p>Tente retornar para a <a href="/">página principal</a> e utilizar os links do próprio sistema.</p>
+    </div><!-- End div content -->
+    <!-- END CONTENT -->
+
+    <!-- BEGIN BOTTOM -->
+    <div class="wrap_bottom">
+      <div id="tumbleweed"></div>
+      <div class="image_wrapper">
+        <div id="house"></div>
+      </div>
+    </div><!-- End div content -->
+    <!-- END CONTENT -->
+
+    <!-- BEGIN FOOTER -->
+    <div class="wrap_footer">
+      <div class="content_footer">
+      
+      </div>
+    </div><!-- End div footer -->
+    <!-- END FOOTER -->
+    <div style="height:100px; display:block">&nbsp;</div>
+    <h2><?php echo $this->message ?></h2>
+		    <?php if (isset($this->exception)): ?>
+		    <h3>Informações do erro:</h3>
+        <p>
+            <b>Mensagem do Servidor:</b> <?php if(trim($this->exception->getMessage())=='Illegal index 0'){ echo "<script>window.location='/'</script>";}else{ echo $this->exception->getMessage();} ?>
+        </p>
+        
+        <h3>Onde ocorreu o erro:</h3>
+        <pre ><?php echo $this->exception->getTraceAsString() ?>
+        </pre>
+
+        <h3>Parametros requisitado:</h3>
+        <pre class='brush: js'><?php 
+		$params = $this->request->getParams(); 
+		foreach($params as $val=>$key){ 
+		    echo str_pad($val,10,'.',STR_PAD_RIGHT). ': ' . $key .PHP_EOL;
+		    
+		}
+	?>
+        </pre>
+
+    <?php endif ?>
+    
+

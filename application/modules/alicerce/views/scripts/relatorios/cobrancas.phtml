@@ -1,0 +1,78 @@
+<section id="content" class="container_12 clearfix" data-sort="true">
+    <h1 class="grid_12">Relatório de Endereço de Cobranças</h1>
+    <form name="fm_cliente" id="fm_cliente" action="/relatorios/cobrancas" class="grid_12 validate" method="post">
+        <fieldset>
+            <legend>Filtros do Relatório</legend>
+
+            <div class="row">
+                <label for="cod_cliente" class="tooltip" title="Retorna apenas as cobranças do cliente selecionado.">
+                    <strong>Cliente</strong>
+
+                </label>
+                <div>
+                    <select class='search' id='cod_cliente' name='cod_cliente'data-placeholder='Selecione um Cliente' >
+                        <option></option>
+                        <option value="">Todos os Clientes</option>
+                        <?php
+                        foreach ($this->clientes as $row) {
+                            ?>
+                            <option value='<?php echo $row['cod_cliente'] ?>'  ><?php echo $row['nom_cliente']; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="ind_status" class="tooltip" title="Retorna apenas as cobranças do status selecionado.">
+                    <strong>Status</strong>
+                </label>
+                <div>
+                    <select class='search' id='ind_status' name='ind_status'data-placeholder='Selecione um Status' >
+                        <option></option>
+                        <option value="">Todos os Endereços</option>
+                        <option value="A">Ativos</option>
+                        <option value="I">Excluídos</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Organização do Relatório</legend>
+            <div class="row">
+                <label for="order_by">
+                    <strong>Por Campo</strong>
+                </label>
+                <div>
+                    <select class='search' id='order_by' name='order_by'data-placeholder='Selecione um Campo' >
+                        <option></option>
+                        <option value="cod_cobranca" selected="selected">Cód. Cobrança</option>
+                        <option value="cod_cliente">Cód. Cliente</option>
+                        <option value="nom_cliente">Nome do Cliente</option>
+                        <option value="ind_status">Status</option>
+                        <option value="des_endereco">Endereço</option>
+                        <option value="des_bairro">Bairro</option>
+                        <option value="des_cidade">Cidade</option>
+                        <option value="des_estado">Estado</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <label for="ascdesc">
+                    <strong>Ordem dos Resultados</strong>
+                </label>
+                <div>
+                    <p >
+                        <label for="ascdesc_0"><input type="radio" name="ascdesc" id="ascdesc_0" value="asc" checked="checked"/>Crescente</label>
+                        <label for="ascdesc_1"><input type="radio" name="ascdesc" id="ascdesc_1" value="desc" />Decrescente</label>
+                    </p>
+                </div>
+            </div>
+            <p class='showinfos'></p>
+            <div class="buttons-box">
+                <button class="button green" type="submit"><span class="icon icon-eye-open"></span>Gerar Relatório</button>
+
+            </div>
+        </fieldset>
+    </form>
+</section>

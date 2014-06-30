@@ -1,0 +1,62 @@
+<section id="content" class="container_12 clearfix" data-sort="true">
+    <h1 class="grid_12">Cadastrar Usuário</h1>
+    <form name="fm_usuario" id="fm_usuario" action="/usuarios/cadastro" class="grid_12 validate" method="post">
+        <fieldset>
+            <legend>Formulário de Usuário</legend>
+            <div class="row">
+                <label for="cod_usuario">
+                    <strong>Cód. Usuário</strong>
+                </label>
+                <div>
+                    <input type="text"  name='cod_usuario' id='cod_usuario' readonly placeholder='Automático' value="<?php echo $this->data['cod_usuario']; ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <label for="nom_usuario">
+                    <strong>Nome do Usuário</strong>
+                </label>
+                <div>
+                    <input type="text" class="tooltip" data-gravity=n title="É obrigatório informar o nome do usuario." name='nom_usuario' id='nom_usuario'  value="<?php echo $this->data['nom_usuario']; ?>"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="des_senha">
+                    <strong>Senha de Acesso</strong>
+
+                </label>
+                <div>
+                    <input type="password" id="des_senha" class="meter strongpw" name="des_senha" autocomplete="off" value="<?php echo $this->data['des_senha']; ?>" />
+                </div>
+            </div>
+
+
+            <div class="row">
+                <label for="cod_grupo">
+                    <strong>Grupo de Aceso</strong>
+
+                </label>
+                <div>
+                    <select class='search' id='cod_grupo' name='cod_grupo'data-placeholder='Selecione um Grupo'>
+                        <option></option>
+                        <?php
+                        foreach ($this->grupos as $row) {
+                            if ($row['cod_grupo'] == $this->data['cod_grupo']) {
+                                $selected = 'selected="selected"';
+                            } else {
+                                $selected = '';
+                            }
+                            ?>
+                            <option value='<?php echo $row['cod_grupo'] ?>'  <?php echo $selected; ?>><?php echo $row['nom_grupo']; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+        <div class="buttons-box">
+            <input type="hidden" name="cod_empresa" id="cod_empresa" value="<?php echo $this->empresa['cod_empresa']; ?>" />
+            <button class="button green" type="submit"><span class="icon icon-save"></span>Salvar Registro</button>
+            <button class="button red" type="button" onclick="location.hash = 'usuarios/listagem'"><span class="icon icon-remove"></span>Cancelar</button>
+        </div>
+    </form>
+</section>

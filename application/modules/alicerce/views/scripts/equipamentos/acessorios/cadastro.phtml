@@ -1,0 +1,104 @@
+<section id="content" class="container_12 clearfix" data-sort="true">
+    <h1 class="grid_12">Cadastrar Acessórios</h1>
+    <form name="fm_ajax" id="fm_ajax" action="/equipamentos/acessorios-cadastro" class="grid_12 validate" method="post">
+        <fieldset>
+            <legend>Formulário de Acessórios</legend>
+            <div class="row">
+                <label for="cod_acessorio">
+                    <strong>Cód. Modelo</strong>
+                </label>
+                <div>
+                    <input type="text" name='cod_acessorio' id='cod_acessorio' readonly placeholder='Automático' value="<?php echo $this->data['cod_acessorio']; ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <label for="nom_acessorio">
+                    <strong>Nome do Acessório</strong>
+                    <small>ou Título</small>
+                </label>
+                <div>
+                    <input type="text" class="tooltip" data-gravity=n title="É obrigatório informar o nome do Acessório." name='nom_acessorio' id='nom_acessorio'  value="<?php echo $this->data['nom_acessorio']; ?>"/>
+                </div>
+            </div>
+            <div class="row">
+                <label for="cod_equipamento">
+                    <strong>Equipamento</strong>
+                </label>
+                <div>
+                    <select class='search' id='cod_equipamento' name='cod_equipamento' data-func='Equipamentos' data-placeholder='Selecione um Equipamento'>
+                        <option></option>
+                        <?php
+                        if (count($this->equipamentos) > 0) {
+                            foreach ($this->equipamentos as $row) {
+                                if ($row['cod_equipamento'] == $this->data['cod_equipamento']) {
+                                    $selected = 'selected="selected" ';
+                                } else {
+                                    $selected = '';
+                                }
+                                ?>
+                                <option value="<?php echo $row['cod_equipamento']; ?>" <?php echo $selected; ?>><?php echo $row['cod_equipamento'] . ' :: ' . $row['nom_equipamento'] ?></option>
+                                <?php
+                            }
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <label for="des_acessorio">
+                    <strong>Descrição do Acessório</strong>
+
+                </label>
+                <div>
+                    <textarea name="des_acessorio" id="des_acessorio" class="editor"><?php echo $this->data['des_acessorio'] ?></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <label for="vlr_acessorio">
+                    <strong>Valor do Acessório</strong>
+
+                </label>
+                <div>
+                    <p><label class='inline' style="padding-top:6px;"><strong>R$</strong></label><input style='padding-left: 24px' type="number" class="money numeric" name="vlr_acessorio" id="vlr_acessorio" value="<?php echo $this->data['vlr_acessorio']; ?>"/></p>
+                </div>
+            </div>
+            <?php if (!$this->data) { ?>
+                <div class="row">
+                    <label for="qtd_acessorio">
+                        <strong>Qtd. Acessórios</strong>
+
+                    </label>
+                    <div class="inline"><div style="width:160px; float:left;">
+                            <input type="number" class="numeric" name="qtd_acessorio" id="qtd_acessorio" value="1"/>
+
+                        </div>
+                        <div style="width:140px;float:left">
+                            <select class='search' id='ind_unidade' name='ind_unidade' data-func='Unidades' data-placeholder='Selecione uma Unidade' >
+                                <option></option>
+                                <?php
+                                foreach ($this->unidades as $row) {
+                                    if ($row['nom_unidade'] == $this->data['ind_unidade']) {
+                                        $selected = 'selected="selected" ';
+                                    } else {
+                                        if ($row['nom_unidade'] == "Pç") {
+                                            $selected = 'selected="selected" ';
+                                        } else {
+                                            $selected = '';
+                                        }
+                                    }
+                                    ?>
+                                    <option value="<?php echo $row['nom_unidade']; ?>" <?php echo $selected; ?>><?php echo $row['nom_unidade'] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+
+        </fieldset>
+        <div class="buttons-box">
+            <button class="button green" type="submit"><span class="icon icon-save"></span>Salvar Registro</button>
+            <button class="button red" type="button" onclick="location.hash = 'equipamentos/acessorios'"><span class="icon icon-remove"></span>Cancelar</button>
+        </div>
+    </form>
+</section>

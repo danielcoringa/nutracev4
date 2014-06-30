@@ -1,0 +1,101 @@
+<div>
+
+    <div class="box border blue" id="aside">
+        <div class="box-title">
+            <h4><i class="fa fa-bars"></i>Dados do Artigo</h4>
+            <div class="tools hidden-xs">
+                <a href="#box-config" data-toggle="modal" data-conf="basic" class="config">
+                    <i class="fa fa-cog"></i>
+                </a>
+                <a href="#" class="reload" data-url='basic'>
+                    <i class="fa fa-refresh"></i>
+                </a>
+                <a href="javascript:;" class="collapse">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+        <div class="box-body big bgpage">
+            <div class="form-group">
+                <label for="cod_artigo" class='col-sm-2'>Cód. Artigo</label>
+                <div class='col-sm-10'>
+                    <input readonly="readonly" name="cod_artigo" id="cod_artigo" placeholder="Automático" class="form-control" value="<?php echo $this->data['cod_artigo']; ?>" />
+                </div>
+                <div class='divide-12'></div>
+                <div class='clearfix'></div>
+            </div>
+            <div class="form-group">
+                <label for="nom_artigo" class='col-sm-2'>Título do Artigo</label>
+                <div class='col-sm-10'>
+                    <input name="nom_artigo" id="nom_artigo" placeholder="Digite o Título do Artigo" class="form-control required" value="<?php echo $this->data['nom_artigo']; ?>" />
+                </div>
+                <div class='divide-12'></div>
+                <div class='clearfix'></div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Data de Publicação</label>
+                <div class='col-sm-4'>
+                    <div class="input-group datepicker" >
+                        <input class="form-control" data-format="dd/MM/yyyy hh:mm" type="text" name="dta_publicacao" data-mask='99/99/9999 99:99' id="dta_publicacao" value="<?php
+                        if (isset($this->data['dta_publicacao'])) {
+                            echo $this->formataDataHora($this->data['dta_publicacao']);
+                        }
+                        else {
+                            echo Date("d/m/Y H:i");
+                        }
+                        ?>"/>
+                        <span class="add-on input-group-btn">
+                            <i class="btn btn-default " data-time-icon="fa fa-clock-o dt" data-date-icon="fa fa-calendar dt"></i>
+                        </span>
+                    </div>
+                </div>
+
+
+                <label class="control-label col-sm-2">Data Encerramento</label>
+                <div class='col-sm-4'>
+                    <div class="input-group  datepicker" >
+                        <input class="form-control" data-format="dd/MM/yyyy hh:mm" data-mask='99/99/9999 99:99' placeholder='Sem data para o término' type="text" name="dta_expiracao" id="dta_expiracao" />
+                        <span class="input-group-btn  add-on">
+                            <i class="btn btn-default " data-time-icon="fa fa-clock-o dt1" data-date-icon="fa fa-calendar dt1"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class='divide-12'></div>
+                <div class='clearfix'></div>
+
+            </div>
+
+            <div class="form-group">
+                <textarea class="ckeditor hidden-all" name="des_artigo" id="des_artigo"><?php echo $this->data['des_artigo'] ?></textarea>
+            </div>
+            <div class="validacao hidden-all"></div>
+            <div class="review hidden-all"></div>
+            <input type="hidden" name="tipo" id="tipo" value="" />
+
+            <div id="background" class="hidden-all"></div>
+        </div>
+    </div>
+
+</div>
+<div id="error_ct" class="hidden">
+    <div class="modal-header">
+        <h4 class="modal-title">Você possui erros no preenchimento do artigo.</h4>
+    </div>
+    <div class="alert alert-block alert-error">
+        <ol></ol>
+    </div>
+</div>
+<script>
+<?php if (!isset($this->ajax)) { ?>
+        $(document).ready(function() {
+
+<?php } ?>
+        $(".datepicker").datetimepicker({
+            language: 'pt-BR'
+        });
+        artigos.basic();
+        //CKEDITOR.replace($(".ckeditor").attr('id'), {});
+<?php if (!isset($this->ajax)) { ?>
+        })
+<?php } ?>
+</script>

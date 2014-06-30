@@ -1,0 +1,156 @@
+<section id="content" class="container_12 clearfix" data-sort="true">
+    <h1 class="grid_12">Cadastrar Obras</h1>
+    <form name="fm_obras" id="fm_obras" action="/obras/cadastro" class="grid_12 validate" method="post">
+        <fieldset>
+            <legend>Formulário de Obras</legend>
+            <div class="row">
+                <label for="cod_obra">
+                    <strong>Cód. Obra</strong>
+                </label>
+                <div>
+                    <input type="text" name='cod_obra' id='cod_obra' readonly placeholder='Automático' value="<?php echo $this->data['cod_obra']; ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <label for="cod_cliente">
+                    <strong>Nome do Cliente</strong>
+                    <small>ou Razão Social</small>
+                </label>
+
+                <div>
+                    <select class='search clientedata' id='cod_cliente' name='cod_cliente' data-placeholder='Selecione um Cliente' >
+                        <option></option>
+                        <?php
+                        foreach ($this->cliente as $row) {
+                            if ($row['cod_cliente'] == $this->data['cod_cliente']) {
+                                $selected = 'selected="selected"';
+                            } else {
+                                $selected = '';
+                            }
+                            ?>
+                            <option value="<?php echo $row['cod_cliente']; ?>" <?php echo $selected; ?>><?php echo $row['nom_cliente']; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <label for="des_obra">
+                    <strong>Descrição da Obra</strong>
+
+                </label>
+                <div class="full">
+                    <textarea name="des_obra" id="des_obra" class="editor" style="width:100%" rows="4" size="100%"><?php echo $this->data['des_obra']; ?></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <label for="num_cep">
+                    <strong>CEP</strong>
+
+                </label>
+                <div>
+                    <p class="_15"><input type="text" data-type="buscacep" id="num_cep" name="num_cep" autocomplete="off" class="mask" data-mask="99.999-999" value="<?php echo $this->data['num_cep']; ?>"/></p>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="des_endereco">
+                    <strong>Endereço</strong>
+
+                </label>
+                <div>
+                    <input type="text" id="des_endereco" name="des_endereco" autocomplete="off" value="<?php echo $this->data['des_endereco']; ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <label for="des_bairro">
+                    <strong>Bairro</strong>
+
+                </label>
+                <div>
+                    <input type="text" id="des_bairro" name="des_bairro" autocomplete="off" value="<?php echo $this->data['des_bairro']; ?>"/>
+                </div>
+            </div>
+            <div class="row">
+                <label for="des_estado">
+                    <strong>Estado</strong>
+
+                </label>
+                <div>
+                    <select class='search' id='des_estado' name='des_estado'data-placeholder='Selecione um Estado' data-type='estadosearch' >
+                        <option></option>
+                        <?php
+                        foreach ($this->estados as $row) {
+                            if ($row['ind_sigla'] == $this->data['des_estado']) {
+                                $selected = 'selected="selected"';
+                            } else {
+                                $selected = '';
+                            }
+                            ?>
+                            <option value='<?php echo $row['ind_sigla'] ?>'  <?php echo $selected; ?>><?php echo $row['nom_estado']; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <label for="des_cidade">
+                    <strong>Cidade</strong>
+
+                </label>
+                <div class='tooltip des_cidade' title='É necessário selecionar um estado para exibir as cidades' data-gravity=n >
+                    <select tabindex="7" class='search' data-placeholder='Selecione uma Cidade' id='des_cidade' name='des_cidade'  data-type='cidadesearch' >
+                        <option></option>
+                        <?php
+                        if (count($this->cidades) > 0) {
+                            foreach ($this->cidades as $row) {
+                                if ($row['nom_cidade'] == $this->data['des_cidade']) {
+                                    $selected = 'selected="selected"';
+                                } else {
+                                    $selected = '';
+                                }
+                                ?>
+                                <option value="<?php echo $row['nom_cidade'] ?>" <?php echo $selected; ?>><?php echo $row['nom_cidade'] ?></option>
+                                <?php
+                            }
+                        }
+                        ?>
+
+
+
+                    </select>
+                </div>
+            </div>
+            <div class='row'>
+                <label for='dta_inicio'>
+                    <strong>Data de Início</strong>
+                </label>
+                <div>
+                    <p class="_15"><input type='date' name='dta_inicio' id='dta_inicio' class='mask date' data-mask='99/99/9999' data-valor="<?php echo date("d/m/Y"); ?>" value="<?php echo date("d/m/Y"); ?>"  /></p>
+                </div>
+            </div>
+
+        </fieldset>
+        <div class="buttons-box">
+            <button class="button green" type="submit"><span class="icon icon-save"></span>Salvar Registro</button>
+            <button class="button red" type="button" onclick="location.hash = 'obras/listagem'"><span class="icon icon-remove"></span>Cancelar</button>
+        </div>
+    </form>
+</section>
+<script>
+    $(function() {
+        var e = $;
+        if (!touchPresent) {
+            setTimeout(function() {
+                e("textarea.editor").each(function() {
+                    var l = e(this), k = l.hasClass("full");
+
+                    l.cleditor({width: k ? "auto" : "100%", height: "250px", bodyStyle: "margin: 10px; font: 12px Arial,Verdana; cursor:text", useCSS: true});
+                    k && l.parents(".cleditorMain").addClass("full")
+
+                });
+            }, 200);
+        } else {
+            e("#upcontainer").attr("style", "width:150px");
+            e("textarea.editor").addClass('grow');
+        }
+    });
+</script>

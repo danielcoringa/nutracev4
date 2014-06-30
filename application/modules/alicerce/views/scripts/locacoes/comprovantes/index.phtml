@@ -1,0 +1,49 @@
+<div class="right-sidebar">
+    <ul class="nav">
+
+        <li class="default visualizar-comprovante"><a href="javascript:void(0)"><span class='icon icon-time'></span>| Visualizar Comprovante</a></li>
+        <li class="grey visualizar-contrato"><a href="javascript:void(0)"><span class='icon icon-eye-open'></span>| Visualizar Contrato</a></li>
+        <li class="red delbut delbutloc"><a href="javascript:void(0)"><span class='icon icon-remove'></span>| Excluir Registro</a></li>
+    </ul>
+</div>
+<section id="content" class="container_12 clearfix with-right-sidebar" data-sort="true">
+    <h1 class="grid_12">Cadastro de Locações - Comprovantes de Devolução</h1>
+    <div class="grid_12">
+        <div class="box">
+
+            <div class="header">
+                <span class="icon icon_header icon_16 i16_fugue_34"></span><h2>Listagem de Locações</h2>
+            </div>
+
+            <div class="content">
+                <table class="dynamic styled tbgrid" data-show-Filter-Bar="true" data-table-tools='{"display":true}' data-table-type="locacaod" id="tbgrid">
+                    <thead class="tabletools">
+                    <th class='selbox' title='Marcar todos os Registros'><input type='checkbox' name='allchecks' id='allchecks' class='optcheck' value='' /></th>
+                    <th class='selbox'>Cód</th>
+                    <th >Cliente</th>
+                    <th >Descrição da Obra</th>
+
+
+                    <th >Data Locação</th>
+                    <th >Data Devolução</th>
+                    <th >Valor Total</th>
+                    </thead>
+                    <tbody >
+
+                        <tr class="selrows">
+                            <td  colspan="5" class="dataTables_empty">Carregando os Dados...</td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+                <div class="box dark" style="padding:4px">
+                    <button class="button default visualizar-comprovante"><span class='icon icon-time'></span>Visualizar Comprovante</button>
+
+                    <button class="button grey visualizar-contrato"><span class='icon icon-eye-open'></span>Visualizar Contrato</button>
+                    <button class="button red delbut delbutloc"><span class='icon icon-remove'></span>Excluir Registro</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

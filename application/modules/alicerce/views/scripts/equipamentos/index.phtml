@@ -1,0 +1,39 @@
+<section id="content" class="container_12 clearfix" data-sort=true>
+    <h1 class="grid_12">Cadastro de Equipamentos</h1>
+    <div class="grid_12">
+        <div class="box">
+            <div class="header">
+                <span class="icon icon_header icon_16 i16_list"></span><h2>Listagem de Equipamentos - Simples</h2>
+            </div>
+            <div class="content">
+                <table class="dynamic styled tbgrid" data-show-Filter-Bar="true" data-table-tools='{"display":true}' data-table-type="equipamento" id="tbgrid">
+                    <thead class="tabletools">
+                    <th class='selbox' title='Marcar todos os Registros'><input type='checkbox' name='allchecks' id='allchecks' class='optcheck' value='' /></th>
+                    <th class='selbox'>Cód</th>
+                    <th >Miniatura</th>
+                    <th >Equipamento</th>
+                    <th >Descrição</th>
+                    <th >Categoria</th>
+                    <th >Qtd. Estoque</th>
+
+                    </thead>
+                    <tbody >
+                        <tr class="selrows">
+                            <td  colspan="5" class="dataTables_empty">Carregando os Dados...</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="box dark" style="padding:4px">
+                    <button class="button default newbut"><span class='icon icon-file'></span>Novo Registro</button>
+                    <button class="button grey editbut"><span class='icon icon-edit'></span>Editar Registro</button>
+                    <button class="button red delbut delbutall"><span class='icon icon-remove'></span>Excluir Registro</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(function() {
+        coringa_registro.butTables('cadastro', 'equipamento');
+    });
+</script>

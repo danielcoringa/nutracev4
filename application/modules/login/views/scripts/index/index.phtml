@@ -1,0 +1,68 @@
+<style>
+    label.error{
+        position:absolute;
+        margin-top:-10000px;
+    }
+</style>
+<section id="login" class="container_12 clearfix">
+
+    <form action="" method="post" class="box validate" name="fm_login" id="fm_login">
+
+        <div class="header">
+            <h2><span class="icon icon-lock"></span>Login</h2>
+            <div class="message failure erros"><?php echo $this->flashMessenger(); ?></div>
+        </div>
+
+        <div class="content">
+
+            <!-- Login messages -->
+
+            <div class="login-messages">
+                <div class="message welcome">Faça o Login para acessar seu Painel</div>
+                <div class="message failure">Dados inválidos. </div>
+
+            </div>
+
+            <!-- The form -->
+            <div class="form-box">
+
+                <div class="row">
+                    <label for="login_name">
+                        <strong>Usuário</strong>
+                        <small>Ou endereço de email</small>
+                    </label>
+                    <div>
+                        <input tabindex=1 type="text" class="required noerror" name=login_name id=login_name />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label for="login_pw">
+                        <strong>Senha</strong>
+                        <small><a href="javascript:void(0);" id="">Esqueceu a senha?</a></small>
+                    </label>
+                    <div>
+                        <input tabindex=2 type="password" class="required noerror" name=login_pw id=login_pw />
+                    </div>
+                </div>
+
+            </div><!-- End of .form-box -->
+
+        </div><!-- End of .content -->
+
+        <div class="actions">
+            <div class="left">
+                <div class="rememberme">
+                    <input tabindex=4 type="checkbox" name="login_remember" id="login_remember" checked /><label for="login_remember">Lembrar dados?</label>
+                </div>
+            </div>
+            <div class="right">
+                <input tabindex=3 type="submit" value="Entrar" name="login_btn" />
+            </div>
+
+        </div><!-- End of .actions -->
+
+    </form><!-- End of form -->
+
+</section>
+

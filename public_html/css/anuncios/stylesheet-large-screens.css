@@ -1,0 +1,11 @@
+.wrapper {
+	max-width: 1170px;
+}
+.row {
+    width: 1150px;
+}
+@media (min-width: 980px) and (max-width: 1280px) {
+.wrapper {
+	margin: 0 30px;
+}	
+}

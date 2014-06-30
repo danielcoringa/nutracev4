@@ -1,0 +1,60 @@
+.fullwidthbanner-container {
+    position:relative;
+    overflow:hidden; 
+	z-index: 1;
+}
+.fullwidthbanner ul li {
+   	list-style: none;
+}
+.oxy_revo_header_1 {
+    color:#464646;
+	font-family: Georgia;
+    font-size:25px;
+    text-align:left;
+    font-weight:bold;
+	font-style: italic;
+    line-height: 42px;
+}
+.oxy_revo_header_2 {
+    color:#4BB8E2;
+	font-family: Georgia;
+    font-size:48px;
+    text-align:left;
+    font-weight:bold;
+    text-transform: uppercase;
+    line-height: 54px;
+}
+.oxy_revo_header_3 {
+    color:#4D4D4D;
+	font-family: Georgia;
+    font-size:20px;
+    text-align:left;
+    font-weight:bold;
+    font-style: italic;
+    line-height: 24px;
+}
+.oxy_revo_text {
+    color:#797979;
+	font-family: "Open Sans";
+    font-size:13px;
+    text-align:left; 
+    line-height:18px;
+}
+.oxy_revo_button a {
+	background-color:#ED5053;
+	color:#FFFFFF;
+	font-family: Georgia;
+    font-size:16px;
+	font-weight:bold;
+    text-align: center;
+	text-transform: uppercase;
+    border: none;
+	box-shadow: none;
+	cursor: pointer;
+	padding: 16px 16px;
+	transition: all 0.2s ease-in 0s;
+}
+.oxy_revo_button a:hover {
+	background-color:#4BB8E2;
+	color:#FFFFFF;
+}

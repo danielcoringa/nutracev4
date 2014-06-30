@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Share';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Share'), local('Share-Regular'), url(/fonts/share.woff) format('woff');
+}
+@font-face {
+    font-family: 'Share';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Share Bold'), local('Share-Bold'), url(http://themes.googleusercontent.com/static/fonts/share/v1/vq-obeo4cskP3gCfYTOfG_esZW2xOQ-xsNqO47m55DA.woff) format('woff');
+}
+@font-face {
+    font-family: 'Share';
+    font-style: italic;
+    font-weight: 400;
+    src: local('Share Italic'), local('Share-Italic'), url(http://themes.googleusercontent.com/static/fonts/share/v1/wM4e8yIRgkcyIsqRin1kYQ.woff) format('woff');
+}
+@font-face {
+    font-family: 'Share';
+    font-style: italic;
+    font-weight: 700;
+    src: local('Share Bold Italic'), local('Share-BoldItalic'), url(http://themes.googleusercontent.com/static/fonts/share/v1/EFGhLE7fLwZtSFxykTxa5xsxEYwM7FgeyaSgU71cLG0.woff) format('woff');
+}

@@ -1,0 +1,43 @@
+<?php if (count($this->data['contratos']) > 0) { ?>
+    <div class="content" style="padding:10px">
+        <div class="content" style="border:1px solid #ccc">
+            <div class="alert warning top header">
+                <span class="icon"></span>
+                <strong>Existem Pedidos Atrasados aguardando Renovação.</strong>
+
+            </div>
+            <table class="dynamic styled tbgrid not-on-phone" data-show-Filter-Bar="true" data-table-tools='{"display":true}' data-table-type="pedidoAtraso" id="tbgrid2">
+                <thead>
+                <th class='selbox' title='Marcar todos os Registros'><input type='checkbox' name='allchecks' id='allchecks' class='optcheck' value='' /></th>
+
+                <th class='selbox'>Cód</th>
+                <th >Cliente</th>
+                <th >Vlr. Locação</th>
+                <th >Data Locação</th>
+                <th >Data Devolução</th>
+
+                </thead>
+                <tbody >
+
+                    <tr class="selrows">
+                        <td  colspan="5" class="dataTables_empty">Carregando os Dados...</td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+<?php } ?>
+<?php
+if (count($this->data) == 0) {
+    echo "<div class='alert information top'><strong><span class='icon'></span>Nenhuma notificação.</strong></div>";
+}
+?>
+<script>
+    $(".tbgrid").table();
+
+    $(".footer").attr("style", "display:none");
+    $(".tabletools").attr("style", "display:none");
+    $(".toggleFilter").attr("style", "display:none");
+</script>

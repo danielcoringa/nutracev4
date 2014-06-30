@@ -1,0 +1,43 @@
+<table class="table table-paper table-striped" id="example-paper">
+    <tbody>
+        <?php
+        foreach ($this->videos as $video) {
+            $video = $video[0];
+            ?>
+            <tr data-id="<?php
+            echo $video->id;
+            ?>" data-idfile="<?php echo $video->id; ?>" data-link="<?php echo $video->urls->url->video; ?>">
+                <td class='col-min'>
+                    <img src='<?php echo $video->thumbnails->thumbnail[0]->_content ?>' class='img_player' />
+                </td>
+                <td>
+                    <div class='video_title'><?php echo $video->title; ?></div>
+                    <div class='video_date'>
+                        <i class="fa fa-clock-o"></i>
+                        <time  class='timeago' datetime="<?php echo $video->modified_date ?>"></time >
+                    </div>
+                    <div class='video_views'><i class="fa fa-eye"></i> <?php echo $video->number_of_plays + 0; ?> Visualizações</div>
+                    <div class='video_duration'><i class="fa fa-clock-o" title='Duração'></i> <?php echo gmdate("i:s", $video->duration) ?></div>
+                    <div class="clearfix"></div>
+                    <div class="panel-body">
+                        <div class='video_description'><?php echo $this->truncate($video->description, 300) ?></div>
+                    </div>
+                </td>
+                <td class='col-min'>
+                    <button class='btn btn-xs btn-success use-video-vm'> <i class='fa fa-arrow-circle-o-left'></i> Usar</button>
+                </td>
+                <td class='col-min'>
+                    <button class='btn btn-xs btn-default preview-vm'> <i class='fa fa-eye'></i> Previsualizar</button>
+                </td>
+
+            </tr>
+
+
+        <?php } ?>
+    </tbody>
+</table>
+<script>
+    $(document).ready(function() {
+        coringa.vimeo();
+    });
+</script>

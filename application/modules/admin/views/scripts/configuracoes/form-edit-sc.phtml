@@ -1,0 +1,11 @@
+<!-- <form name='fm_audio' id='fm_audio' action='/configuracoes/edit-sc' class='ajax-form' method='post' enctype="multipart/form-data"> -->
+<div class='form-group'>
+    <label for='nom_audio'>Título do Audio</label>
+    <input class='form-control' name='nom_audio' id='nom_audio' placeholder="Digite o Titulo do Audio" value='<?php echo $this->audio->title; ?>'/>
+    <input class='hidden' name='id_audio' id='id_audio' value='<?php echo $this->audio->id ?>'/>
+</div>
+<div class='form-group'>
+    <label for='des_audio'>Descrição</label>
+    <textarea class='form-control' name='des_audio' id='des_audio'><?php echo $this->audio->description ?></textarea>
+</div>
+<!-- </form> -->

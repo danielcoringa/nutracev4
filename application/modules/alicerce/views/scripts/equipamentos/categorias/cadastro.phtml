@@ -1,0 +1,39 @@
+<section id="content" class="container_12 clearfix" data-sort="true">
+    <h1 class="grid_12">Cadastrar Categoria</h1>
+    <form name="fm_categoria" id="fm_categoria" action="/equipamentos/categorias-cadastro" class="grid_12 validate" method="post">
+        <fieldset>
+            <legend>Formulário de Categoira</legend>
+            <div class="row">
+                <label for="cod_categoria">
+                    <strong>Cód. Categoria</strong>
+                </label>
+                <div>
+                    <input type="text" name='cod_categoria' id='cod_categoria' readonly placeholder='Automático' value="<?php echo $this->data['cod_categoria']; ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <label for="nom_categoria">
+                    <strong>Nome da Categoria</strong>
+                    <small>ou Título</small>
+                </label>
+                <div>
+                    <input type="text" class="tooltip" data-gravity=n title="É obrigatório informar o nome da categoria." name='nom_categoria' id='nom_categoria'  value="<?php echo $this->data['nom_categoria']; ?>"/>
+                </div>
+            </div>
+            <div class="row">
+                <label for="des_categoria">
+                    <strong>Descrição da Categoria</strong>
+
+                </label>
+                <div>
+                    <textarea name="des_categoria" id="des_categoria" class="editor"></textarea>
+                </div>
+            </div>
+
+        </fieldset>
+        <div class="buttons-box">
+            <button class="button green" type="submit"><span class="icon icon-save"></span>Salvar Registro</button>
+            <button class="button red" type="button" onclick="location.hash = 'equipamentos/categorias'"><span class="icon icon-remove"></span>Cancelar</button>
+        </div>
+    </form>
+</section>

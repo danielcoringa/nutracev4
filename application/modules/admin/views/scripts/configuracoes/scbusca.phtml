@@ -1,0 +1,46 @@
+<table class="table table-paper table-striped" id="example-paper">
+    <tbody>
+        <?php
+        if (count($this->tracks) > 0) {
+            foreach ($this->tracks as $track) {
+                ?>
+                <tr data-id="<?php
+                echo $track->id;
+                ?>" data-title="<?php echo $track->title; ?>" data-link="<?php echo $track->url; ?>">
+                    <td class="col-min"><img src="<?php echo $track->artwork_url; ?>" width="80" onerror="this.src='/img/cloudx200-38b02b00.png'"/></td>
+                    <td>
+                        <div class='video_title'><?php echo $track->title; ?></div>
+                        <div class='video_date'>
+                            <i class="fa fa-clock-o"></i>
+                            <time  class='timeago' datetime="<?php echo $track->created_at ?>"></time >
+                        </div>
+                        <div class='video_views'><i class="fa fa-eye"></i> <?php echo $track->user_playback_count + 0; ?> Visualizações</div>
+                        <div class='video_duration'><i class="fa fa-clock-o" title='Duração'></i> <?php echo gmdate("i:s", $track->duration) ?></div>
+                        <div class="clearfix"></div>
+                        <div class="panel-body">
+                            <div class='video_description'><?php echo $this->truncate($track->description, 300) ?></div>
+                        </div>
+                    </td>
+                    <td class='col-min'>
+                        <button class='btn btn-xs btn-success use-audio' type='button'> <i class='fa fa-arrow-circle-o-left'></i> Usar</button>
+                    </td>
+
+                    <td class='col-min'>
+                        <button class='btn btn-xs btn-default preview-sc' type='button'> <i class='fa fa-eye'></i> Previsualizar</button>
+                    </td>
+
+                </tr>
+                <?php
+            }
+        }
+        else {
+            echo "<tr><td class='alert info'>Não foi encontrado nenhuma música.</td></tr>";
+        }
+        ?>
+    </tbody>
+</table>
+<script>
+    $(document).ready(function() {
+        soundcloud.init();
+    });
+</script>

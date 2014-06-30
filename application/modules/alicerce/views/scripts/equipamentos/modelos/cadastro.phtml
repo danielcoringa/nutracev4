@@ -1,0 +1,39 @@
+<section id="content" class="container_12 clearfix" data-sort="true">
+    <h1 class="grid_12">Cadastrar Modelo/Marca</h1>
+    <form name="fm_categoria" id="fm_categoria" action="/equipamentos/modelos-cadastro" class="grid_12 validate" method="post">
+        <fieldset>
+            <legend>Formulário de Modelo/Marca</legend>
+            <div class="row">
+                <label for="cod_modelo">
+                    <strong>Cód. Modelo</strong>
+                </label>
+                <div>
+                    <input type="text" name='cod_modelo' id='cod_modelo' readonly placeholder='Automático' value="<?php echo $this->data['cod_modelo']; ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <label for="nom_modelo">
+                    <strong>Nome do Modelo</strong>
+                    <small>ou Marca</small>
+                </label>
+                <div>
+                    <input type="text" class="tooltip" data-gravity=n title="É obrigatório informar o nome do modelo." name='nom_modelo' id='nom_modelo'  value="<?php echo $this->data['nom_modelo']; ?>"/>
+                </div>
+            </div>
+            <div class="row">
+                <label for="des_modelo">
+                    <strong>Descrição do Modelo</strong>
+
+                </label>
+                <div>
+                    <textarea name="des_modelo" id="des_modelo" class="editor"><?php echo $this->data['des_modelo'] ?></textarea>
+                </div>
+            </div>
+
+        </fieldset>
+        <div class="buttons-box">
+            <button class="button green" type="submit"><span class="icon icon-save"></span>Salvar Registro</button>
+            <button class="button red" type="button" onclick="location.hash = 'equipamentos/modelos'"><span class="icon icon-remove"></span>Cancelar</button>
+        </div>
+    </form>
+</section>

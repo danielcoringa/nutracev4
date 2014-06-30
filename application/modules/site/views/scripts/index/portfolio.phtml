@@ -1,0 +1,102 @@
+<section id="portfolio" class="color-light text-center">
+    <div class="divide40"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">
+                <span class="bigintro">Portfolio</span>
+            </h2>
+        </div>
+    </div>
+    <div class="divide60"></div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div id="filters" class="text-center btn-group">
+                <div  class="hidden-xs">
+                    <a class="btn btn-lg btn-primary active" data-filter="*" href="#">Todos</a>
+                    <?php $rnd_btn=$this->rb; foreach($this->dados_categoria as $categoria){ ?>
+                    <a class="btn btn-lg btn-<?php echo $rnd_btn[ceil(rand(0, 4))];?>" data-filter=".cat_<?php echo $categoria['cod_categoria'];?>" href="#"><?php echo $categoria['nom_categoria'];?></a>
+                    <?php } ?>
+                    
+                </div>
+                <div class="visible-xs">
+                    <select id="e1" class="form-control">
+                        <option value="*">Todos</option>
+                        <?php foreach($this->dados_categoria as $categorias){ ?>
+                    <option value=".cat_<?php echo $categorias['cod_categoria'];?>"><?php echo $categorias['nom_categoria'];?></option>
+                    <?php } ?>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="divide40"></div>
+    <div class="container">
+        <div id="filter-items" class="row">
+            <?php foreach($this->dados_portfolio as $portfolio){ ?>
+            <div class="col xs-12 col-sm-4 cat_<?php echo $portfolio['cod_categoria'];?> item">
+                <div class="filter-content">
+                    <img src="<?php echo $portfolio['img_portfolio'];?>" alt="" class="img-responsive" />
+                    <div class="image-content">
+                        <h4><?php echo $portfolio['nom_portfolio']?></h4>
+                        <p class="hidden-xs hidden-sm">
+                            <?php echo $portfolio['dsc_portfolio'];?>
+                        </p>
+                        <a href="<?php echo $portfolio['img_portfolio'];?>" class="btn btn-sm btn-warning colorbox-button">Saiba Mais</a>
+                    </div>
+                </div>
+            </div>
+            <?php } ?>
+            <!--
+            <div class="col xs-12 col-sm-4 aplicativo item">
+                <div class="filter-content">
+                    <img src="/img/site/gallery/rodacms.jpg" alt="" class="img-responsive" />
+                    <div class="image-content">
+                        <h4>RoDa CMS</h4>
+                        <p class="hidden-xs hidden-sm">
+                            Gerenciador de CMS e Revistas Digitais.
+                        </p>
+                        <a href="/img/site/gallery/rodacms.jpg" class="btn btn-sm btn-warning colorbox-button">Saiba Mais</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col xs-12 col-sm-4 website item">
+                <div class="filter-content">
+                    <img src="/img/site/gallery/rodablog.jpg" alt="" class="img-responsive" />
+                    <div class="image-content">
+                        <h4>RoDa Blog - Responsivo</h4>
+                        <p class="hidden-xs hidden-sm">
+                            Blog pessoal e Responsivo Light
+                        </p>
+                        <a href="/img/site/gallery/rodablog.jpg" class="btn btn-sm btn-warning colorbox-button">Saiba Mais</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col xs-12 col-sm-4 projeto item">
+                <div class="filter-content">
+                    <img src="/img/site/gallery/publique.jpg" alt="" class="img-responsive" />
+                    <div class="image-content">
+                        <h4>Publique Anúncios Facebook</h4>
+                        <p class="hidden-xs hidden-sm">
+                            Organizador de Anúncios do Facebook.
+                        </p>
+                        <a href="/img/site/gallery/publique.jpg" class="btn btn-sm btn-warning colorbox-button">Saiba Mais</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col xs-12 col-sm-4 website item">
+                <div class="filter-content">
+                    <img src="/img/site/gallery/thinlog.png" alt="" class="img-responsive" />
+                    <div class="image-content">
+                        <h4>ThinLog Logística</h4>
+                        <p class="hidden-xs hidden-sm">
+                            A ThinLog é uma empresa voltada para a otimização do transporte rodoviário de cargas em todo o Brasil
+                        </p>
+                        <a href="/img/site/gallery/thinlog.png" class="btn btn-sm btn-warning colorbox-button">Saiba Mais</a>
+                    </div>
+                </div>
+            </div>
+            -->
+        </div>
+    </div>
+    <div class="divide60"></div>
+</section>

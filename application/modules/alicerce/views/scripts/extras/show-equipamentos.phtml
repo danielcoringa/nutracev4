@@ -1,0 +1,55 @@
+<form>
+    <table class='dynamic styled'>
+
+        <tr>
+            <td><strong>Categoria</strong></td>
+            <td>
+
+                <select class='search codcategoriasearch' id='cod_categoria' name='cod_categoria' data-func='Categorias' data-placeholder='Selecione uma Categoria' required style='width:245px'>
+                    <option></option>
+                    <?php
+                    foreach ($this->categorias as $row) {
+                        ?>
+                        <option value="<?php echo $row['cod_categoria']; ?>" ><?php echo $row['nom_categoria'] ?></option>
+                    <?php } ?>
+                </select>
+
+            </td>
+        </tr>
+        <tr>
+            <td><strong>Equipamento</strong></td>
+            <td>
+
+                <select class='search codequipamentosearch' id='cod_equipamento' name='cod_equipamento' data-func='Equipamento' data-placeholder='Selecione um Equipamento' required style='width:245px'>
+                    <option></option>
+
+                </select>
+
+            </td>
+        </tr>
+        <tr>
+            <td><strong>Quantidade</strong></td>
+            <td><input type="number" class='numeric' name='qequipamento' max='5' min='1' id='qequipamento' value='1'/></td>
+        </tr>
+        <tr>
+            <td><strong>Valor Locação</strong></td>
+            <td>
+                <p class="_25">
+                    <label class='inline' style="padding-top:6px;"><strong>R$</strong></label>
+                    <input style='padding-left: 24px' type="number" class="money numeric" name="vequipamento" id="vequipamento" value=""/>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>Incluir Acessórios?</strong></td>
+            <td><label><input type='radio' name='ind_acessorio' id='ind_acessorio_0' value='S' checked='checked'/><strong>&nbsp;Sim</strong></label>&nbsp;&nbsp;<label><input type='radio' name='ind_acessorio' id='ind_acessorio_1' value='N' /><strong>&nbsp;Não</strong></label></td>
+        </tr>
+
+    </table>
+</form>
+<script>
+    $(function() {
+        coringa_registro.showequip();
+        $('.money').maskMoney();
+    });
+</script>

@@ -1,0 +1,156 @@
+/* 
+   ------------------------------------------------------
+					Responsive Styles
+   ------------------------------------------------------
+*/
+
+@media (max-width: 767px) { 
+	#menu { display: none; }
+	.navigation select {  display: block; }
+	
+	.product-block { width: 100%; }	
+	#ct-woocommerce-entry { margin-right: 0; }
+
+	.product-subcategories { width: 100%; text-align: center; }
+
+}
+
+@media (max-width: 720px) { 
+}
+
+@media  (max-width: 683px) {
+	/* Samsung Galaxy Tab (landscape) */	
+}
+
+@media  (max-width: 640px) {
+}
+
+@media  (max-width: 600px) {
+}
+
+@media  (max-width: 570px) {
+	/* Motorola Mobility Milestone */
+}
+
+@media  (max-width: 568px) {
+}
+
+@media  (max-width: 540px) {
+
+}
+
+@media  (max-width: 533px) {
+
+}
+
+@media  (max-width: 500px) {
+}
+
+@media  (max-width: 480px) {
+}
+
+@media  (max-width: 400px) {
+	/* Samsung Galaxy Tab */
+}
+
+@media  (max-width: 360px) {
+	/* BlackBery Curve */
+}
+
+@media (max-width: 320px) { 
+}
+
+@media (max-width: 240px) { 
+}
+
+@media (max-width: 220px) { 
+}
+
+@media (max-width: 176px) { 
+}
+
+@media (min-width: 176px) and (max-width: 639px) {
+	/* Theme Type: Blog */
+	.masonry-box { width: 100% !important; margin-left: 0% !important; margin-right: 0% !important }
+
+	#blog-entry { margin-right: 0 !important; }
+}
+
+@media (min-width: 640px) and (max-width: 767px) {
+	/* Theme Type: Blog */
+	.full_width > .masonry-box { width: 46.5% !important; margin-right: 1.5% !important; margin-left: 1.5% !important; }
+	.three_columns > .masonry-box { width: 47.8% !important; margin-right: 2% !important; }
+	.four_columns > .masonry-box { width: 47.8% !important; margin-right: 2% !important; }
+	.two_columns_sidebar > .masonry-box { width: 47.8% !important; margin-right: 2% !important; }
+
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+	#menu { display: none; }	
+	.navigation select { display: block; }
+
+	/* Theme Type: Blog */
+	.full_width > .masonry-box { width: 31.2% !important; margin-right: 1% !important; margin-left: 1% !important; }
+	.three_columns > .masonry-box { width: 31.3% !important; margin-right: 2% !important; }
+	.four_columns > .masonry-box { width: 31.3% !important; margin-right: 2% !important; }
+	.two_columns_sidebar > .masonry-box { width: 48% !important; margin-right: 2% !important; }
+
+	.product-subcategories { width: 47%; text-align: center; }
+
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+
+	/* Theme Type: Blog */
+	.full_width > .masonry-box { width: 31% !important; margin-right: 1% !important; margin-left: 1% !important; }
+	.three_columns > .masonry-box { width: 31.3% !important; margin-right: 2% !important; }
+	.four_columns > .masonry-box { width: 23% !important; margin-right: 2% !important; }
+
+}
+
+@media (min-width: 1440px) and (max-width: 1920px) {
+
+	/* Theme Type: Blog */
+	.full_width > .masonry-box { width: 18.8% !important; margin-right: 0.5% !important; margin-left: 0.5% !important; }
+	.three_columns > .masonry-box { width: 31.3% !important; margin-right: 2% !important; }
+	.four_columns > .masonry-box { width: 23.7% !important; margin-right: 15px !important; }	
+
+	.one_columns_sidebar > .masonry-box { width: 100% !important; margin-left: 0 !important; margin-right: 0 !important; }
+	.one_columns_sidebar { margin-right: 0 !important; }
+
+	.two_columns_sidebar > .masonry-box { width: 48% !important; margin-left: 0 !important; margin-right: 15px !important; }
+}
+
+@media (max-width: 1169px) {
+	.follow-block { float: left; }
+	ul.follow-block li { float: left; margin-right: 5px; margin-left: 0; }
+	.follow-block a { margin-left: 0; margin-right: 5px; }
+	.nav-single { float: left; margin-top: 15px; }
+	.ct-shop-cart { float: left; margin-bottom: 15px; }
+}
+
+@media (max-width: 639px) {
+	.woocommerce-result-count { display: none; }
+	.order-combobox { float: left; margin-right: 15px; }
+	.desc-asc-sort { display: none; }
+}
+
+@media (max-width: 1200px) {
+	/*.slides li .entry-thumb { margin-bottom: 15px; }*/
+	#footer .addinfo { text-align: left; }
+}
+
+/* Portrait tablet to landscape and desktop*/
+@media (min-width: 980px) and (max-width: 1200px) {
+}
+
+@media (min-width: 795px) and (max-width: 805px) { 
+}
+
+
+@media (min-width: 710px) and (max-width: 720px)  {
+}
+
+@media (max-width: 979px) {
+
+}

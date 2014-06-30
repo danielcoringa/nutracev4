@@ -1,0 +1,88 @@
+<!-- SAMPLE BOX CONFIGURATION MODAL FORM-->
+<div class="modal fade" id="box-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <form action="/configuracoes/alterar" class="ajax-form" method="post" enctype="multipart/form-data" data-noprogress="true" autocomplete="off">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"><i class='fa fa-gear'></i> Configurações <span class="nom-tipo"></span></h4>
+                </div>
+                <div class="modal-body content-config">
+                    Carregando Configurações
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="container">
+    <div class="row">
+        <div id="content" class="col-lg-12">
+            <!-- PAGE HEADER-->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-header">
+                        <!-- BREADCRUMBS -->
+                        <ul class="breadcrumb">
+                            <li>
+                                <i class="fa fa-home"></i>
+                                <a href="/">Home</a>
+                            </li>
+                            <li>
+                                <a href="/publicacoes">Publicações</a>
+                            </li>
+                            <li>
+                                <a href="/artigos">Artigos</a>
+                            </li>
+                            <li>Cadastro</li>
+                        </ul>
+                        <!-- /BREADCRUMBS -->
+                        <div class="clearfix">
+                            <h3 class="content-title pull-left">Artigos</h3>
+                        </div>
+                        <div class="description">Cadastro de Artigos para o Blog</div>
+                    </div>
+                </div>
+            </div>
+            <!-- /PAGE HEADER -->
+            <form action="" method="post" enctype="multipart/form-data" class="ajax-form" name="fmartigo" id="fmartigo">
+                <div class="col-md-9 box-container">
+                    <?php echo $this->render("widgets/basic.phtml"); ?>
+                    <?php echo $this->render("widgets/image.phtml"); ?>
+
+                    <?php //echo $this->render("widgets/galeria.phtml"); ?>
+                    <?php //echo $this->render("widgets/video.phtml"); ?>
+                    <?php echo $this->render("widgets/audio.phtml"); ?>
+                    <?php echo $this->render("widgets/background_artigo.phtml"); ?>
+                    <?php echo $this->render("widgets/review.phtml"); ?>
+                </div>
+                <div class="col-md-3 box-container">
+                    <?php echo $this->render("widgets/publicacao.phtml"); ?>
+
+                    <?php echo $this->render("widgets/categorias.phtml"); ?>
+                    <?php echo $this->render("widgets/formato.phtml"); ?>
+                    <?php echo $this->render("widgets/tags.phtml"); ?>
+                    <?php echo $this->render("widgets/imagem-principal.phtml"); ?>
+                    <?php //echo $this->render("widgets/video-principal.phtml"); ?>
+                    <?php echo $this->render("widgets/audio-principal.phtml"); ?>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    jQuery(document).ready(function() {
+        artigos.init();
+//        App.setPage("forms");  //Set current page
+//        App.setPage("elements");
+//        App.setPage("widgets_box");
+//        App.setPage("button_icons");  //Set current page
+//
+//
+        App.init(); //Initialise plugins and elements
+    });
+</script>

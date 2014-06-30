@@ -1,0 +1,33 @@
+<div class="box border orange widget" id="widget-audio-pv" <?php
+if ($this->data['tipo_artigo'] !== 'audio') {
+    echo 'style="display:none"';
+}
+?>>
+    <div class="box-title">
+        <h4><i class="fa fa-instagram"></i>Audio Principal</h4>
+        <div class="tools hidden-xs">
+            <a href="#box-config" data-toggle="modal" class="config">
+                <i class="fa fa-cog"></i>
+            </a>
+            <a href="javascript:;" class="reload">
+                <i class="fa fa-refresh"></i>
+            </a>
+            <a href="javascript:;" class="collapse">
+                <i class="fa fa-chevron-up"></i>
+            </a>
+
+        </div>
+    </div>
+    <div class="box-body">
+        <div class="form-group">
+            <div id='player-audio'>
+                <?php
+                if ($this->data['tipo_artigo'] == 'audio') {
+                    echo $this->getAudio($this->data['cod_artigo']);
+                }
+                ?>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

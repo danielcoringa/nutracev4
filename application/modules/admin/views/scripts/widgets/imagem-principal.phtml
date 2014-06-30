@@ -1,0 +1,27 @@
+<div class="box border green widget" id="widget-image-pv" <?php
+if ($this->data['tipo_artigo'] !== 'image') {
+    // echo 'style="display:none"';
+}
+?>>
+    <div class="box-title">
+        <h4><i class="fa fa-instagram"></i>Imagem Principal</h4>
+        <div class="tools hidden-xs">
+            <a href="#box-config" data-toggle="modal" class="config">
+                <i class="fa fa-cog"></i>
+            </a>
+            <a href="javascript:;" class="reload">
+                <i class="fa fa-refresh"></i>
+            </a>
+            <a href="javascript:;" class="collapse">
+                <i class="fa fa-chevron-up"></i>
+            </a>
+
+        </div>
+    </div>
+    <div class="box-body">
+        <div class="form-group">
+            <img src="/<?php echo $this->miniatura($this->data['cod_artigo'], 'medium'); ?>" class="col-md-12 fileinput-preview" />
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<section id="content" class="container_12 clearfix" data-sort="true">
+    <h1 class="grid_12">Cadastrar Grupo</h1>
+    <form name="fm_grupo" id="fm_grupo" action="/usuarios/grupos-cadastro" class="grid_12 validate" method="post">
+        <fieldset>
+            <legend>Formulário de Grupos</legend>
+            <div class="row">
+                <label for="cod_grupo">
+                    <strong>Cód. Grupo</strong>
+                </label>
+                <div>
+                    <input type="text" name='cod_grupo' id='cod_grupo' disabled placeholder='Automático' value="<?php echo $this->data['cod_grupo']; ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <label for="nom_grupo">
+                    <strong>Nome da Grupo</strong>
+                    <small>ou Título</small>
+                </label>
+                <div>
+                    <input type="text" class="tooltip" data-gravity=n title="É obrigatório informar o nome do grupo." name='nom_grupo' id='nom_grupo'  value="<?php echo $this->data['nom_grupo']; ?>"/>
+                </div>
+            </div>
+            <div class="row">
+                <label for="des_grupo">
+                    <strong>Descrição da Grupo</strong>
+
+                </label>
+                <div>
+                    <textarea name="des_grupo" id="des_grupo" class="editor"><?php echo $this->data['des_grupo'] ?></textarea>
+                </div>
+            </div>
+
+        </fieldset>
+        <div class="buttons-box">
+            <button class="button green" type="submit"><span class="icon icon-save"></span>Salvar Registro</button>
+            <button class="button red" type="button" onclick="location.hash = 'usuarios/grupos'"><span class="icon icon-remove"></span>Cancelar</button>
+        </div>
+    </form>
+</section>

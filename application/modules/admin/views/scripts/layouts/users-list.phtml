@@ -1,0 +1,42 @@
+<!-- TEAM STATUS -->
+<div class="container team-status" id="team-status">
+    <div id="scrollbar">
+        <div class="handle">
+        </div>
+    </div>
+    <div id="teamslider">
+        <ul class="team-list">
+            <?php foreach ($this->list_user as $users) { ?>
+                <li>
+                    <a href="/usuarios/perfil/id/<?php echo $users['id']; ?>">
+                        <span class="image">
+                            <img src="/img/usuarios/<?php echo $users['imagem']; ?>" onerror="this.src='/img/admin/avatars/avatar4.jpg';" alt="" />
+                        </span>
+                        <span class="title">
+                            <?php echo $this->truncate($users['nome'], 22); ?>
+                        </span>
+
+                        <span class="status">
+                            <div class="email">
+                                <span class='fa fa-envelope'></span> <i class="small_text"><?php echo $users['email']; ?></i>
+
+                            </div>
+                            <div class="field">
+                                <span class="badge badge-orange">8</span> in-progress
+                                <span class="pull-right fa fa-adjust"></span>
+                            </div>
+                            <div class="field">
+                                <span class="badge badge-red">4</span> pending
+                                <span class="pull-right fa fa-list-ul"></span>
+                            </div>
+                        </span>
+                    </a>
+                </li>
+            <?php } ?>
+
+        </ul>
+    </div>
+
+</div>
+
+<!-- /TEAM STATUS -->

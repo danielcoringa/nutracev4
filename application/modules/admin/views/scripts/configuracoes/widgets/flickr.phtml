@@ -1,0 +1,30 @@
+<?php if (!isset($this->flickr)) { ?>
+
+    <div class='panel box container'>
+        <div class="panel-heading">
+            <h1 class="title panel-title">Flickr Autorização</h1>
+        </div>
+        <div class="panel-body infobox">
+            <p>Clique no botão abaixo para autorizar o acesso à sua conta no Flickr.</p>
+            <button class="btn btn-default btn-success login-flickr"><i class="fa fa-check big"></i> Autorizar</button>
+        </div>
+    </div>
+    <script>
+        $('.login-flickr').bind("click", function() {
+            window.open('/configuracoes/flickr/login/true', '', 'width=640,height=480');
+        });
+    </script>
+    <?php
+}
+else {
+    ?>
+    <div class="scroller content-flickr" data-height="325px" data-always-visible="1">
+        <?php echo $this->images; ?>
+        <div class="clearfix"></div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            imagem.init();
+        })
+    </script>
+<?php } ?>

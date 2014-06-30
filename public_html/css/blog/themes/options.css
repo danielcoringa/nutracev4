@@ -1,0 +1,199 @@
+
+/* 
+*	=================================================================================================================================================
+*	Header BG Settings
+*	=================================================================================================================================================
+*/
+
+#header {
+	background-color: #FFFFFF; 
+	}
+
+/* 
+*	=================================================================================================================================================
+*	Footer
+*	=================================================================================================================================================
+*/
+
+#footer {
+	background-color: #FFFFFF; 
+	}
+
+#footer p, #footer {
+	color: #363636;
+	font-size: 11px;	
+}
+
+
+/* 
+*	=================================================================================================================================================
+*	Body BG Color
+*	=================================================================================================================================================
+*/
+body { background: #F7F8F9; }
+
+
+	.sf-menu ul { 
+		background-color: #202020; 
+		border: 1px solid #333;
+	}
+
+	.sf-menu ul li, .sf-menu ul ul li {
+		border-bottom: 1px solid #333333;
+	}
+
+	.sf-menu ul li a:hover, .sf-menu ul ul li a:hover {
+		color: #FFF !important;
+	}
+
+.sf-arrows ul .sf-with-ul:after {
+	margin-top: -5px;
+	margin-right: -3px;
+	border-color: transparent;
+	border-left-color: #CCC; /* edit this to suit design (no rgba in IE8) */
+	border-left-color: rgba(255,255,255,.5);
+}	
+	
+
+.current-menu-item > a, .current-menu-ancestor > a, .current-post-ancestor > a { color: #C2374C !important; }
+a, a:link, a:visited { color: #C2374C; }
+.sf-menu a:hover { color: #C2374C !important; }
+.ticker-title span { color: #C2374C; }
+.read-more, .author-site { background: #C2374C; }
+
+.tags a:before { border-color: transparent #C2374C transparent transparent; }
+.tags a { background: #C2374C !important; }
+.nav-next a span, .nav-previous a span { background: #C2374C; }
+.comment-reply-link { background-color: #C2374C; }
+.social-icons-list li:hover a,
+.social-counter-list li:hover a { color: #C2374C !important; }
+#wp-calendar td#today, #wp-calendar td#today a { background-color: #C2374C; }
+h1.entry-title a:hover,
+h3.entry-title a:hover, a:hover h3.entry-title,
+h4.entry-title a:hover,
+h5.entry-title a:hover { color: #C2374C; }
+.pagination span.current {
+	background-color: #C2374C;
+	border: 1px solid #C2374C;
+}
+
+#pbd-alp-load-posts:hover a { color: #C2374C; }
+
+a:hover { color: #202020; }
+.right-aside a { color: #999; }
+
+.post-like a { color: #FFF; }
+
+/* 
+*	=================================================================================================================================================
+*	Woocommerce
+*	=================================================================================================================================================
+*/
+
+	
+
+#reviews #comments .star-rating { color: #ff7f00; }
+.woocommerce .widget_shopping_cart .total > strong,.woocommerce-page .widget_shopping_cart .total > strong { color: #C2374C; }
+.product_list_widget .star-rating { color: #C2374C; }
+
+.woocommerce ul.cart_list li a:hover,
+.woocommerce ul.product_list_widget li a:hover,
+.woocommerce-page ul.cart_list li a:hover,
+.woocommerce-page ul.product_list_widget li a:hover { color: #C2374C; }
+
+ul.page-numbers li span.current { 
+	background-color: #C2374C;
+	border: 1px solid #C2374C;
+}
+span.cart-total { color: #C2374C; }
+.product-rating { background-color: #C2374C; }
+
+.price > ins, .price > ins > .amount { color: #C2374C; }
+.woocommerce .cart-collaterals .cart_totals tr.total th strong, .woocommerce .cart-collaterals .cart_totals tr.total td strong, tr.total th strong, tr.total td strong .amount { color: #C2374C; }
+.cart_totals tr.total th strong, .cart_totals tr.total td  strong, tr.total th strong, tr.total td strong .amount { color: #C2374C; }
+h2.shipping-title, .woocommerce h2 { color: #C2374C; }
+.thankyou { color: #C2374C; }
+.woocommerce .widget_price_filter .ui-slider .ui-slider-handle,.woocommerce-page .widget_price_filter .ui-slider .ui-slider-handle,
+.woocommerce .widget_price_filter .ui-slider .ui-slider-range,.woocommerce-page .widget_price_filter .ui-slider .ui-slider-range { background: #C2374C; } 
+/* Responsive Layout */
+
+/* 
+*	=================================================================================================================================================
+*	Columns
+*	=================================================================================================================================================
+*/
+.masonry-box { 
+		
+			
+			width: 23.7%; margin-right: 15px; margin-left: 0;									
+ }
+.category-blog > .masonry-box {
+		
+		width: 32%; margin-right: 15px; margin-left: 0;	
+												}
+
+	#blog-entry { margin-right: -15px; }
+
+
+
+
+
+
+
+.bg-post-format { background-color: #C2374C; }
+.bg-post-format:hover { background-color: #202020; }
+
+#ads-block { text-align: center; }
+.pagination { display: none; }
+/* 
+*	=================================================================================================================================================
+*	Headings
+*	=================================================================================================================================================
+*/
+h1 {
+	color: #202020;
+	font-style: normal;	
+		
+	font-size: 38px; 
+	line-height: 40px; 
+}
+
+h2 {
+	color: #202020;
+	font-style: normal;	
+		
+	font-size: 31px; 
+	line-height: 40px; 
+}
+
+h3 {
+	color: #202020;
+	font-style: normal;	
+		
+	font-size: 24px; 
+	line-height: 40px; 
+}
+
+h4 {
+	color: #202020;
+	font-style: normal;	
+		
+	font-size: 17px; 
+	line-height: 20px; 
+}
+
+h5 {
+	color: #202020;
+	font-style: normal;	
+		
+	font-size: 14px; 
+	line-height: 20px; 
+}
+
+h6 {
+	color: #202020;
+	font-style: normal;	
+		
+	font-size: 12px; 
+	line-height: 20px; 
+}

@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="row">
+        <div id="content" class="col-lg-12">
+            <!-- PAGE HEADER-->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-header">
+                        <!-- STYLER -->
+
+                        <!-- /STYLER -->
+                        <!-- BREADCRUMBS -->
+                        <ul class="breadcrumb">
+                            <li>
+                                <i class="fa fa-home"></i>
+                                <a href="/">Home</a>
+                            </li>
+                            <li>
+                                <a href="#">Erro</a>
+                            </li>
+                            <li><?php echo $this->message ?></li>
+                        </ul>
+                        <!-- /BREADCRUMBS -->
+                        <div class="clearfix">
+                            <h3 class="content-title pull-left"><?php echo $this->message ?></h3>
+                        </div>
+                        <div class="description"><?php echo $this->exception->getMessage() ?></div>
+                    </div>
+                </div>
+            </div>
+            <!-- /PAGE HEADER -->
+            <div class="row">
+                <div class="col-md-12 not-found text-center">
+                    <div class="error">
+                        <?php echo $this->exceptioncode ?>
+                    </div>
+                </div>
+                <div class="col-md-4 col-md-offset-4 not-found text-center">
+                    <div class="content">
+                        <h3><?php echo $this->message ?></h3>
+                        <p>
+                            <?php echo $this->exception->getMessage() ?>
+                        </p>
+                        <form action="#">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="search here...">
+                                <span class="input-group-btn">                   
+                                    <button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                    <?php if (isset($this->exception)): ?>
+                        <h3>Stack trace:</h3>
+                        <pre style="text-align: left"><?php echo $this->exception->getTraceAsString() ?>
+                        </pre>
+
+                        <h3>Request Parameters:</h3>
+                        <pre style="text-align: left"><?php echo $this->escape(var_export($this->request->getParams(), true)) ?>
+                        </pre>
+
+
+
+                    <?php endif ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

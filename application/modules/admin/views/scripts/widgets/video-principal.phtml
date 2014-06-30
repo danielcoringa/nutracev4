@@ -1,0 +1,30 @@
+<div class="box border green widget" id="widget-video-pv" <?php
+if ($this->data['tipo_artigo'] !== 'video') {
+    echo 'style="display:none">';
+}
+else {
+    echo "><script>$(document).ready(function(){callYoutube()});</script>";
+}
+?>
+     <div class="box-title">
+        <h4><i class="fa fa-video-camera"></i>Vídeo Principal</h4>
+        <div class="tools hidden-xs">
+            <a href="#box-config" data-toggle="modal" class="config">
+                <i class="fa fa-cog"></i>
+            </a>
+            <a href="javascript:;" class="reload">
+                <i class="fa fa-refresh"></i>
+            </a>
+            <a href="javascript:;" class="collapse">
+                <i class="fa fa-chevron-up"></i>
+            </a>
+
+        </div>
+    </div>
+    <div class="box-body">
+        <div class="form-group" id='player-video'>
+            <?php echo $this->getVideo($this->data['cod_artigo']); ?>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,136 @@
+<section id="content" class="container_12 clearfix" data-sort="true">
+    <h1 class="grid_12">Cadastrar Cobrança por Cliente</h1>
+    <form name="fm_cliente" id="fm_cliente" action="/clientes/cobranca-cadastro" class="grid_12 validate" method="post">
+        <fieldset>
+            <legend>Formulário de Cobrança</legend>
+            <div class="row">
+                <label for="cod_cobranca">
+                    <strong>Cód. Cobrança</strong>
+                </label>
+                <div>
+                    <input type="text" name='cod_cobranca' id='cod_cobranca' readonly placeholder='Automático' value="<?php echo $this->data['cod_cobranca']; ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <label for="cod_cliente">
+                    <strong>Nome do Cliente</strong>
+                    <small>ou Razão Social</small>
+                </label>
+                <div>
+                    <select class='search' id='cod_cliente' name='cod_cliente' data-placeholder='Selecione um Cliente' >
+                        <option></option>
+                        <?php
+                        foreach ($this->cliente as $row) {
+                            if ($row['cod_cliente'] == $this->data['cod_cliente']) {
+                                $selected = 'selected="selected"';
+                            } else {
+                                $selected = '';
+                            }
+                            ?>
+                            <option value="<?php echo $row['cod_cliente']; ?>" <?php echo $selected; ?>><?php echo $row['nom_cliente']; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <label for="num_cep">
+                    <strong>CEP</strong>
+
+                </label>
+                <div>
+                    <input type="text" data-type="buscacep" id="num_cep" name="num_cep"  autocomplete="on" class="mask" data-mask="99.999-999" value="<?php echo $this->data['num_cep']; ?>"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="des_endereco">
+                    <strong>Endereço</strong>
+
+                </label>
+                <div>
+                    <input type="text" id="des_endereco" name="des_endereco" autocomplete="on" value="<?php echo $this->data['des_endereco']; ?>"  />
+                </div>
+            </div>
+            <div class="row">
+                <label for="des_bairro">
+                    <strong>Bairro</strong>
+
+                </label>
+                <div>
+                    <input type="text" id="des_bairro" name="des_bairro" autocomplete="on" value="<?php echo $this->data['des_bairro']; ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <label for="des_estado">
+                    <strong>Estado</strong>
+
+                </label>
+                <div>
+                    <select tabindex="6" class='search' id='des_estado' name='des_estado'data-placeholder='Selecione um Estado' data-type='estadosearch' >
+                        <option></option>
+                        <?php
+                        foreach ($this->estados as $row) {
+                            if ($row['ind_sigla'] == $this->data['des_estado']) {
+                                $selected = 'selected="selected"';
+                            } else {
+                                $selected = '';
+                            }
+                            ?>
+                            <option value='<?php echo $row['ind_sigla'] ?>'  <?php echo $selected; ?>><?php echo $row['nom_estado']; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <label for="des_cidade">
+                    <strong>Cidade</strong>
+
+                </label>
+                <div class='tooltip des_cidade' title='É necessário selecionar um estado para exibir as cidades' data-gravity=n >
+                    <select tabindex="7" class='search' data-placeholder='Selecione uma Cidade' id='des_cidade' name='des_cidade'  data-type='cidadesearch' >
+                        <option></option>
+                        <?php
+                        if (count($this->cidades) > 0) {
+                            foreach ($this->cidades as $row) {
+                                if ($row['nom_cidade'] == $this->data['des_cidade']) {
+                                    $selected = 'selected="selected"';
+                                } else {
+                                    $selected = '';
+                                }
+                                ?>
+                                <option value="<?php echo $row['nom_cidade'] ?>" <?php echo $selected; ?>><?php echo $row['nom_cidade'] ?></option>
+                                <?php
+                            }
+                        }
+                        ?>
+
+
+
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <label for="num_fone">
+                    <strong>Telefone</strong>
+
+                </label>
+                <div>
+                    <input type="text" id="num_fone" name="num_fone" autocomplete="on" class="mask" data-mask="(99)9999-9999" value="<?php echo $this->data['num_fone']; ?>" />
+                </div>
+            </div>
+            <div class="row">
+                <label for="num_fone2">
+                    <strong>Celular</strong>
+
+                </label>
+                <div>
+                    <input type="text" id="num_fone2" name="num_fone2" autocomplete="on" class="mask" data-mask="(99)9999-9999"  value="<?php echo $this->data['num_fone2']; ?>"/>
+                </div>
+            </div>
+        </fieldset>
+        <div class="buttons-box">
+            <button class="button green" type="submit"><span class="icon icon-save"></span>Salvar Registro</button>
+            <button class="button red" type="button" onclick="location = '#clientes/cobranca'"><span class="icon icon-remove"></span>Cancelar</button>
+        </div>
+    </form>
+</section>

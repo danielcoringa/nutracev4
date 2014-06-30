@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<!-- saved from url=(0069)http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/1#tab2 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Administrativo Cursos</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="http://cursos.rodrigodaniel.com.br/css/cursos/bootstrap.min.css">
+        <link rel="stylesheet" href="http://cursos.rodrigodaniel.com.br/css/cursos/bootstrap-glyphicons.css">
+        <link rel="stylesheet" href="http://cursos.rodrigodaniel.com.br/css/cursos/bootstrap-responsive.min.css">
+
+        <link rel="stylesheet" href="http://cursos.rodrigodaniel.com.br/css/cursos/fullcalendar.css">
+        <link rel="stylesheet" href="http://cursos.rodrigodaniel.com.br/css/cursos/colorpicker.css">
+        <link rel="stylesheet" href="http://cursos.rodrigodaniel.com.br/css/cursos/datepicker.css">
+        <link rel="stylesheet" href="http://cursos.rodrigodaniel.com.br/css/cursos/jquery-ui.css">
+
+
+        <link rel="stylesheet" href="http://cursos.rodrigodaniel.com.br/css/cursos/select2.css">
+        <link rel="stylesheet" href="http://cursos.rodrigodaniel.com.br/css/cursos/icheck/flat/grey.css" class="icheck-color">
+
+        <link rel="stylesheet" href="http://cursos.rodrigodaniel.com.br/css/cursos/uniform.css">
+        <link rel="stylesheet" href="http://cursos.rodrigodaniel.com.br/css/cursos/unicorn.main.css">
+        <link rel="stylesheet" href="http://cursos.rodrigodaniel.com.br/css/cursos/unicorn.grey.css" class="skin-color">
+
+    <style type="text/css"></style><style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style></head>
+    <body style="" data-menu-position="closed">
+
+        <div id="header">
+    <h1><a href="http://cursos.rodrigodaniel.com.br/">Administrativo Cursos</a></h1>
+    <a id="menu-trigger" href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/1#"><i class="glyphicon glyphicon-align-justify"></i></a>
+</div>
+
+<div id="search">
+    <input type="text" placeholder="Pesquise aqui..."><button type="submit" class="tip-right" title="" data-original-title="Procurar"><i class="glyphicon glyphicon-search"></i></button>
+</div>
+<div id="user-nav">
+    <ul class="btn-group" style="width: auto; margin: 0px;">
+        <li class="btn"><a title="" href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/1#" data-original-title=""><i class="glyphicon glyphicon-user"></i> <span class="text">Perfil</span></a></li>
+        <li class="btn dropdown" id="menu-messages">
+            <a href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/1#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle" data-original-title="" title="">
+                <i class="glyphicon glyphicon-envelope"></i>
+                <span class="text">Mensagens</span>
+                <span class="label label-danger">5</span>
+                <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li><a class="sAdd" title="" href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/1#" data-original-title="">nova mensagem</a></li>
+                <li><a class="sInbox" title="" href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/1#" data-original-title="">caixa de entrada</a></li>
+                <li><a class="sOutbox" title="" href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/1#" data-original-title="">caixa de saida</a></li>
+                <li><a class="sTrash" title="" href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/1#" data-original-title="">lixeira</a></li>
+            </ul>
+        </li>
+        <li class="btn"><a title="" href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/1#" data-original-title=""><i class="glyphicon glyphicon-cog"></i> <span class="text">Configurações</span></a></li>
+        <li class="btn"><a title="" href="http://cursos.rodrigodaniel.com.br/login/index/logout" data-original-title=""><i class="glyphicon glyphicon-share-alt"></i> <span class="text">Logout</span></a></li>
+    </ul>
+</div>        <div id="sidebar">
+                <!--<a href="#" class="hide"><i class="glyphicon glyphicon-home"></i> Dashboard</a>-->
+    <ul style="display: block;">
+        <li class=""><a href="http://cursos.rodrigodaniel.com.br/"><i class="glyphicon glyphicon-home"></i> <span>Dashboard</span></a></li>
+        <li class="submenu ">
+            <a href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/1#"><i class="glyphicon glyphicon-th-list"></i> <span>Categorias</span> <span class="label">2</span></a>
+            <ul>
+                <li class=""><a href="http://cursos.rodrigodaniel.com.br/categorias/cadastro">Nova Categoria</a></li>
+                <li class=""><a href="http://cursos.rodrigodaniel.com.br/categorias">Listar Todas</a></li>
+            </ul>
+        </li>
+        <li class="submenu active open">
+            <a href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/1#"><i class="glyphicon glyphicon-pencil"></i> <span>Instrutores</span> <span class="label">2</span></a>
+            <ul style="display: block;">
+                <li class="active"><a href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro">Novo Instrutor</a></li>
+                <li class=""><a href="http://cursos.rodrigodaniel.com.br/instrutores">Listar Todos</a></li>
+            </ul>
+        </li>
+        <li class="submenu ">
+            <a href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/1#"><i class="glyphicon glyphicon-user"></i> <span>Aluno</span> <span class="label">2</span></a>
+            <ul>
+                <li class="active"><a href="http://cursos.rodrigodaniel.com.br/alunos/cadastro">Novo Aluno</a></li>
+                <li class=""><a href="http://cursos.rodrigodaniel.com.br/alunos">Listar Todos</a></li>
+            </ul>
+        </li>
+
+        <li><a href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/interface.html"><i class="glyphicon glyphicon-pencil"></i> <span>Interface elements</span></a></li>
+        <li><a href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/tables.html"><i class="glyphicon glyphicon-th"></i> <span>Tables</span></a></li>
+        <li><a href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/grid.html"><i class="glyphicon glyphicon-th-list"></i> <span>Grid Layout</span></a></li>
+        <li class="submenu">
+            <a href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/1#"><i class="glyphicon glyphicon-file"></i> <span>Sample pages</span> <span class="label">4</span></a>
+            <ul>
+                <li><a href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/invoice.html">Invoice</a></li>
+                <li><a href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/chat.html">Support chat</a></li>
+                <li><a href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/calendar.html">Calendar</a></li>
+                <li><a href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/gallery.html">Gallery</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/charts.html"><i class="glyphicon glyphicon-signal"></i> <span>Charts &amp; graphs</span></a>
+        </li>
+        <li>
+            <a href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/widgets.html"><i class="glyphicon glyphicon-inbox"></i> <span>Widgets</span></a>
+        </li>
+    </ul>
+
+</div>        <div id="style-switcher">
+    <i class="glyphicon glyphicon-arrow-left"></i>
+    <span>Estilo:</span>
+    <a href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/1#grey" style="background-color: #555555;border-color: #aaaaaa;"></a>
+    <a href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/1#light-blue" style="background-color: #8399b0;"></a>
+    <a href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/1#blue" style="background-color: #2D2F57;"></a>
+    <a href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/1#red" style="background-color: #673232;"></a>
+    <a href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/1#red-green" style="background-image: url(&#39;/img/cursos/demo/red-green.png&#39;);background-repeat: no-repeat;"></a>
+    <a href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/1#green" style="background-color:#008200;"></a>
+</div>        <div id="content">
+            <div id="content-header">
+    <h1><i class="icon-adjust glyphicon glyphicon-pencil"></i> Cadastro de Instrutor</h1>
+
+</div>
+<div id="breadcrumb">
+    <a href="http://cursos.rodrigodaniel.com.br/" title="" class="tip-bottom" data-original-title="Voltar para o Dashboard"><i class="glyphicon glyphicon-home"></i> Dashboard</a>
+    <a href="http://cursos.rodrigodaniel.com.br/instrutores" title="Voltar para a lista de Categorias">Instrutores</a>
+    <a href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/1#" class="current">Cadastro</a>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon">
+                        <i class="glyphicon glyphicon-align-justify"></i>
+                    </span>
+
+                    <ul class="nav nav-tabs">
+                        <li class=""><a data-toggle="tab" href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/1#tab1">Dados Pessoais</a></li>
+                        <li class=""><a data-toggle="tab" href="./Administrativo Cursos_files/Administrativo Cursos.htm">Perfil Profissional</a></li>
+                        <li class=""><a data-toggle="tab" href="http://cursos.rodrigodaniel.com.br/instrutores/cadastro/editar/1#tab3">Messages</a></li>
+                    </ul>
+                </div>
+                <form action="http://cursos.rodrigodaniel.com.br/instrutores/cadastro" method="post" class="form-horizontal ajaxform" id="fm_validate" novalidate="novalidate">
+                    <div class="widget-content tab-content">
+                        <div id="tab1" class="tab-pane">
+
+                            <div class="form-group">
+                                <label class="control-label">Cód</label>
+                                <div class="controls">
+                                    <input type="text" class="form-control input-small" name="cod_instrutor" id="cod_instrutor" value="1" readonly="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Nome/Titulo</label>
+                                <div class="controls">
+                                    <input type="text" required="" class="form-control input-small" name="nom_instrutor" id="nom_instrutor" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Email</label>
+                                <div class="controls">
+                                    <input type="text" required="" class="form-control input-small" name="end_email" id="end_email" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Página Web</label>
+                                <div class="controls">
+                                    <input type="text" class="form-control input-small" name="end_url" id="end_url" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Estado</label>
+                                <div class="controls">
+                                    <div class="select2-container" id="s2id_ind_estado" style="width: 80%;"><a href="javascript:void(0)" onclick="return false;" class="select2-choice" tabindex="-1">   <span class="select2-chosen">Selecione um Estado</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow"><b></b></span></a><input class="select2-focusser select2-offscreen" type="text" id="s2id_autogen1"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input">   </div>   <ul class="select2-results">   </ul></div></div><select name="ind_estado" id="ind_estado" style="width: 80%" tabindex="-1" class="select2-offscreen">
+                                        <option>Selecione um Estado</option>
+                                         <option value="AC">Acre </option> <option value="AL">Alagoas </option> <option value="AP">Amapá </option> <option value="AM">Amazonas </option> <option value="BA">Bahia </option> <option value="CE">Ceará </option> <option value="DF">Distrito Federal </option> <option value="ES">Espírito Santo </option> <option value="GO">Goiás </option> <option value="MA">Maranhão </option> <option value="MT">Mato Grosso </option> <option value="MS">Mato Grosso do Sul </option> <option value="MG">Minas Gerais </option> <option value="PA">Pará </option> <option value="PB">Paraíba </option> <option value="PR">Paraná </option> <option value="PE">Pernambuco </option> <option value="PI">Piauí </option> <option value="RJ">Rio de Janeiro </option> <option value="RN">Rio Grande do Norte </option> <option value="RS">Rio Grande do Sul </option> <option value="RO">Rondônia </option> <option value="RR">Roraima </option> <option value="SC">Santa Catarina </option> <option value="SP">São Paulo </option> <option value="SE">Sergipe </option> <option value="TO">Tocantins </option>                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Cidade</label>
+                                <div class="controls">
+                                    <div class="select2-container" id="s2id_ind_cidade" style="width: 80%;"><a href="javascript:void(0)" onclick="return false;" class="select2-choice" tabindex="-1">   <span class="select2-chosen">Selecione um estado para exibir as cidades.</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow"><b></b></span></a><input class="select2-focusser select2-offscreen" type="text" id="s2id_autogen2"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input">   </div>   <ul class="select2-results">   </ul></div></div><select name="ind_cidade" id="ind_cidade" style="width: 80%" tabindex="-1" class="select2-offscreen">
+                                        <option>Selecione um estado para exibir as cidades.</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">País</label>
+                                <div class="controls">
+                                    <div class="select2-container" id="s2id_ind_pais" style="width: 80%;"><a href="javascript:void(0)" onclick="return false;" class="select2-choice" tabindex="-1">   <span class="select2-chosen">Brasil</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow"><b></b></span></a><input class="select2-focusser select2-offscreen" type="text" id="s2id_autogen3"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input">   </div>   <ul class="select2-results">   </ul></div></div><select name="ind_pais" id="ind_pais" style="width: 80%" tabindex="-1" class="select2-offscreen">
+                                        <option value="Brasil">Brasil</option>
+
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Status</label>
+                                <div class="controls">
+                                    <label><div class="iradio_flat-grey checked" style="position: relative;"><input type="radio" name="ind_status" checked="" value="A" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"></ins></div> Ativo</label>
+                                    <label><div class="iradio_flat-grey" style="position: relative;"><input type="radio" name="ind_status" value="I" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; background-position: initial initial; background-repeat: initial initial;"></ins></div> Inativo</label>
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div id="tab2" class="tab-pane active">
+                            <div class="form-group">
+                                <label class="control-label">Formação</label>
+                                <div class="controls">
+                                    <input type="text" class="form-control input-small" name="nom_curso" id="nom_curso" value="">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div id="tab3" class="tab-pane">This is a Tab Three Content</div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-success btn-small">
+                            <i class="glyphicon glyphicon-ok-sign"></i> Salvar Registro
+                        </button>
+                        <button type="reset" class="btn btn-inverse btn-small">
+                            <i class="glyphicon glyphicon-remove-sign"></i> Cancelar
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--
+<div class="row">
+    <div class="col-12">
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon">
+                    <i class="glyphicon glyphicon-align-justify"></i>
+                </span>
+                <h5>Rest of elements...</h5>
+            </div>
+            <div class="widget-content nopadding">
+                <form action="#" method="get" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label">Select input</label>
+                        <div class="controls">
+                            <select>
+                                <option>First option</option>
+                                <option>Second option</option>
+                                <option>Third option</option>
+                                <option>Fourth option</option>
+                                <option>Fifth option</option>
+                                <option>Sixth option</option>
+                                <option>Seventh option</option>
+                                <option>Eighth option</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Multiple Select input</label>
+                        <div class="controls">
+                            <select multiple class="forn-control">
+                                <option>First option</option>
+                                <option selected>Second option</option>
+                                <option>Third option</option>
+                                <option>Fourth option</option>
+                                <option>Fifth option</option>
+                                <option>Sixth option</option>
+                                <option>Seventh option</option>
+                                <option>Eighth option</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Color picker (hex)</label>
+                        <div class="controls">
+                            <input type="text" data-color="#000000" value="#000000" class="colorpicker form-control input-small" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Color picker (rgba)</label>
+                        <div class="controls">
+                            <input type="text" data-color="rgba(244,202,56,0.5)" value="rgba(244,202,56,0.5)" data-color-format="rgba" class="colorpicker form-control input-small" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Date picker</label>
+                        <div class=" controls">
+                            <input type="text" data-date="12-02-2012" data-date-format="dd-mm-yyyy" value="12-02-2012" class="datepicker form-control input-small" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Radio inputs</label>
+                        <div class="controls">
+                            <label><input type="radio" name="radios" /> First One</label>
+                            <label><input type="radio" name="radios" checked /> Second One</label>
+                            <label><input type="radio" name="radios" /> Third One</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Checkboxes</label>
+                        <div class="controls">
+                            <label><input type="checkbox" name="checkboxes" checked /> First One</label>
+                            <label><input type="checkbox" name="checkboxes" /> Second One</label>
+                            <label><input type="checkbox" name="checkboxes" checked /> Third One</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">File upload input</label>
+                        <div class="controls">
+                            <input type="file" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+</div>
+        
+        <div class="row">
+    <div id="footer" class="col-12">
+        2014© RoDa Sistemas. <a href="http://rodrigodaniel.com.br/">Acesse o Site</a>
+    </div>
+</div>
+
+    
+    <script src="./Administrativo Cursos_files/excanvas.min.js"></script>
+    <script src="./Administrativo Cursos_files/jquery.min.js"></script>
+    <script src="./Administrativo Cursos_files/jquery-ui.custom.js"></script>
+    <script src="./Administrativo Cursos_files/bootstrap.min.js"></script>
+    <script src="./Administrativo Cursos_files/bootstrap-colorpicker.js"></script>
+    <script src="./Administrativo Cursos_files/bootstrap-datepicker.js"></script>
+
+    <script src="./Administrativo Cursos_files/jquery.flot.min.js"></script>
+    <script src="./Administrativo Cursos_files/jquery.cookie.js"></script>
+    <script src="./Administrativo Cursos_files/jquery.flot.resize.min.js"></script>
+    <script src="./Administrativo Cursos_files/jquery.sparkline.min.js"></script>
+    <script src="./Administrativo Cursos_files/fullcalendar.min.js"></script>
+    <script src="./Administrativo Cursos_files/jquery.jpanelmenu.min.js"></script>
+    <script src="./Administrativo Cursos_files/jquery.dataTables.min.js"></script>
+    <script src="./Administrativo Cursos_files/jquery.dataTables.tableTools.js"></script>
+    <script src="./Administrativo Cursos_files/jquery.dataTables.tableTools.zeroClipboard.js"></script>
+    <script src="./Administrativo Cursos_files/jquery.icheck.min.js"></script>
+    <script src="./Administrativo Cursos_files/select2.min.js"></script>
+    <script src="./Administrativo Cursos_files/jquery.uniform.js"></script>
+    <script src="./Administrativo Cursos_files/jquery.validate.js"></script>
+    <script src="./Administrativo Cursos_files/unicorn.js"></script>
+    <script src="./Administrativo Cursos_files/unicorn.form_common.js"></script>
+
+
+</body></html>

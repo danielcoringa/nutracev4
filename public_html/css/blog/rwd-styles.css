@@ -1,0 +1,221 @@
+/* 
+   ------------------------------------------------------
+					Responsive Styles
+   ------------------------------------------------------
+*/
+@media (max-width: 767px) { 
+	#menu { display: none; }
+	.navigation select { display: block; margin: 5px 0; }
+	#mainmenu-block-bg { position:relative !important;}
+	.row-fluid .pull-right[class*="span"] { float: none; }
+	.banner-block { display: none !important; }
+	.logo-block { text-align: center; }
+
+	.copyright-info, .add-info { padding: 0 20px; }
+	#footer .container { padding: 20px 0; }
+	.add-info { float: left; padding: 20px !important; }
+
+	#blog-entry, .archive #blog-entry { margin-right: -18px !important; }
+	.post-block.three_columns,
+	.post-block.four_columns,
+	.post-block.five_columns,
+	.post-block.three_columns_sidebar,
+	.post-block.two_columns_sidebar,
+	.post-block.one_columns_sidebar  { width: 353px !important; margin-right: 18px; margin-bottom: 18px; }
+}
+
+@media (max-width: 720px) { 
+	.post-block.three_columns,
+	.post-block.four_columns,
+	.post-block.five_columns,
+	.post-block.three_columns_sidebar,
+	.post-block.two_columns_sidebar,
+	.post-block.one_columns_sidebar  { width: 330px !important; margin-right: 18px; margin-bottom: 18px; }
+}
+
+@media  (max-width: 683px) {
+	.post-block.three_columns,
+	.post-block.four_columns,
+	.post-block.five_columns,
+	.post-block.three_columns_sidebar,
+	.post-block.two_columns_sidebar,
+	.post-block.one_columns_sidebar { width: 312px !important; margin-right: 18px !important; margin-bottom: 18px !important; }
+
+}
+
+@media  (max-width: 640px) {
+	.post-block.three_columns,
+	.post-block.four_columns,
+	.post-block.five_columns,
+	.post-block.three_columns_sidebar,
+	.post-block.two_columns_sidebar { width: 290px !important; margin-right: 18px !important; margin-bottom: 18px !important; }
+
+	.post-block.one_columns_sidebar { width: 598px !important; margin-right: 0; margin-bottom: 20px; }
+}
+
+@media  (max-width: 600px) {
+	.post-block.three_columns,
+	.post-block.four_columns,
+	.post-block.five_columns,
+	.post-block.three_columns_sidebar,
+	.post-block.two_columns_sidebar { width: 271px !important; margin-right: 18px; margin-bottom: 18px; }
+
+	.post-block.one_columns_sidebar { width: 560px !important; margin-right: 0; margin-bottom: 20px; }
+}
+
+@media  (max-width: 568px) {
+	.post-block.three_columns,
+	.post-block.four_columns,
+	.post-block.five_columns,
+	.post-block.three_columns_sidebar,
+	.post-block.two_columns_sidebar { width: 254px !important; margin-right: 18px; margin-bottom: 18px; }
+
+	.post-block.one_columns_sidebar { width: 526px !important; margin-right: 0; margin-bottom: 18px; }
+}
+
+@media  (max-width: 500px) {
+	.post-block.three_columns,
+	.post-block.four_columns,
+	.post-block.five_columns,
+	.post-block.three_columns_sidebar,
+	.post-block.two_columns_sidebar { width: 221px !important; margin-right: 18px; margin-bottom: 18px; }
+
+	.post-block.one_columns_sidebar { width: 460px !important; margin-right: 0; margin-bottom: 18px; }
+}
+
+@media  (max-width: 480px) {
+	.post-block.three_columns,
+	.post-block.four_columns,
+	.post-block.five_columns,
+	.post-block.three_columns_sidebar,
+	.post-block.two_columns_sidebar { width: 210px !important; margin-right: 18px; margin-bottom: 18px; }
+
+	.post-block.one_columns_sidebar { width: 438px !important; margin-right: 0; margin-bottom: 20px; }
+
+	.welcome-strip { display: none; }
+	#searchform input[type="text"] { width: 81%; }
+	.related-posts-single img { width: 93px; height: 93px; }
+	#contacts-form .input-prepend { margin-right: 10px; }
+}
+
+@media  (max-width: 400px) {
+	#blog-entry, .archive #blog-entry { margin-right: 0 !important; }
+	.post-block.three_columns,
+	.post-block.four_columns,
+	.post-block.five_columns,
+	.post-block.three_columns_sidebar,
+	.post-block.two_columns_sidebar,
+	.post-block.one_columns_sidebar { width: 358px !important; margin-right: 0 !important; margin-bottom: 18px; }
+
+}
+
+@media  (max-width: 360px) {
+	/*#blog-entry, .archive #blog-entry { margin-right: 0; }*/
+	.post-block.three_columns,
+	.post-block.four_columns,
+	.post-block.five_columns,
+	.post-block.three_columns_sidebar,
+	.post-block.two_columns_sidebar,
+	.post-block.one_columns_sidebar { width: 318px !important; margin-right: 0; margin-bottom: 18px; }
+}
+
+@media (max-width: 320px) { 
+	/*#blog-entry { margin-right: 0; }*/
+	.post-block.three_columns,
+	.post-block.four_columns,
+	.post-block.five_columns,
+	.post-block.three_columns_sidebar,
+	.post-block.two_columns_sidebar,
+	.post-block.one_columns_sidebar { max-width: 280px !important; width: inherit !important; margin-right: 0; margin-bottom: 20px  !important; }
+
+
+	#searchform input[type="text"] { width: 69%; }
+	#comment { width: 93%; }
+	.related-posts-single img { width: 115px; height: 115px; }
+	#contacts-form input[type=text] { width: 115%; }
+	#contacts-form .input-prepend { margin-right: 0; }
+}
+
+@media (max-width: 240px) { 
+}
+
+@media (max-width: 220px) { 
+}
+
+@media (max-width: 176px) { 
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+		#menu { display: none; }	
+		.navigation select { display: block; margin: 5px 0; }
+		#mainmenu-block-bg { position:relative !important;}
+		#blog-entry, .archive #blog-entry { margin-right: -18px !important; }
+
+		.post-block.three_columns,
+		.post-block.four_columns,
+		.post-block.five_columns { width: 353px !important; margin-right: 18px !important; margin-bottom: 18px !important; }
+
+		.post-block.one_columns_sidebar { width: 476px !important; margin-right: 0; margin-bottom: 20px; }
+
+		.post-block.three_columns_sidebar,
+		.post-block.two_columns_sidebar { width: 229px !important; margin-right: 18px; margin-bottom: 18px; }
+
+		.welcome-strip { display: none; }
+		/*.welcome-text { padding: 20px; }
+		.welcome-text h1, .welcome-text h2, .welcome-text h3, .welcome-text h4 { font-size: 18px !important; line-height: 26px !important; }*/
+		#searchform input[type="text"] { width: 61%; }
+		.related-posts-single img { width: 150px; height: 150px; }
+}
+
+
+/* Portrait tablet to landscape and desktop*/
+@media (min-width: 980px) and (max-width: 1200px) {
+	.post-block.three_columns,
+	.post-block.four_columns,
+	.post-block.five_columns,
+	.post-block.three_columns_sidebar,
+	.post-block.two_columns_sidebar,
+	.post-block.one_columns_sidebar  { width: 300px !important; margin-right: 18px !important; margin-bottom: 18px !important; }
+
+	#blog-entry, .archive #blog-entry { margin-right: -18px !important; }
+	#searchform input[type="text"] { width: 71%; }
+}
+
+@media (min-width: 795px) and (max-width: 805px) { 
+	#blog-entry { margin-right: -18px; }
+	.post-block.three_columns,
+	.post-block.four_columns,
+	.post-block.five_columns { width: 353px !important; margin-right: 18px; margin-bottom: 18px; }
+}
+
+
+@media (min-width: 710px) and (max-width: 720px)  {
+	#blog-entry, .archive #blog-entry { margin-right: -18px; }
+	.post-block.three_columns,
+	.post-block.four_columns,
+	.post-block.five_columns { width: 330px !important; margin-right: 18px; margin-bottom: 18px; }	
+}
+
+@media (max-width: 979px) {
+	.welcome-text { padding: 15px; }
+	.welcome-text h1, .welcome-text h2, .welcome-text h3, .welcome-text h4 { font-size: 15px !important; line-height: 24px !important; }
+}
+/* Portrait - for retina devices, like Samsung Glaxy 3 */
+/*@media screen and (width: 720px) and (height: 1280px) and (orientation: portrait) {
+	#blog-entry { margin-right: -20px; }
+	.post-block.three_columns,
+	.post-block.four_columns,
+	.post-block.five_columns { width: 328px !important; margin-right: 20px; margin-bottom: 20px; }	
+	.welcome-text { padding: 15px; }
+	.welcome-text h1, .welcome-text h2, .welcome-text h3, .welcome-text h4 { font-size: 15px !important; line-height: 24px !important; }
+}*/
+
+/* Landscape - for retina devices, like Samsung Glaxy 3 */
+/*@media screen and (width: 1280px) and (height: 720px) and (orientation: landscape) {
+	#blog-entry { margin-right: -20px; }
+	.post-block.three_columns,
+	.post-block.four_columns,
+	.post-block.five_columns { width: 376px !important; margin-right: 20px; margin-bottom: 20px; }
+	.welcome-text { padding: 15px; }
+	.welcome-text h1, .welcome-text h2, .welcome-text h3, .welcome-text h4 { font-size: 15px !important; line-height: 24px !important; }	
+}*/

@@ -1,0 +1,28 @@
+<div class="col-sm-2 pull-left">
+    <div class="btn-group btn-imgs">
+        <button type="button" class="btn btn-primary active server pop-hover" data-title="Imagens do Servidor" data-content="Gerencie as imagens enviadas para o servidor." data-tipo="server">
+            <i class="fa fa-picture-o"></i>
+        </button>
+
+        <button type="button" class="btn btn-default flickr pop-hover <?php if ($this->conf['ind_img_flickr'] !== 'A') echo 'hidden'; ?>" data-title="Imagens do Flickr" data-content="Utilize as imagens do Flickr em seu artigo. Você pode gerenciar as imagens da sua conta ou pesquisar no Flickr." data-tipo="flickr">
+            <i class="fa fa-flickr"></i>
+        </button>
+
+
+    </div>
+</div>
+<div class='col-sm-6 center-block'>
+
+</div>
+<div class="col-sm-4 pull-right pesquisa-field">
+
+    <div class="input-group  pull-right">
+        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+        <input type="text" class="form-control" id="search-img" name="search-img" placeholder="Pesquisar">
+        <span class="input-group-btn">
+            <button class="btn btn-default btn-search" type="submit">Buscar</button>
+        </span>
+    </div>
+    <input type="hidden" name="search-from" id="search-from" value="google" />
+
+</div>
